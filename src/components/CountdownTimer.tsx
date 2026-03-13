@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { calculateTimeRemaining, getUrgencyTone } from '../utils/dateUtils';
+import { calculateTimeRemaining, formatTimeRemaining, getUrgencyTone } from '../utils/dateUtils';
 
 interface CountdownTimerProps {
   deadline: string;
   timezone: string;
+  compact?: boolean;
 }
 
-function CountdownTimer({ deadline, timezone }: CountdownTimerProps) {
+function CountdownTimer({ deadline, timezone, compact = false }: CountdownTimerProps) {
   const [timeRemaining, setTimeRemaining] = useState(() =>
     calculateTimeRemaining(deadline, timezone),
   );
@@ -19,26 +20,30 @@ function CountdownTimer({ deadline, timezone }: CountdownTimerProps) {
     return () => window.clearInterval(timer);
   }, [deadline, timezone]);
 
-  const toneClass = getUrgencyTone(timeRemaining.days);
+  const toneClass = getUrgencyTone(timeRemaining.totalSeconds);
+
+  if (compact) {
+    return <div className={`countdown-compact ${toneClass}`}>{formatTimeRemaining(timeRemaining)}</div>;
+  }
 
   return (
     <div className="countdown-panel">
       {!timeRemaining.isPast ? (
         <div className={`countdown-grid ${toneClass}`}>
           <div>
-            <strong>{timeRemaining.days}</strong>
+            <strong className={toneClass}>{timeRemaining.days}</strong>
             <span>D</span>
           </div>
           <div>
-            <strong>{timeRemaining.hours}</strong>
+            <strong className={toneClass}>{timeRemaining.hours}</strong>
             <span>H</span>
           </div>
           <div>
-            <strong>{timeRemaining.minutes}</strong>
+            <strong className={toneClass}>{timeRemaining.minutes}</strong>
             <span>M</span>
           </div>
           <div>
-            <strong>{timeRemaining.seconds}</strong>
+            <strong className={toneClass}>{timeRemaining.seconds}</strong>
             <span>S</span>
           </div>
         </div>

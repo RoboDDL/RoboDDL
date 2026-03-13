@@ -4,11 +4,8 @@
 
 :root {
   color: #102027;
-  background:
-    radial-gradient(circle at top left, rgba(244, 168, 0, 0.18), transparent 28%),
-    radial-gradient(circle at top right, rgba(26, 115, 232, 0.12), transparent 24%),
-    linear-gradient(180deg, #f5efe3 0%, #f6f8fb 48%, #eef3f8 100%);
-  font-family: 'Space Grotesk', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  background: #f5f7fa;
+  font-family: 'Plus Jakarta Sans', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
 }
 
 body {
@@ -16,7 +13,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   color: #102027;
-  background: transparent;
+  background: #f5f7fa;
 }
 
 a {
@@ -37,28 +34,12 @@ a {
     @apply relative mx-auto flex w-full max-w-6xl flex-col gap-4;
   }
 
-  .page-glow {
-    @apply pointer-events-none absolute h-80 w-80 rounded-full blur-3xl;
-  }
-
-  .page-glow-left {
-    background: rgba(241, 146, 39, 0.18);
-    left: -4rem;
-    top: 1rem;
-  }
-
-  .page-glow-right {
-    background: rgba(27, 102, 181, 0.14);
-    right: -4rem;
-    top: 12rem;
-  }
-
   .hero-card,
   .toolbar-card,
   .control-card,
   .venue-card,
   .stat-card {
-    @apply rounded-[22px] border border-white/70 bg-white/80 shadow-[0_16px_40px_rgba(23,40,60,0.08)] backdrop-blur;
+    @apply rounded-[18px] border border-slate-200 bg-white shadow-sm;
   }
 
   .hero-card {
@@ -69,29 +50,33 @@ a {
     @apply flex flex-col gap-2;
   }
 
-  .hero-badge {
-    @apply inline-flex w-fit items-center gap-2 rounded-full border border-slate-200 bg-slate-950 px-3 py-1 text-sm font-semibold text-white;
-  }
-
   .hero-copy h1 {
-    @apply max-w-4xl text-xl font-semibold leading-tight text-slate-950 sm:text-2xl;
+    @apply max-w-4xl text-4xl font-semibold leading-tight text-slate-950 sm:text-5xl;
   }
 
   .hero-copy p {
     @apply max-w-3xl text-sm leading-6 text-slate-600;
   }
 
+  .hero-link {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition hover:border-slate-300 hover:text-slate-900;
+  }
+
   .hero-panel {
-    @apply rounded-[18px] bg-slate-950 p-3 text-slate-100;
+    @apply flex flex-col items-center justify-center rounded-[16px] border border-slate-200 bg-slate-50 p-4 text-center text-slate-900;
   }
 
   .live-label {
-    @apply text-xs uppercase tracking-[0.24em] text-slate-400;
+    @apply text-xs font-medium text-slate-500;
   }
 
   .live-time {
     font-family: 'JetBrains Mono', 'SFMono-Regular', monospace;
-    @apply mt-1 text-lg font-semibold leading-tight sm:text-xl;
+    @apply mt-2 text-2xl font-semibold leading-tight sm:text-3xl;
+  }
+
+  .live-date {
+    @apply mt-1 text-sm text-slate-500;
   }
 
   .stats-grid {
@@ -102,8 +87,20 @@ a {
     @apply flex flex-col gap-1.5 p-3;
   }
 
+  .stat-card-button {
+    @apply text-left transition hover:border-slate-300 hover:bg-slate-50;
+  }
+
+  .stat-card-button.active {
+    @apply border-slate-900 bg-slate-900;
+  }
+
   .stat-card span {
-    @apply text-[11px] uppercase tracking-[0.14em] text-slate-500;
+    @apply text-xs font-medium text-slate-500;
+  }
+
+  .stat-card-button.active span {
+    @apply text-slate-300;
   }
 
   .stat-card strong {
@@ -111,12 +108,16 @@ a {
     @apply text-xl text-slate-950;
   }
 
+  .stat-card-button.active strong {
+    @apply text-white;
+  }
+
   .toolbar-card {
     @apply flex flex-col gap-3 p-3;
   }
 
   .calendar-card {
-    @apply rounded-[22px] border border-white/70 bg-white/80 p-4 shadow-[0_16px_40px_rgba(23,40,60,0.08)] backdrop-blur lg:p-5;
+    @apply rounded-[18px] border border-slate-200 bg-white p-4 shadow-sm lg:p-5;
   }
 
   .calendar-head {
@@ -148,7 +149,7 @@ a {
   }
 
   .calendar-month {
-    @apply rounded-[18px] border border-slate-200 bg-slate-50/90 p-3;
+    @apply rounded-[16px] border border-slate-200 bg-slate-50 p-3;
   }
 
   .calendar-month-head {
@@ -160,7 +161,7 @@ a {
   }
 
   .calendar-month-head span {
-    @apply text-xs uppercase tracking-[0.12em] text-slate-500;
+    @apply text-xs font-medium text-slate-500;
   }
 
   .calendar-list {
@@ -181,7 +182,7 @@ a {
   }
 
   .search-shell {
-    @apply flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3;
+    @apply flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3;
   }
 
   .search-shell input {
@@ -197,11 +198,11 @@ a {
   }
 
   .control-card {
-    @apply sticky top-4 self-start p-4;
+    @apply self-start p-4 xl:sticky xl:top-4 xl:max-h-[calc(100vh-2rem)] xl:overflow-y-auto;
   }
 
   .filter-title {
-    @apply mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500;
+    @apply mb-3 text-xs font-semibold text-slate-500;
   }
 
   .chip-row {
@@ -209,7 +210,7 @@ a {
   }
 
   .filter-chip {
-    @apply rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm text-slate-600 transition;
+    @apply rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-600 transition;
   }
 
   .filter-chip.active {
@@ -233,7 +234,7 @@ a {
   }
 
   .results-kicker {
-    @apply text-xs uppercase tracking-[0.2em] text-slate-500;
+    @apply text-xs font-medium text-slate-500;
   }
 
   .results-head h2 {
@@ -253,11 +254,52 @@ a {
   }
 
   .venue-card {
-    @apply flex flex-col gap-4 p-4 lg:flex-row lg:items-start lg:justify-between lg:p-5;
+    @apply flex flex-col gap-3 p-4;
+  }
+
+  .venue-summary-row {
+    @apply flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between;
+  }
+
+  .venue-summary-main {
+    @apply flex min-w-0 flex-1 flex-col gap-3 lg:flex-row lg:items-start lg:justify-between;
+  }
+
+  .summary-deadline {
+    @apply w-full max-w-full rounded-[14px] border border-slate-200 bg-slate-50 px-3 py-2.5 sm:w-auto sm:min-w-[240px] sm:max-w-[280px] sm:flex-shrink-0;
+  }
+
+  .summary-deadline span {
+    @apply block text-xs font-medium text-slate-500;
+  }
+
+  .summary-deadline strong {
+    font-family: 'JetBrains Mono', 'SFMono-Regular', monospace;
+    @apply mt-1 block text-sm text-slate-900;
+  }
+
+  .venue-summary-actions {
+    @apply flex flex-wrap items-center gap-2;
+  }
+
+  .expand-button {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-slate-300 hover:bg-slate-50;
+  }
+
+  .expand-chevron {
+    @apply h-4 w-4 transition-transform;
+  }
+
+  .expand-chevron.open {
+    @apply rotate-180;
+  }
+
+  .venue-expanded {
+    @apply grid gap-4 border-t border-slate-200 pt-3 lg:grid-cols-[minmax(0,1fr)_280px];
   }
 
   .venue-main {
-    @apply min-w-0 flex-1 space-y-5;
+    @apply min-w-0 flex-1 space-y-4;
   }
 
   .venue-head {
@@ -277,11 +319,11 @@ a {
   }
 
   .badge-row {
-    @apply flex flex-wrap gap-2;
+    @apply mt-2 flex flex-wrap gap-2;
   }
 
   .pill {
-    @apply rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-slate-600;
+    @apply rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600;
   }
 
   .pill-strong {
@@ -293,7 +335,7 @@ a {
   }
 
   .favorite-button {
-    @apply inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-amber-300 hover:bg-amber-50;
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-slate-300 hover:bg-slate-50;
   }
 
   .favorite-button.active {
@@ -305,11 +347,11 @@ a {
   }
 
   .meta-block {
-    @apply rounded-[18px] border border-slate-200 bg-slate-50/90 p-3;
+    @apply rounded-[16px] border border-slate-200 bg-slate-50 p-3;
   }
 
   .meta-label {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500;
+    @apply inline-flex items-center gap-2 text-xs font-semibold text-slate-500;
   }
 
   .meta-value {
@@ -330,11 +372,11 @@ a {
   }
 
   .source-strip {
-    @apply flex flex-wrap items-center gap-2 rounded-[18px] border border-dashed border-slate-300 bg-slate-50/80 px-3 py-2.5 text-sm text-slate-600;
+    @apply flex flex-wrap items-center gap-2 rounded-[16px] border border-dashed border-slate-300 bg-slate-50 px-3 py-2.5 text-sm text-slate-600;
   }
 
   .source-label {
-    @apply rounded-full bg-slate-900 px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-white;
+    @apply rounded-full bg-slate-900 px-2 py-1 text-[11px] font-semibold text-white;
   }
 
   .source-strip a {
@@ -350,12 +392,17 @@ a {
   }
 
   .side-title {
-    @apply text-xs font-semibold uppercase tracking-[0.2em] text-slate-500;
+    @apply text-xs font-semibold text-slate-500;
   }
 
   .countdown-panel,
   .rolling-panel {
-    @apply rounded-[20px] border border-slate-200 bg-[linear-gradient(180deg,#fff7ea_0%,#ffffff_100%)] p-3.5;
+    @apply rounded-[16px] border border-slate-200 bg-slate-50 p-3.5;
+  }
+
+  .countdown-compact {
+    font-family: 'JetBrains Mono', 'SFMono-Regular', monospace;
+    @apply mt-1 text-sm font-semibold;
   }
 
   .countdown-inline {
@@ -368,7 +415,7 @@ a {
   }
 
   .countdown-grid div {
-    @apply rounded-[16px] bg-white px-3 py-2.5 text-center;
+    @apply rounded-[14px] bg-white px-3 py-2.5 text-center;
   }
 
   .countdown-grid strong {
@@ -377,7 +424,7 @@ a {
   }
 
   .countdown-grid span {
-    @apply mt-1 block text-[11px] uppercase tracking-[0.16em] text-slate-500;
+    @apply mt-1 block text-[11px] text-slate-500;
   }
 
   .countdown-passed {
@@ -413,29 +460,6 @@ a {
     @apply fixed bottom-5 right-5 z-20 rounded-full border border-slate-900 bg-slate-900 px-4 py-2.5 text-sm font-medium text-white shadow-[0_16px_40px_rgba(15,23,42,0.25)] transition hover:bg-slate-800;
   }
 
-  .tone-ras {
-    box-shadow:
-      inset 4px 0 0 #1953a6,
-      0 20px 60px rgba(23, 40, 60, 0.08);
-  }
-
-  .tone-robot-learning {
-    box-shadow:
-      inset 4px 0 0 #0d9488,
-      0 20px 60px rgba(23, 40, 60, 0.08);
-  }
-
-  .tone-ai {
-    box-shadow:
-      inset 4px 0 0 #f08a24,
-      0 20px 60px rgba(23, 40, 60, 0.08);
-  }
-
-  .tone-journal {
-    box-shadow:
-      inset 4px 0 0 #5b556d,
-      0 20px 60px rgba(23, 40, 60, 0.08);
-  }
 }
 
 @media (max-width: 767px) {

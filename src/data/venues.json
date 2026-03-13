@@ -88,7 +88,7 @@
     "fullTitle": "Conference on Robot Learning",
     "summary": "Flagship robot learning conference bridging robotics, machine learning, and embodied intelligence.",
     "venueType": "conference",
-    "category": "Robot Learning",
+    "category": "AI x Robotics",
     "rank": "A",
     "coreRank": "A",
     "caaiRank": "C",
@@ -254,6 +254,166 @@
         "link": "https://aamas2026.org/",
         "deadlineSourceLabel": "AAMAS 2026 Calls page",
         "deadlineSourceUrl": "https://aamas2026.org/calls/"
+      }
+    ]
+  },
+  {
+    "slug": "hri",
+    "title": "HRI",
+    "fullTitle": "ACM/IEEE International Conference on Human-Robot Interaction",
+    "summary": "Premier human-robot interaction conference spanning socially interactive robots, user studies, embodied AI, assistive systems, and real-world deployment.",
+    "venueType": "conference",
+    "category": "RAS",
+    "rank": "A",
+    "homepage": "https://humanrobotinteraction.org/",
+    "dblp": "conf/hri",
+    "keywords": ["hri", "human-robot interaction", "social robotics", "assistive robotics"],
+    "submissionModel": "deadline",
+    "knownEditions": [
+      {
+        "year": 2026,
+        "paperDeadline": "2025-09-30T23:59:59",
+        "abstractDeadline": "2025-09-22T23:59:59",
+        "timezone": "AoE",
+        "conferenceDates": "March 16-19, 2026",
+        "location": "Edinburgh, Scotland, UK",
+        "link": "https://humanrobotinteraction.org/2026/",
+        "deadlineSourceLabel": "HRI 2026 full papers page",
+        "deadlineSourceUrl": "https://humanrobotinteraction.org/2026/full-papers/"
+      }
+    ]
+  },
+  {
+    "slug": "roman",
+    "title": "RO-MAN",
+    "fullTitle": "IEEE International Conference on Robot and Human Interactive Communication",
+    "summary": "Major venue for human-robot interaction, social robotics, assistive robotics, telepresence, and robot communication.",
+    "venueType": "conference",
+    "category": "RAS",
+    "rank": "A",
+    "homepage": "https://ro-man2026.org/",
+    "dblp": "conf/roman",
+    "keywords": ["ro-man", "human-robot interaction", "robot communication", "social robotics"],
+    "submissionModel": "deadline",
+    "knownEditions": [
+      {
+        "year": 2026,
+        "paperDeadline": "2026-03-29T23:59:59",
+        "timezone": "PST",
+        "conferenceDates": "August 24-28, 2026",
+        "location": "Kitakyushu, Japan",
+        "link": "https://ro-man2026.org/papersubmission/",
+        "deadlineSourceLabel": "RO-MAN 2026 paper submission page",
+        "deadlineSourceUrl": "https://ro-man2026.org/papersubmission/"
+      }
+    ]
+  },
+  {
+    "slug": "robosoft",
+    "title": "RoboSoft",
+    "fullTitle": "IEEE-RAS International Conference on Soft Robotics",
+    "summary": "Flagship soft robotics conference covering soft actuation, soft sensing, morphology, fabrication, medical devices, and embodied intelligence.",
+    "venueType": "conference",
+    "category": "RAS",
+    "rank": "A",
+    "homepage": "https://www.robosoft2026.org/",
+    "dblp": "conf/robosoft",
+    "keywords": ["robosoft", "soft robotics", "soft actuators", "bio-inspired robotics"],
+    "submissionModel": "deadline",
+    "knownEditions": [
+      {
+        "year": 2026,
+        "paperDeadline": "2025-10-30T23:59:59",
+        "timezone": "PST",
+        "conferenceDates": "April 7-11, 2026",
+        "location": "Kanazawa, Japan",
+        "link": "https://www.robosoft2026.org/calls/call-for-papers/",
+        "deadlineSourceLabel": "RoboSoft 2026 call for papers",
+        "deadlineSourceUrl": "https://www.robosoft2026.org/calls/call-for-papers/"
+      }
+    ]
+  },
+  {
+    "slug": "biorob",
+    "title": "BioRob",
+    "fullTitle": "IEEE RAS/EMBS International Conference on Biomedical Robotics and Biomechatronics",
+    "summary": "Leading biomedical robotics conference spanning surgical robotics, rehabilitation, wearable robotics, haptics, neuro-robotics, and assistive systems.",
+    "venueType": "conference",
+    "category": "RAS",
+    "rank": "A",
+    "homepage": "https://2026.ieeebiorob.org/",
+    "dblp": "conf/biorob",
+    "keywords": ["biorob", "biomedical robotics", "wearable robotics", "surgical robotics"],
+    "submissionModel": "deadline",
+    "knownEditions": [
+      {
+        "year": 2026,
+        "paperDeadline": "2026-01-17T23:59:59",
+        "timezone": "PST",
+        "conferenceDates": "August 1-4, 2026",
+        "location": "Edmonton, Alberta, Canada",
+        "link": "https://2026.ieeebiorob.org/call-for-papers/",
+        "deadlineSourceLabel": "BioRob 2026 call for papers",
+        "deadlineSourceUrl": "https://2026.ieeebiorob.org/call-for-papers/"
+      }
+    ]
+  },
+  {
+    "slug": "case",
+    "title": "CASE",
+    "fullTitle": "IEEE International Conference on Automation Science and Engineering",
+    "summary": "Flagship IEEE RAS automation conference with strong robotics overlap in manufacturing, logistics, healthcare, autonomous systems, and intelligent automation.",
+    "venueType": "conference",
+    "category": "RAS",
+    "rank": "A",
+    "homepage": "https://www.ieee-ras.org/conferences-workshops/financially-co-sponsored/case",
+    "dblp": "conf/case",
+    "keywords": ["case", "automation", "manufacturing", "logistics", "autonomous systems"],
+    "submissionModel": "deadline",
+    "knownEditions": [
+      {
+        "year": 2025,
+        "paperDeadline": "2025-03-15T23:59:00",
+        "timezone": "PST",
+        "conferenceDates": "August 17-21, 2025",
+        "location": "Los Angeles, California, USA",
+        "link": "https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2025/2025.ieeecase.org/index.html",
+        "deadlineSourceLabel": "CASE 2025 official website",
+        "deadlineSourceUrl": "https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2025/2025.ieeecase.org/index.html"
+      }
+    ],
+    "futureHints": [
+      {
+        "year": 2026,
+        "conferenceDates": "August 17-21, 2026",
+        "location": "Shenyang, China",
+        "link": "https://2026.ieeecase.org/"
+      }
+    ]
+  },
+  {
+    "slug": "sii",
+    "title": "SII",
+    "fullTitle": "IEEE/SICE International Symposium on System Integration",
+    "summary": "Systems integration venue with recurring robotics content in field robotics, assistive systems, human-robot collaboration, and mechatronic integration.",
+    "venueType": "conference",
+    "category": "RAS",
+    "rank": "A",
+    "homepage": "https://sii2026.sice-si.org/",
+    "dblp": "conf/sii",
+    "keywords": ["sii", "system integration", "mechatronics", "human-robot collaboration"],
+    "submissionModel": "deadline",
+    "knownEditions": [
+      {
+        "year": 2026,
+        "paperDeadline": "2025-09-01T23:59:59",
+        "timezone": "AoE",
+        "conferenceDates": "January 11-14, 2026",
+        "location": "Cancun, Mexico",
+        "link": "https://sii2026.sice-si.org/",
+        "deadlineSourceLabel": "SII 2026 official website",
+        "deadlineSourceUrl": "https://sii2026.sice-si.org/",
+        "note": "Official page lists dates but not a timezone; countdown uses end-of-day AoE."
       }
     ]
   },

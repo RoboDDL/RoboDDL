@@ -123,16 +123,20 @@ export function formatTimeRemaining(time: TimeRemaining): string {
   return `${time.days}d ${pad(time.hours)}h ${pad(time.minutes)}m ${pad(time.seconds)}s`;
 }
 
-export function getUrgencyTone(daysRemaining: number): string {
-  if (daysRemaining < 7) {
+export function getUrgencyTone(totalSeconds: number): string {
+  if (totalSeconds <= 3 * 24 * 60 * 60) {
     return 'text-rose-600';
   }
 
-  if (daysRemaining < 30) {
-    return 'text-amber-600';
+  if (totalSeconds <= 7 * 24 * 60 * 60) {
+    return 'text-orange-500';
   }
 
-  return 'text-emerald-600';
+  if (totalSeconds <= 15 * 24 * 60 * 60) {
+    return 'text-sky-600';
+  }
+
+  return 'text-slate-900';
 }
 
 export function formatDeadline(dateTime: string, timezone: string): string {

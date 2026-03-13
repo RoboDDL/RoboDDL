@@ -1,4 +1,4 @@
-import { categories, venueTypes, Category, VenueType } from '../data/conferences';
+import { categories, ratingFilters, Category, RatingFilter, venueTypes, VenueType } from '../data/conferences';
 
 interface FilterPanelProps {
   selectedVenueType: 'All' | VenueType;
@@ -7,6 +7,8 @@ interface FilterPanelProps {
   onCategoryChange: (value: 'All' | Category) => void;
   sortBy: 'deadline' | 'title' | 'rank';
   onSortChange: (value: 'deadline' | 'title' | 'rank') => void;
+  selectedRatingFilter: RatingFilter;
+  onRatingFilterChange: (value: RatingFilter) => void;
   showFavoritesOnly: boolean;
   onShowFavoritesOnlyChange: (value: boolean) => void;
 }
@@ -18,6 +20,8 @@ function FilterPanel({
   onCategoryChange,
   sortBy,
   onSortChange,
+  selectedRatingFilter,
+  onRatingFilterChange,
   showFavoritesOnly,
   onShowFavoritesOnlyChange,
 }: FilterPanelProps) {
@@ -76,6 +80,22 @@ function FilterPanel({
       </section>
 
       <section>
+        <p className="filter-title">Ratings</p>
+        <div className="chip-row">
+          {ratingFilters.map((rating) => (
+            <button
+              key={rating}
+              type="button"
+              className={selectedRatingFilter === rating ? 'filter-chip active' : 'filter-chip'}
+              onClick={() => onRatingFilterChange(rating)}
+            >
+              {rating}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section>
         <p className="filter-title">Focus</p>
         <label className="favorite-toggle">
           <input
@@ -83,7 +103,7 @@ function FilterPanel({
             checked={showFavoritesOnly}
             onChange={(event) => onShowFavoritesOnlyChange(event.target.checked)}
           />
-          <span>Show followed venues only</span>
+          <span>Followed only</span>
         </label>
       </section>
     </aside>

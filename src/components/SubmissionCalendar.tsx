@@ -75,9 +75,8 @@ function SubmissionCalendar({ venues, now }: SubmissionCalendarProps) {
     <section className="calendar-card">
       <button type="button" className="calendar-toggle" onClick={() => setIsOpen((open) => !open)}>
         <div>
-          <p className="results-kicker">Monthly overview</p>
-          <h2>What can you submit each month?</h2>
-          <p className="calendar-note">The board covers the next 12 AoE months and only shows conferences.</p>
+          <h2>Monthly overview</h2>
+          <p className="calendar-note">What can you submit each month?</p>
         </div>
         <ChevronDown className={isOpen ? 'calendar-chevron open' : 'calendar-chevron'} />
       </button>
