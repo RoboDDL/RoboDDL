@@ -9,6 +9,7 @@
 RoboDDL is a deadline tracker for robotics conferences and strong journals, inspired by [ccf-ddl](https://github.com/ccfddl/ccf-deadlines).
 
 Contribution and collaboration guidelines live in [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+If you're comfortable making code or data changes, PRs are very welcome. If not, opening an issue with the source link and the field that needs fixing is still hugely helpful.
 
 ## Highlights
 
@@ -23,12 +24,12 @@ Contribution and collaboration guidelines live in [`CONTRIBUTING.md`](./CONTRIBU
 
 ## Data
 
-- The source-of-truth data file is [`src/data/venues.json`](./src/data/venues.json)
+- The source-of-truth venue data lives in [`src/data/conference`](./src/data/conference) and [`src/data/journal`](./src/data/journal)
 - Conference venues use official deadlines when available, otherwise the site estimates the next cycle from the latest known paper deadline
 - Journal venues are shown as rolling-submission targets with rating metadata when available
 
 ## Notes
 
 - 🌍 All displayed deadlines are normalized to AoE
-- 🛠️ Most updates should only require editing the JSON data file
+- 🛠️ Most updates should only require editing a single venue YAML file
 - 🧪 Development workflow, project structure, Issue guide, and PR guide live in [`CONTRIBUTING.md`](./CONTRIBUTING.md)

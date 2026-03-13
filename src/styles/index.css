@@ -85,7 +85,7 @@ a {
   }
 
   .stats-grid {
-    @apply grid gap-3 sm:grid-cols-2 xl:grid-cols-4;
+    @apply grid gap-3 sm:grid-cols-2 xl:grid-cols-3;
   }
 
   .stat-card {
@@ -271,7 +271,7 @@ a {
   }
 
   .summary-deadline {
-    @apply w-full max-w-full rounded-[14px] border border-slate-200 bg-slate-50 px-3 py-2.5 sm:w-auto sm:min-w-[240px] sm:max-w-[280px] sm:flex-shrink-0;
+    @apply relative w-full max-w-full rounded-[14px] border border-slate-200 bg-slate-50 px-3 py-2.5 sm:w-auto sm:min-w-[240px] sm:max-w-[280px] sm:flex-shrink-0;
   }
 
   .summary-deadline span {
@@ -355,6 +355,10 @@ a {
     @apply rounded-[16px] border border-slate-200 bg-slate-50 p-3;
   }
 
+  .meta-head {
+    @apply flex items-center justify-between gap-3;
+  }
+
   .meta-label {
     @apply inline-flex items-center gap-2 text-xs font-semibold text-slate-500;
   }
@@ -410,6 +414,14 @@ a {
     @apply mt-1 text-sm font-semibold;
   }
 
+  .summary-deadline-label {
+    @apply pr-12;
+  }
+
+  .summary-deadline-badge {
+    @apply absolute right-3 top-3 rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-[0.02em] text-amber-700;
+  }
+
   .countdown-inline {
     font-family: 'IBM Plex Mono', 'SFMono-Regular', monospace;
     @apply text-xl font-semibold;
@@ -462,7 +474,7 @@ a {
   }
 
   .back-to-top {
-    @apply fixed bottom-5 right-5 z-20 rounded-full border border-slate-900 bg-slate-900 px-4 py-2.5 text-sm font-medium text-white shadow-[0_16px_40px_rgba(15,23,42,0.25)] transition hover:bg-slate-800;
+    @apply fixed bottom-5 right-5 z-20 inline-flex h-12 w-12 items-center justify-center rounded-full border border-slate-900 bg-slate-900 text-white shadow-[0_16px_40px_rgba(15,23,42,0.25)] transition hover:bg-slate-800;
   }
 
 }

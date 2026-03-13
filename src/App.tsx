@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Github } from 'lucide-react';
+import { ArrowUp, Github } from 'lucide-react';
 import ConferenceCard from './components/ConferenceCard';
 import FilterPanel from './components/FilterPanel';
 import SearchBar from './components/SearchBar';
@@ -132,12 +132,10 @@ function App() {
   const stats = useMemo(() => {
     const conferenceCount = venues.filter((venue) => venue.venueType === 'conference').length;
     const journalCount = venues.filter((venue) => venue.venueType === 'journal').length;
-    const estimatedCount = venues.filter((venue) => venue.isEstimated).length;
 
     return {
       conferenceCount,
       journalCount,
-      estimatedCount,
       favoriteCount: favoriteVenueIds.length,
     };
   }, [favoriteVenueIds.length, venues]);
@@ -192,8 +190,8 @@ function App() {
         <section className="hero-card">
           <div className="hero-copy">
             <h1>RoboDDL</h1>
-            <div className="hero-note">WIP. Deadlines and ratings may still contain errors.</div>
-            <p>AoE deadlines for robotics conferences and journals.</p>
+            <div className="hero-note">[WIP] Deadlines and ratings may still contain errors!</div>
+            <p>Deadlines for robotics conferences and journals.</p>
             <a
               href="https://github.com/RoboDDL/RoboDDL"
               target="_blank"
@@ -240,10 +238,6 @@ function App() {
             <span>Journals</span>
             <strong>{stats.journalCount}</strong>
           </button>
-          <div className="stat-card">
-            <span>Estimated deadlines</span>
-            <strong>{stats.estimatedCount}</strong>
-          </div>
           <button
             type="button"
             className={showFavoritesOnly ? 'stat-card stat-card-button active' : 'stat-card stat-card-button'}
@@ -289,8 +283,9 @@ function App() {
           type="button"
           className="back-to-top"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Back to top"
         >
-          Back to top
+          <ArrowUp className="h-5 w-5" />
         </button>
       ) : null}
     </div>

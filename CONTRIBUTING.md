@@ -4,13 +4,16 @@
 
 Most contributions should update venue metadata rather than app logic.
 
-Primary source-of-truth file:
+Primary source-of-truth directories:
 
-- [`src/data/venues.json`](./src/data/venues.json)
+- [`src/data/conference`](./src/data/conference)
+- [`src/data/journal`](./src/data/journal)
 
 ## Project structure
 
-- Data file: [`src/data/venues.json`](./src/data/venues.json)
+- Conference data: [`src/data/conference`](./src/data/conference)
+- Journal data: [`src/data/journal`](./src/data/journal)
+- Venue file loader: [`src/data/loadVenueRecords.ts`](./src/data/loadVenueRecords.ts)
 - Venue normalization logic: [`src/data/conferences.ts`](./src/data/conferences.ts)
 - Time conversion helpers: [`src/utils/dateUtils.ts`](./src/utils/dateUtils.ts)
 - Main page: [`src/App.tsx`](./src/App.tsx)
@@ -94,7 +97,7 @@ In your PR description, include:
 
 Suggested checklist:
 
-- [ ] I updated `src/data/venues.json` when changing venue metadata
+- [ ] I updated the affected file in `src/data/conference` or `src/data/journal` when changing venue metadata
 - [ ] I added or updated source links
 - [ ] I ran `npm run build`
 - [ ] I checked the affected UI if I changed layout or styling

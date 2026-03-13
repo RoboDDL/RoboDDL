@@ -1,0 +1,32 @@
+slug: "neurips"
+title: "NeurIPS"
+fullTitle: "Conference on Neural Information Processing Systems"
+summary: "Major AI conference with a large robotics, embodied intelligence, control, and imitation learning presence."
+venueType: "conference"
+category: "AI x Robotics"
+rank: "A*"
+coreRank: "A*"
+caaiRank: "A"
+homepage: "https://neurips.cc/"
+dblp: "conf/nips"
+keywords:
+  - "neurips"
+  - "nips"
+  - "robotics"
+  - "embodied ai"
+submissionModel: "deadline"
+knownEditions:
+  - year: 2025
+    paperDeadline: "2025-05-11T23:59:59"
+    abstractDeadline: "2025-05-04T23:59:59"
+    timezone: "AoE"
+    conferenceDates: "TBA"
+    location: "TBA"
+    link: "https://neurips.cc/"
+    deadlineSourceLabel: "NeurIPS 2025 Call for Papers"
+    deadlineSourceUrl: "https://nips.cc/Conferences/2025/CallForPapers"
+futureHints:
+  - year: 2026
+    conferenceDates: "December 1-6, 2026"
+    location: "San Diego, California"
+    link: "https://neurips.cc/FutureMeetings"

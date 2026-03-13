@@ -23,17 +23,17 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
             <h2>{title}</h2>
             <p className="venue-full-title">{venue.fullTitle}</p>
             <div className="badge-row">
-              <span className="pill pill-strong">{venue.venueType}</span>
+              {venue.venueType !== 'conference' ? <span className="pill pill-strong">{venue.venueType}</span> : null}
               <span className="pill">{venue.category}</span>
               {venue.ccfRank ? <span className="pill">CCF {venue.ccfRank}</span> : <span className="pill">{venue.rank}</span>}
               {venue.coreRank ? <span className="pill">CORE {venue.coreRank}</span> : null}
               {venue.caaiRank ? <span className="pill">CAAI {venue.caaiRank}</span> : null}
-              {venue.isEstimated ? <span className="pill pill-warn">estimated</span> : null}
             </div>
           </div>
           {!isExpanded && venue.submissionModel === 'deadline' ? (
             <div className="summary-deadline">
-              <span>{deadlineLabel}</span>
+              {venue.isEstimated ? <span className="summary-deadline-badge">Est.</span> : null}
+              <span className="summary-deadline-label">{deadlineLabel}</span>
               <>
                 <strong>{formatDeadline(venue.countdownDeadline!, venue.timezone!)}</strong>
                 <CountdownTimer deadline={venue.countdownDeadline!} timezone={venue.timezone!} compact />
@@ -71,9 +71,12 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
               {venue.submissionModel === 'deadline' ? (
                 <>
                   <div className="meta-block">
-                    <div className="meta-label">
-                      <CalendarDays className="h-4 w-4" />
-                      Paper DDL
+                    <div className="meta-head">
+                      <div className="meta-label">
+                        <CalendarDays className="h-4 w-4" />
+                        Paper DDL
+                      </div>
+                      {venue.isEstimated ? <span className="pill pill-warn">Est.</span> : null}
                     </div>
                     <div className="meta-value">{formatDeadline(venue.paperDeadline!, venue.timezone!)}</div>
                     <div className="meta-sub">All displayed times are normalized to AoE.</div>

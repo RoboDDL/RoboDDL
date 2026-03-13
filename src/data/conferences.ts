@@ -1,4 +1,4 @@
-import venueData from './venues.json';
+import { loadVenueRecords } from './loadVenueRecords';
 import {
   convertLocalDateTimeToTimezone,
   parseDeadlineToUtcMs,
@@ -99,7 +99,7 @@ export interface VenueView {
   deadlineSortMs: number;
 }
 
-const records = venueData as VenueRecord[];
+const records = loadVenueRecords<VenueRecord>();
 
 export const categories: Array<'All' | Exclude<Category, 'Journal'>> = [
   'All',
