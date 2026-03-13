@@ -1,6 +1,14 @@
 # RoboDDL
 
-RoboDDL is a deadline tracker for robotics conferences and strong journals. It is inspired by `ccf-deadlines`, but keeps the source-of-truth venue data in a readable JSON file so contributors can update deadlines, ratings, and metadata without touching React code unless the UI actually changes.
+> Helping robotics researchers track conference and journal deadlines through collaboration.
+
+[![LICENSE](https://img.shields.io/github/license/RoboDDL/RoboDDL)](https://github.com/RoboDDL/RoboDDL/blob/main/LICENSE)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/RoboDDL/RoboDDL/.github/workflows/deploy.yml?branch=main)](https://github.com/RoboDDL/RoboDDL/actions/workflows/deploy.yml)
+[![Open PRs](https://img.shields.io/github/issues-pr/RoboDDL/RoboDDL)](https://github.com/RoboDDL/RoboDDL/pulls)
+
+English | [简体中文](https://translate.google.com/translate?sl=auto&tl=zh-CN&u=https://github.com/RoboDDL/RoboDDL)
+
+RoboDDL is a deadline tracker for robotics conferences and strong journals, inspired by [ccf-ddl](https://github.com/ccfddl/ccf-deadlines).
 
 Contribution and collaboration guidelines live in [`CONTRIBUTING.md`](/home/zdj/.openclaw/workspace/roboddl/CONTRIBUTING.md).
 
