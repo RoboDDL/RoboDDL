@@ -53,6 +53,7 @@ interface DeadlineVenueRecord extends VenueRecordBase {
   submissionModel: 'deadline';
   knownEditions: KnownEdition[];
   futureHints?: FutureHint[];
+  cycleYears?: number;
 }
 
 interface RollingVenueRecord extends VenueRecordBase {
@@ -60,6 +61,8 @@ interface RollingVenueRecord extends VenueRecordBase {
   rollingNote: string;
   sourceLabel: string;
   sourceUrl: string;
+  specialIssueLabel?: string;
+  specialIssueUrl?: string;
 }
 
 type VenueRecord = DeadlineVenueRecord | RollingVenueRecord;
@@ -94,6 +97,8 @@ export interface VenueView {
   note?: string;
   sourceLabel: string;
   sourceUrl: string;
+  specialIssueLabel?: string;
+  specialIssueUrl?: string;
   isEstimated: boolean;
   estimatedFromYear?: number;
   deadlineSortMs: number;
@@ -113,6 +118,7 @@ export const ratingFilters: RatingFilter[] = ['All', 'CCF', 'CAAI', 'SCI', 'JCR'
 function resolveDeadlineVenue(record: DeadlineVenueRecord, now: Date): VenueView {
   const editions = [...record.knownEditions].sort((left, right) => left.year - right.year);
   const nowMs = now.getTime();
+  const cycleYears = record.cycleYears ?? 1;
 
   const upcomingOfficial = editions.find((edition) => {
     return parseDeadlineToUtcMs(edition.paperDeadline, edition.timezone) > nowMs;
@@ -177,11 +183,11 @@ function resolveDeadlineVenue(record: DeadlineVenueRecord, now: Date): VenueView
     throw new Error(`Deadline venue "${record.slug}" is missing known editions.`);
   }
 
-  let yearsToShift = 1;
+  let yearsToShift = cycleYears;
   let shiftedPaperDeadline = shiftLocalDateTimeByYears(referenceEdition.paperDeadline, yearsToShift);
 
   while (parseDeadlineToUtcMs(shiftedPaperDeadline, referenceEdition.timezone) <= nowMs) {
-    yearsToShift += 1;
+    yearsToShift += cycleYears;
     shiftedPaperDeadline = shiftLocalDateTimeByYears(referenceEdition.paperDeadline, yearsToShift);
   }
 
@@ -268,6 +274,8 @@ function resolveRollingVenue(record: RollingVenueRecord): VenueView {
     note: record.rollingNote,
     sourceLabel: record.sourceLabel,
     sourceUrl: record.sourceUrl,
+    specialIssueLabel: record.specialIssueLabel,
+    specialIssueUrl: record.specialIssueUrl,
     isEstimated: false,
     deadlineSortMs: Number.POSITIVE_INFINITY,
   };

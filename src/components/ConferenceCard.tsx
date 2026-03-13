@@ -13,6 +13,7 @@ interface ConferenceCardProps {
 function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardProps) {
   const title = venue.year ? `${venue.title} ${venue.year}` : venue.title;
   const [isExpanded, setIsExpanded] = useState(false);
+  const isJournal = venue.submissionModel === 'rolling';
   const deadlineLabel = venue.submissionModel === 'deadline' ? venue.countdownLabel : 'Status';
   const hasCcfRank = Boolean(venue.ccfRank && venue.ccfRank !== 'N/A');
   const hasCaaiRank = Boolean(venue.caaiRank && venue.caaiRank !== 'N/A');
@@ -168,14 +169,31 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
             )}
 
             <div className="action-row">
-              <a href={venue.link} target="_blank" rel="noreferrer" className="action-button primary">
-                <ExternalLink className="h-4 w-4" />
-                Website
-              </a>
-              <a href={venue.homepage} target="_blank" rel="noreferrer" className="action-button">
-                <Globe2 className="h-4 w-4" />
-                Series Page
-              </a>
+              {isJournal ? (
+                <>
+                  <a href={venue.homepage} target="_blank" rel="noreferrer" className="action-button primary">
+                    <Globe2 className="h-4 w-4" />
+                    Journal Page
+                  </a>
+                  {venue.specialIssueUrl ? (
+                    <a href={venue.specialIssueUrl} target="_blank" rel="noreferrer" className="action-button">
+                      <ExternalLink className="h-4 w-4" />
+                      {venue.specialIssueLabel ?? 'Special Issue'}
+                    </a>
+                  ) : null}
+                </>
+              ) : (
+                <>
+                  <a href={venue.link} target="_blank" rel="noreferrer" className="action-button primary">
+                    <ExternalLink className="h-4 w-4" />
+                    Website
+                  </a>
+                  <a href={venue.homepage} target="_blank" rel="noreferrer" className="action-button">
+                    <Globe2 className="h-4 w-4" />
+                    Series Page
+                  </a>
+                </>
+              )}
               {venue.dblp ? (
                 <a
                   href={`https://dblp.org/db/${venue.dblp}.html`}

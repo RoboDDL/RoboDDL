@@ -1,0 +1,26 @@
+slug: "icar"
+title: "ICAR"
+fullTitle: "International Conference on Advanced Robotics"
+summary: "Long-running robotics conference covering advanced robotic systems, manipulation, autonomy, embodied intelligence, and real-world robotic applications."
+venueType: "conference"
+category: "RAS"
+rank: "A"
+homepage: "https://icar2025.inaut.unsj.edu.ar/"
+dblp: "conf/icar"
+keywords:
+  - "icar"
+  - "advanced robotics"
+  - "robotics"
+  - "autonomy"
+  - "manipulation"
+submissionModel: "deadline"
+cycleYears: 2
+knownEditions:
+  - year: 2025
+    paperDeadline: "2025-08-17T23:59:59"
+    timezone: "AoE"
+    conferenceDates: "December 2-5, 2025"
+    location: "San Juan, Argentina"
+    link: "https://icar2025.inaut.unsj.edu.ar/"
+    deadlineSourceLabel: "ICAR 2025 call for papers"
+    deadlineSourceUrl: "https://icar2025.inaut.unsj.edu.ar/CFP.php"

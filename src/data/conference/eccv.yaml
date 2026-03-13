@@ -1,0 +1,28 @@
+slug: "eccv"
+title: "ECCV"
+fullTitle: "European Conference on Computer Vision"
+summary: "Major computer vision venue with regular robotics overlap in visual perception, 3D understanding, embodied agents, and robot learning."
+venueType: "conference"
+category: "AI x Robotics"
+rank: "A*"
+coreRank: "A*"
+homepage: "https://eccv.ecva.net/"
+dblp: "conf/eccv"
+keywords:
+  - "eccv"
+  - "computer vision"
+  - "3d vision"
+  - "embodied ai"
+  - "robotics"
+submissionModel: "deadline"
+cycleYears: 2
+knownEditions:
+  - year: 2026
+    paperDeadline: "2026-03-05T23:00:00"
+    timezone: "UTC+1"
+    conferenceDates: "September 8-13, 2026"
+    location: "Malmo, Sweden"
+    link: "https://eccv.ecva.net/Conferences/2026"
+    deadlineSourceLabel: "ECCV 2026 Call for Papers"
+    deadlineSourceUrl: "https://eccv.ecva.net/Conferences/2026/CallForPapers"
+    note: "Paper registration closes earlier on February 26, 2026 at 23:00 CET according to the official CFP."
