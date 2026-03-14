@@ -7,7 +7,7 @@ category: "Journal"
 organizationTags:
   - "RAS"
 ccfRank: "N/A"
-homepage: "https://www.ieee-ras.org/publications/t-fro"
+homepage: "https://www.ieee-ras.org/publications/t-fr"
 keywords:
   - "tfr"
   - "transactions on field robotics"
@@ -16,4 +16,4 @@ keywords:
 submissionModel: "rolling"
 rollingNote: "Rolling submission. No conference-style annual cutoff."
 sourceLabel: "IEEE RAS T-FR page"
-sourceUrl: "https://www.ieee-ras.org/publications/t-fro"
+sourceUrl: "https://www.ieee-ras.org/publications/t-fr"
