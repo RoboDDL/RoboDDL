@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUp, HelpCircle, Star } from 'lucide-react';
+import { ArrowUp, HelpCircle, Monitor, Star } from 'lucide-react';
 import ConferenceCard from './components/ConferenceCard';
 import FilterPanel from './components/FilterPanel';
 import SearchBar from './components/SearchBar';
@@ -203,7 +203,7 @@ function App() {
     aoeHelpHideTimeoutRef.current = window.setTimeout(() => {
       setIsAoEHelpOpen(false);
       aoeHelpHideTimeoutRef.current = null;
-    }, 1000);
+    }, 250);
   };
 
   const showAllVenues = () => {
@@ -248,7 +248,11 @@ function App() {
         <section className="hero-card">
           <div className="hero-copy">
             <h1>RoboDDL</h1>
-            <div className="hero-note">[WIP] Deadlines and ratings may still contain errors!</div>
+            <div className="hero-note">🚧 [WIP] Deadlines and ratings may still contain errors!</div>
+            <div className="hero-mobile-tip sm:hidden">
+              <Monitor className="h-3.5 w-3.5" />
+              <span>Best experienced on desktop</span>
+            </div>
             <p>Your one-stop tracker for robotics conferences and journals</p>
             <div className="hero-actions">
               {githubStarsLabel ? (

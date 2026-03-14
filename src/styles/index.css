@@ -63,6 +63,10 @@ a {
     @apply inline-flex w-fit rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700;
   }
 
+  .hero-mobile-tip {
+    @apply inline-flex w-fit items-center gap-1.5 rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-medium text-sky-700;
+  }
+
   .hero-actions {
     @apply flex flex-wrap items-center gap-2;
   }
@@ -347,7 +351,7 @@ a {
   }
 
   .venue-summary-actions {
-    @apply flex flex-wrap items-center gap-2;
+    @apply flex w-full flex-wrap items-center justify-end gap-2 lg:w-auto lg:flex-col;
   }
 
   .expand-button {
@@ -544,7 +548,26 @@ a {
 
 @media (max-width: 767px) {
   .hero-copy h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
+  }
+
+  .hero-panel {
+    padding: 0.625rem 1rem;
+    border-radius: 14px;
+  }
+
+  .live-label {
+    font-size: 0.8125rem;
+  }
+
+  .live-time {
+    font-size: 1.75rem;
+    margin-top: 0.25rem;
+  }
+
+  .live-date {
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
   }
 
   .venue-card {
