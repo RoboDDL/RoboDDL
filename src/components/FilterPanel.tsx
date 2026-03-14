@@ -63,8 +63,8 @@ function FilterPanel({
         <p className="filter-title">Sort</p>
         <div className="chip-row">
           {[
-            ['deadline', 'Nearest deadline'],
-            ['title', 'Alphabetical'],
+            ['deadline', 'Nearest'],
+            ['title', 'A-Z'],
           ].map(([value, label]) => (
             <button
               key={value}
