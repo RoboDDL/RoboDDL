@@ -14,6 +14,27 @@
     <meta http-equiv="content-language" content="en, zh-CN" />
     <meta name="language" content="English, Chinese" />
     <meta name="theme-color" content="#f8fafc" />
+    <script>
+      (() => {
+        try {
+          const savedTheme = window.localStorage.getItem('roboddl:theme');
+          const theme =
+            savedTheme === 'light' || savedTheme === 'dark'
+              ? savedTheme
+              : window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light';
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.style.colorScheme = theme;
+          document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute('content', theme === 'dark' ? '#08111f' : '#f8fafc');
+        } catch {
+          document.documentElement.dataset.theme = 'light';
+          document.documentElement.style.colorScheme = 'light';
+        }
+      })();
+    </script>
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta
       name="googlebot"

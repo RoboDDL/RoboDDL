@@ -1,12 +1,28 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUp, HelpCircle, Monitor, Star } from 'lucide-react';
+import { ArrowUp, HelpCircle, Monitor, Moon, Star, Sun } from 'lucide-react';
 import ConferenceCard from './components/ConferenceCard';
 import FilterPanel from './components/FilterPanel';
 import SearchBar from './components/SearchBar';
 import SubmissionCalendar from './components/SubmissionCalendar';
 import { buildVenueViews, Category, RatingFilter, VenueType } from './data/conferences';
 
+type Theme = 'light' | 'dark';
+
+function getInitialTheme(): Theme {
+  if (typeof window === 'undefined') {
+    return 'light';
+  }
+
+  const savedTheme = window.localStorage.getItem('roboddl:theme');
+  if (savedTheme === 'light' || savedTheme === 'dark') {
+    return savedTheme;
+  }
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
 function App() {
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const [githubStars, setGithubStars] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedVenueType, setSelectedVenueType] = useState<'All' | VenueType>('All');
@@ -30,6 +46,15 @@ function App() {
       return [];
     }
   });
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    window.localStorage.setItem('roboddl:theme', theme);
+
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    themeColor?.setAttribute('content', theme === 'dark' ? '#08111f' : '#f8fafc');
+  }, [theme]);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -250,6 +275,15 @@ function App() {
             </div>
             <p>Your one-stop tracker for robotics conferences and journals</p>
             <div className="hero-actions">
+              <button
+                type="button"
+                className="theme-toggle"
+                onClick={() => setTheme((current) => (current === 'light' ? 'dark' : 'light'))}
+                aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+              >
+                {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+                <span>{theme === 'light' ? 'Switch to dark' : 'Switch to light'}</span>
+              </button>
               {githubStarsLabel ? (
                 <div className="hero-star-badge" aria-label={`RoboDDL GitHub stars: ${githubStars}`}>
                   <a
