@@ -16,9 +16,11 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
   const isJournal = venue.submissionModel === 'rolling';
   const venueTypeLabel = venue.venueType[0].toUpperCase() + venue.venueType.slice(1);
   const deadlineLabel = venue.submissionModel === 'deadline' ? venue.countdownLabel : 'Status';
+  const hasCaaRank = Boolean(venue.caaRank && venue.caaRank !== 'N/A');
   const hasCcfRank = Boolean(venue.ccfRank && venue.ccfRank !== 'N/A');
   const hasCaaiRank = Boolean(venue.caaiRank && venue.caaiRank !== 'N/A');
   const journalMetricItems = [
+    hasCaaRank ? `CAA: ${venue.caaRank}` : null,
     hasCcfRank ? `CCF: ${venue.ccfRank}` : null,
     hasCaaiRank ? `CAAI: ${venue.caaiRank}` : null,
     venue.casPartition && venue.casPartition !== 'N/A' ? `CAS: ${venue.casPartition}` : null,
@@ -40,6 +42,7 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
                 </span>
               ))}
               {venue.venueType === 'conference' ? <span className="pill">{venue.category}</span> : null}
+              {hasCaaRank ? <span className="pill">CAA {venue.caaRank}</span> : null}
               {hasCcfRank ? <span className="pill">CCF {venue.ccfRank}</span> : null}
               {hasCaaiRank ? <span className="pill">CAAI {venue.caaiRank}</span> : null}
             </div>

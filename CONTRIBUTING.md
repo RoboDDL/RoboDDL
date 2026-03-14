@@ -80,8 +80,6 @@ There are a few logic rules worth knowing before editing:
 - `futureHints` is optional and is only used to fill in future conference date, location, and landing page when the next deadline is still estimated.
 - `abstractDeadline` is optional. If it exists and is still in the future, the countdown will target the abstract deadline first.
 - Supported timezones come from [`src/utils/dateUtils.ts`](./src/utils/dateUtils.ts): `AoE`, `PST`, `PDT`, `EST`, `EDT`, `UTC`, `GMT`, and `UTC±HH[:MM]`.
-- `rank` is a display label. Existing conference files use values like `"A*"`, `"A"`, or `"RAS A"`. Existing journal files usually use `"Top Journal"`.
-
 ## Venue YAML templates
 
 These templates are intentionally copy-paste safe. If an optional field does not apply, delete the whole line or block rather than leaving a fake placeholder in the final file.
@@ -95,7 +93,6 @@ fullTitle: "Full Conference Title"
 summary: "One-sentence summary of the venue scope and why it belongs in RoboDDL."
 venueType: "conference"
 category: "RAS"
-rank: "A"
 ccfRank: "B"
 caaiRank: "A"
 homepage: "https://series-homepage.example.com/"
@@ -127,7 +124,7 @@ futureHints:
 
 Conference template notes:
 
-- Required top-level fields are `slug`, `title`, `fullTitle`, `summary`, `venueType`, `category`, `rank`, `homepage`, `submissionModel`, and `knownEditions`.
+- Required top-level fields are `slug`, `title`, `fullTitle`, `summary`, `venueType`, `category`, `homepage`, `submissionModel`, and `knownEditions`.
 - `cycleYears`, `ccfRank`, `caaiRank`, `dblp`, `keywords`, `abstractDeadline`, `note`, and `futureHints` are optional.
 - `knownEditions` should contain official historical or current editions, not guesses. Keep the newest official edition even after its deadline passes, because future estimation depends on it.
 - Omit `cycleYears` for normal annual venues. Set `cycleYears: 2` only when the series is intentionally not annual.
@@ -144,7 +141,6 @@ fullTitle: "Full Journal Title"
 summary: "One-sentence summary of the journal's robotics relevance and positioning."
 venueType: "journal"
 category: "Journal"
-rank: "Top Journal"
 caaiRank: "A"
 ccfRank: "B"
 casPartition: "CAS 2"
@@ -164,7 +160,7 @@ specialIssueUrl: "https://journal-homepage.example.com/special-issue"
 
 Journal template notes:
 
-- Required top-level fields are `slug`, `title`, `fullTitle`, `summary`, `venueType`, `category`, `rank`, `homepage`, `submissionModel`, `rollingNote`, `sourceLabel`, and `sourceUrl`.
+- Required top-level fields are `slug`, `title`, `fullTitle`, `summary`, `venueType`, `category`, `homepage`, `submissionModel`, `rollingNote`, `sourceLabel`, and `sourceUrl`.
 - `dblp`, `keywords`, `specialIssueLabel`, and `specialIssueUrl` are optional.
 - Prefer keeping `caaiRank`, `ccfRank`, `casPartition`, and `jcrQuartile` present. If a metric is unknown or not listed, set it to `"N/A"` instead of removing it.
 - `sourceUrl` should point to an official journal page or publisher page that supports the rolling-submission claim.

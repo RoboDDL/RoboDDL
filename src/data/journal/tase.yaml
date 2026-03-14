@@ -6,7 +6,7 @@ venueType: "journal"
 category: "Journal"
 organizationTags:
   - "RAS"
-rank: "Top Journal"
+caaRank: "A"
 ccfRank: "B"
 casPartition: "CAS 2"
 jcrQuartile: "Q1"
