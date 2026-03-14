@@ -325,7 +325,7 @@ a {
   }
 
   .filter-chip-help-popover {
-    @apply pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-64 max-w-[calc(100vw-3rem)] -translate-x-1/2 rounded-xl border border-slate-200 bg-white p-3 text-left text-xs leading-5 text-slate-600 opacity-0 shadow-lg transition;
+    @apply pointer-events-none absolute left-[calc(100%+0.75rem)] top-1/2 z-20 w-64 max-w-[calc(100vw-3rem)] -translate-y-1/2 rounded-xl border border-slate-200 bg-white p-3 text-left text-xs leading-5 text-slate-600 opacity-0 shadow-lg transition;
   }
 
   .filter-chip-help-popover.open {
@@ -338,6 +338,12 @@ a {
 
   .filter-chip-help-popover a {
     @apply mt-2 inline-flex font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 transition hover:text-slate-700;
+  }
+
+  @media (max-width: 767px) {
+    .filter-chip-help-popover {
+      @apply left-0 top-full mt-2 -translate-y-0;
+    }
   }
 
   .filter-chip-help .filter-chip.active .filter-chip-help-icon {
