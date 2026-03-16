@@ -8,12 +8,12 @@ ccfRank: "N/A"
 homepage: "https://www.ieee-ras.org/conferences-workshops/financially-co-sponsored/case"
 dblp: "conf/case"
 keywords:
-  - "case"
-  - "automation"
-  - "manufacturing"
-  - "logistics"
-  - "autonomous systems"
-submissionModel: "deadline"
+- case
+- automation
+- manufacturing
+- logistics
+- autonomous systems
+submissionModel: deadline
 knownEditions:
   - year: 2026
     paperDeadline: "2026-03-15T23:59:00"
