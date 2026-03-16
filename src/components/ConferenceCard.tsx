@@ -16,7 +16,6 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
   const isJournal = venue.submissionModel === 'rolling';
   const venueTypeLabel = venue.venueType[0].toUpperCase() + venue.venueType.slice(1);
   const deadlineLabel = venue.submissionModel === 'deadline' ? venue.countdownLabel : 'Status';
-  const hasCaaRank = Boolean(venue.caaRank && venue.caaRank !== 'N/A');
   const hasCcfRank = Boolean(venue.ccfRank && venue.ccfRank !== 'N/A');
   const hasCaaiRank = Boolean(venue.caaiRank && venue.caaiRank !== 'N/A');
   const hasCasPartition = Boolean(venue.casPartition && venue.casPartition !== 'N/A');
@@ -30,11 +29,10 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
   const jcrDisplayValue = hasJcrQuartile ? venue.jcrQuartile!.replace(/^JCR\s*/i, '').trim() : '';
   const normalizedTimezoneLabel = venue.timezone === 'PST' ? 'Pacific Time' : 'AoE';
   const journalMetricItems = [
-    hasCcfRank ? `CCF: ${venue.ccfRank}` : null,
-    hasCaaiRank ? `CAAI: ${venue.caaiRank}` : null,
-    hasCaaRank ? `CAA: ${venue.caaRank}` : null,
-    hasCasPartition ? `CAS: ${casDisplayValue}` : null,
-    hasJcrQuartile ? `JCR: ${jcrDisplayValue}` : null,
+    hasCcfRank ? `CCF-${venue.ccfRank}:` : null,
+    hasCaaiRank ? `CAAI-${venue.caaiRank}:` : null,
+    hasCasPartition ? `CAS-${casDisplayValue}:` : null,
+    hasJcrQuartile ? `JCR-${jcrDisplayValue}:` : null,
   ].filter((item): item is string => Boolean(item));
   const showJournalMetrics = isJournal && journalMetricItems.length > 0;
 
@@ -54,11 +52,10 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
                 </span>
               ))}
               {venue.venueType === 'conference' ? <span className="pill">{venue.category}</span> : null}
-              {hasCcfRank ? <span className="pill">CCF {venue.ccfRank}</span> : null}
-              {hasCaaiRank ? <span className="pill">CAAI {venue.caaiRank}</span> : null}
-              {hasCaaRank ? <span className="pill">CAA {venue.caaRank}</span> : null}
-              {hasCasPartition ? <span className="pill">CAS {casDisplayValue}</span> : null}
-              {hasJcrQuartile ? <span className="pill">JCR {jcrDisplayValue}</span> : null}
+              {hasCcfRank ? <span className="pill">CCF-{venue.ccfRank}</span> : null}
+              {hasCaaiRank ? <span className="pill">CAAI-{venue.caaiRank}</span> : null}
+              {hasCasPartition ? <span className="pill">CAS-{casDisplayValue}</span> : null}
+              {hasJcrQuartile ? <span className="pill">JCR-{jcrDisplayValue}</span> : null}
             </div>
           </div>
           {!isExpanded && venue.submissionModel === 'deadline' ? (
@@ -206,10 +203,12 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
                     <ExternalLink className="h-4 w-4" />
                     Website
                   </a>
-                  <a href={venue.homepage} target="_blank" rel="noreferrer" className="action-button">
-                    <Globe2 className="h-4 w-4" />
-                    Series Page
-                  </a>
+                  {venue.homepage ? (
+                    <a href={venue.homepage} target="_blank" rel="noreferrer" className="action-button">
+                      <Globe2 className="h-4 w-4" />
+                      Series Page
+                    </a>
+                  ) : null}
                 </>
                 {venue.dblp ? (
                   <a

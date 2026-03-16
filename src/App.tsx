@@ -115,8 +115,7 @@ function App() {
       const matchesRating =
         selectedRatingFilter === 'All' ||
         (selectedRatingFilter === 'CCF' && Boolean(venue.ccfRank && venue.ccfRank !== 'N/A')) ||
-        (selectedRatingFilter === 'CAAI' && Boolean(venue.caaiRank && venue.caaiRank !== 'N/A')) ||
-        (selectedRatingFilter === 'CAA' && Boolean(venue.caaRank && venue.caaRank !== 'N/A'));
+        (selectedRatingFilter === 'CAAI' && Boolean(venue.caaiRank && venue.caaiRank !== 'N/A'));
       const matchesFavorite = !showFavoritesOnly || favoriteVenueIds.includes(venue.id);
 
       return matchesSearch && matchesType && matchesCategory && matchesRating && matchesFavorite;
@@ -150,15 +149,52 @@ function App() {
   ]);
 
   const stats = useMemo(() => {
-    const conferenceCount = venues.filter((venue) => venue.venueType === 'conference').length;
-    const journalCount = venues.filter((venue) => venue.venueType === 'journal').length;
+    const query = searchQuery.trim().toLowerCase();
+
+    // 基础筛选：只按搜索和收藏，不受 Track/Ratings 影响
+    const baseFiltered = venues.filter((venue) => {
+      const searchText = [
+        venue.title,
+        venue.fullTitle,
+        venue.summary,
+        venue.category,
+        venue.venueType,
+        venue.location,
+        ...venue.keywords,
+      ]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase();
+
+      const matchesSearch = query.length === 0 || searchText.includes(query);
+      const matchesFavorite = !showFavoritesOnly || favoriteVenueIds.includes(venue.id);
+
+      return matchesSearch && matchesFavorite;
+    });
+
+    // 应用 Track 和 Ratings 筛选
+    const withRatingsAndCategory = baseFiltered.filter((venue) => {
+      const matchesCategory =
+        selectedCategory === 'All' ||
+        venue.category === selectedCategory ||
+        Boolean(venue.organizationTags?.includes(selectedCategory));
+      const matchesRating =
+        selectedRatingFilter === 'All' ||
+        (selectedRatingFilter === 'CCF' && Boolean(venue.ccfRank && venue.ccfRank !== 'N/A')) ||
+        (selectedRatingFilter === 'CAAI' && Boolean(venue.caaiRank && venue.caaiRank !== 'N/A'));
+
+      return matchesCategory && matchesRating;
+    });
+
+    const conferenceCount = withRatingsAndCategory.filter((venue) => venue.venueType === 'conference').length;
+    const journalCount = withRatingsAndCategory.filter((venue) => venue.venueType === 'journal').length;
 
     return {
       conferenceCount,
       journalCount,
       favoriteCount: favoriteVenueIds.length,
     };
-  }, [favoriteVenueIds.length, venues]);
+  }, [searchQuery, selectedCategory, selectedRatingFilter, showFavoritesOnly, favoriteVenueIds, venues]);
 
   const themeToggleLabel = theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
   const githubLabel = 'Open RoboDDL on GitHub';
