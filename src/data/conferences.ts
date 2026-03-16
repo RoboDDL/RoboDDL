@@ -117,30 +117,39 @@ export const categories: Array<'All' | Exclude<Category, 'Journal'>> = [
 export const venueTypes: Array<'All' | VenueType> = ['All', 'conference', 'journal'];
 export const ratingFilters: RatingFilter[] = ['All', 'CCF', 'CAAI', 'CAA'];
 
+function getDisplayTimezone(record: DeadlineVenueRecord): string {
+  return record.category === 'RAS' ? 'PST' : 'AoE';
+}
+
 function resolveDeadlineVenue(record: DeadlineVenueRecord, now: Date): VenueView {
   const editions = [...record.knownEditions].sort((left, right) => left.year - right.year);
   const nowMs = now.getTime();
   const cycleYears = record.cycleYears ?? 1;
+  const displayTimezone = getDisplayTimezone(record);
 
   const upcomingOfficial = editions.find((edition) => {
     return parseDeadlineToUtcMs(edition.paperDeadline, edition.timezone) > nowMs;
   });
 
   if (upcomingOfficial) {
-    const paperDeadlineAoE = convertLocalDateTimeToTimezone(
+    const paperDeadline = convertLocalDateTimeToTimezone(
       upcomingOfficial.paperDeadline,
       upcomingOfficial.timezone,
-      'AoE',
+      displayTimezone,
     );
-    const abstractDeadlineAoE = upcomingOfficial.abstractDeadline
-      ? convertLocalDateTimeToTimezone(upcomingOfficial.abstractDeadline, upcomingOfficial.timezone, 'AoE')
+    const abstractDeadline = upcomingOfficial.abstractDeadline
+      ? convertLocalDateTimeToTimezone(
+          upcomingOfficial.abstractDeadline,
+          upcomingOfficial.timezone,
+          displayTimezone,
+        )
       : undefined;
     const countdownDeadline =
-      abstractDeadlineAoE && parseDeadlineToUtcMs(abstractDeadlineAoE, 'AoE') > nowMs
-        ? abstractDeadlineAoE
-        : paperDeadlineAoE;
+      abstractDeadline && parseDeadlineToUtcMs(abstractDeadline, displayTimezone) > nowMs
+        ? abstractDeadline
+        : paperDeadline;
     const countdownLabel =
-      abstractDeadlineAoE && parseDeadlineToUtcMs(abstractDeadlineAoE, 'AoE') > nowMs
+      abstractDeadline && parseDeadlineToUtcMs(abstractDeadline, displayTimezone) > nowMs
         ? 'Abstract deadline'
         : 'Paper deadline';
 
@@ -164,9 +173,9 @@ function resolveDeadlineVenue(record: DeadlineVenueRecord, now: Date): VenueView
       keywords: record.keywords ?? [],
       submissionModel: 'deadline',
       year: upcomingOfficial.year,
-      paperDeadline: paperDeadlineAoE,
-      abstractDeadline: abstractDeadlineAoE,
-      timezone: 'AoE',
+      paperDeadline,
+      abstractDeadline,
+      timezone: displayTimezone,
       countdownLabel,
       countdownDeadline,
       conferenceDates: upcomingOfficial.conferenceDates,
@@ -176,7 +185,7 @@ function resolveDeadlineVenue(record: DeadlineVenueRecord, now: Date): VenueView
       sourceLabel: upcomingOfficial.deadlineSourceLabel,
       sourceUrl: upcomingOfficial.deadlineSourceUrl,
       isEstimated: false,
-      deadlineSortMs: parseDeadlineToUtcMs(countdownDeadline, 'AoE'),
+      deadlineSortMs: parseDeadlineToUtcMs(countdownDeadline, displayTimezone),
     };
   }
 
@@ -197,24 +206,24 @@ function resolveDeadlineVenue(record: DeadlineVenueRecord, now: Date): VenueView
   const targetYear = referenceEdition.year + yearsToShift;
   const futureHint = record.futureHints?.find((hint) => hint.year === targetYear);
 
-  const estimatedPaperDeadlineAoE = convertLocalDateTimeToTimezone(
+  const estimatedPaperDeadline = convertLocalDateTimeToTimezone(
     shiftedPaperDeadline,
     referenceEdition.timezone,
-    'AoE',
+    displayTimezone,
   );
-  const estimatedAbstractDeadlineAoE = referenceEdition.abstractDeadline
+  const estimatedAbstractDeadline = referenceEdition.abstractDeadline
     ? convertLocalDateTimeToTimezone(
         shiftLocalDateTimeByYears(referenceEdition.abstractDeadline, yearsToShift),
         referenceEdition.timezone,
-        'AoE',
+        displayTimezone,
       )
     : undefined;
   const countdownDeadline =
-    estimatedAbstractDeadlineAoE && parseDeadlineToUtcMs(estimatedAbstractDeadlineAoE, 'AoE') > nowMs
-      ? estimatedAbstractDeadlineAoE
-      : estimatedPaperDeadlineAoE;
+    estimatedAbstractDeadline && parseDeadlineToUtcMs(estimatedAbstractDeadline, displayTimezone) > nowMs
+      ? estimatedAbstractDeadline
+      : estimatedPaperDeadline;
   const countdownLabel =
-    estimatedAbstractDeadlineAoE && parseDeadlineToUtcMs(estimatedAbstractDeadlineAoE, 'AoE') > nowMs
+    estimatedAbstractDeadline && parseDeadlineToUtcMs(estimatedAbstractDeadline, displayTimezone) > nowMs
       ? 'Abstract deadline'
       : 'Paper deadline';
 
@@ -238,9 +247,9 @@ function resolveDeadlineVenue(record: DeadlineVenueRecord, now: Date): VenueView
     keywords: record.keywords ?? [],
     submissionModel: 'deadline',
     year: targetYear,
-    paperDeadline: estimatedPaperDeadlineAoE,
-    abstractDeadline: estimatedAbstractDeadlineAoE,
-    timezone: 'AoE',
+    paperDeadline: estimatedPaperDeadline,
+    abstractDeadline: estimatedAbstractDeadline,
+    timezone: displayTimezone,
     countdownLabel,
     countdownDeadline,
     conferenceDates: futureHint?.conferenceDates ?? 'TBA',
@@ -251,7 +260,7 @@ function resolveDeadlineVenue(record: DeadlineVenueRecord, now: Date): VenueView
     sourceUrl: referenceEdition.deadlineSourceUrl,
     isEstimated: true,
     estimatedFromYear: referenceEdition.year,
-    deadlineSortMs: parseDeadlineToUtcMs(countdownDeadline, 'AoE'),
+    deadlineSortMs: parseDeadlineToUtcMs(countdownDeadline, displayTimezone),
   };
 }
 

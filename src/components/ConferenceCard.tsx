@@ -28,6 +28,7 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
         .trim()
     : '';
   const jcrDisplayValue = hasJcrQuartile ? venue.jcrQuartile!.replace(/^JCR\s*/i, '').trim() : '';
+  const normalizedTimezoneLabel = venue.timezone === 'PST' ? 'Pacific Time' : 'AoE';
   const journalMetricItems = [
     hasCcfRank ? `CCF: ${venue.ccfRank}` : null,
     hasCaaiRank ? `CAAI: ${venue.caaiRank}` : null,
@@ -111,7 +112,7 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
                       {venue.isEstimated ? <span className="pill pill-warn">Est.</span> : null}
                     </div>
                     <div className="meta-value">{formatDeadline(venue.paperDeadline!, venue.timezone!)}</div>
-                    <div className="meta-sub">All displayed times are normalized to AoE.</div>
+                    <div className="meta-sub">All displayed times are normalized to {normalizedTimezoneLabel}.</div>
                   </div>
                   <div className="meta-block">
                     <div className="meta-label">

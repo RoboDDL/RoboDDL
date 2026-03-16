@@ -73,36 +73,6 @@ function FilterPanel({
   return (
     <aside className="control-card space-y-6">
       <section>
-        <p className="filter-title">View</p>
-        <div className="chip-row">
-          <button
-            type="button"
-            className={selectedVenueType === 'All' && !showFavoritesOnly ? 'filter-chip filter-chip-with-count active' : 'filter-chip filter-chip-with-count'}
-            onClick={onShowAllVenues}
-          >
-            <span className="filter-chip-label">All</span>
-            <span className="filter-chip-count">{totalVenueCount}</span>
-          </button>
-          <button
-            type="button"
-            className={selectedVenueType === 'conference' && !showFavoritesOnly ? 'filter-chip filter-chip-with-count active' : 'filter-chip filter-chip-with-count'}
-            onClick={onShowConferenceView}
-          >
-            <span className="filter-chip-label">Conferences</span>
-            <span className="filter-chip-count">{conferenceCount}</span>
-          </button>
-          <button
-            type="button"
-            className={selectedVenueType === 'journal' && !showFavoritesOnly ? 'filter-chip filter-chip-with-count active' : 'filter-chip filter-chip-with-count'}
-            onClick={onShowJournalView}
-          >
-            <span className="filter-chip-label">Journals</span>
-            <span className="filter-chip-count">{journalCount}</span>
-          </button>
-        </div>
-      </section>
-
-      <section>
         <p className="filter-title">Track</p>
         <div className="chip-row">
           {categories.map((category) =>
@@ -155,6 +125,22 @@ function FilterPanel({
       </section>
 
       <section>
+        <p className="filter-title">Ratings</p>
+        <div className="chip-row">
+          {ratingFilters.map((rating) => (
+            <button
+              key={rating}
+              type="button"
+              className={selectedRatingFilter === rating ? 'filter-chip active' : 'filter-chip'}
+              onClick={() => onRatingFilterChange(rating)}
+            >
+              {rating}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section>
         <p className="filter-title">Sort</p>
         <div className="chip-row">
           {[
@@ -174,18 +160,32 @@ function FilterPanel({
       </section>
 
       <section>
-        <p className="filter-title">Ratings</p>
+        <p className="filter-title">View</p>
         <div className="chip-row">
-          {ratingFilters.map((rating) => (
-            <button
-              key={rating}
-              type="button"
-              className={selectedRatingFilter === rating ? 'filter-chip active' : 'filter-chip'}
-              onClick={() => onRatingFilterChange(rating)}
-            >
-              {rating}
-            </button>
-          ))}
+          <button
+            type="button"
+            className={selectedVenueType === 'All' && !showFavoritesOnly ? 'filter-chip filter-chip-with-count active' : 'filter-chip filter-chip-with-count'}
+            onClick={onShowAllVenues}
+          >
+            <span className="filter-chip-label">All</span>
+            <span className="filter-chip-count">{totalVenueCount}</span>
+          </button>
+          <button
+            type="button"
+            className={selectedVenueType === 'conference' && !showFavoritesOnly ? 'filter-chip filter-chip-with-count active' : 'filter-chip filter-chip-with-count'}
+            onClick={onShowConferenceView}
+          >
+            <span className="filter-chip-label">Conferences</span>
+            <span className="filter-chip-count">{conferenceCount}</span>
+          </button>
+          <button
+            type="button"
+            className={selectedVenueType === 'journal' && !showFavoritesOnly ? 'filter-chip filter-chip-with-count active' : 'filter-chip filter-chip-with-count'}
+            onClick={onShowJournalView}
+          >
+            <span className="filter-chip-label">Journals</span>
+            <span className="filter-chip-count">{journalCount}</span>
+          </button>
         </div>
       </section>
 
