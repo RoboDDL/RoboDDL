@@ -1,48 +1,43 @@
-slug: robio
-title: ROBIO
-fullTitle: IEEE International Conference on Robotics and Biomimetics
-summary: Established robotics and biomimetics conference spanning bio-inspired robots,
-  embodied intelligence, human-robot interaction, robotic vision, rehabilitation robotics,
-  and intelligent manufacturing.
-venueType: conference
-category: RAS
-caaRank: A
-ccfRank: N/A
-homepage: https://www.robio2025.org/
+slug: "robio"
+title: "ROBIO"
+fullTitle: "IEEE International Conference on Robotics and Biomimetics"
+summary: "Established robotics and biomimetics conference spanning bio-inspired robots, embodied intelligence, human-robot interaction, robotic vision, rehabilitation robotics, and intelligent manufacturing."
+venueType: "conference"
+category: "RAS"
+caaRank: "A"
+ccfRank: "N/A"
+homepage: "https://www.robio2025.org/"
 keywords:
-- robio
-- robotics and biomimetics
-- biomimetic robots
-- bio-inspired robotics
-submissionModel: deadline
+  - "robio"
+  - "robotics and biomimetics"
+  - "biomimetic robots"
+  - "bio-inspired robotics"
+submissionModel: "deadline"
 knownEditions:
-- year: 2025
-  paperDeadline: '2025-08-10T23:59:59'
-  timezone: AoE
-  conferenceDates: December 3-7, 2025
-  location: Chengdu, Sichuan, China
-  link: https://www.robio2025.org/
-  deadlineSourceLabel: ROBIO 2025 official website
-  deadlineSourceUrl: https://www.robio2025.org/
-  note: Official page lists the submission date without a timezone; countdown uses
-    end-of-day AoE.
-- year: 2026
-  paperDeadline: '2026-08-10T23:59:59'
-  timezone: AoE
-  conferenceDates: December 3-7, 2026
-  location: Chengdu, Sichuan, China
-  link: https://www.robio2026.org/
-  deadlineSourceLabel: ROBIO 2026 official website
-  deadlineSourceUrl: https://www.robio2025.org/
-  note: Official page lists the submission date without a timezone; countdown uses
-    end-of-day AoE.
-- year: 2027
-  paperDeadline: '2027-08-10T23:59:59'
-  timezone: AoE
-  conferenceDates: December 3-7, 2027
-  location: Chengdu, Sichuan, China
-  link: https://www.robio2027.org/
-  deadlineSourceLabel: ROBIO 2027 official website
-  deadlineSourceUrl: https://www.robio2025.org/
-  note: Official page lists the submission date without a timezone; countdown uses
-    end-of-day AoE.
+  - year: 2025
+    paperDeadline: "2025-08-10T23:59:59"
+    timezone: "AoE"
+    conferenceDates: "December 3-7, 2025"
+    location: "Chengdu, Sichuan, China"
+    link: "https://www.robio2025.org/"
+    deadlineSourceLabel: "ROBIO 2025 official website"
+    deadlineSourceUrl: "https://www.robio2025.org/"
+    note: "Official page lists the submission date without a timezone; countdown uses end-of-day AoE."
+  - year: 2026
+    paperDeadline: "2026-08-10T23:59:59"
+    timezone: "AoE"
+    conferenceDates: "December 3-7, 2026"
+    location: "Chengdu, Sichuan, China"
+    link: "https://www.robio2026.org/"
+    deadlineSourceLabel: "ROBIO 2026 official website"
+    deadlineSourceUrl: "https://www.robio2025.org/"
+    note: "Official page lists the submission date without a timezone; countdown uses end-of-day AoE."
+  - year: 2027
+    paperDeadline: "2027-08-10T23:59:59"
+    timezone: "AoE"
+    conferenceDates: "December 3-7, 2027"
+    location: "Chengdu, Sichuan, China"
+    link: "https://www.robio2027.org/"
+    deadlineSourceLabel: "ROBIO 2027 official website"
+    deadlineSourceUrl: "https://www.robio2025.org/"
+    note: "Official page lists the submission date without a timezone; countdown uses end-of-day AoE."

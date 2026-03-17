@@ -1,48 +1,47 @@
-slug: case
-title: CASE
-fullTitle: IEEE International Conference on Automation Science and Engineering
-summary: Flagship IEEE RAS automation conference with strong robotics overlap in manufacturing,
-  logistics, healthcare, autonomous systems, and intelligent automation.
-venueType: conference
-category: RAS
-caaRank: B
-ccfRank: N/A
-homepage: https://www.ieee-ras.org/conferences-workshops/financially-co-sponsored/case
-dblp: conf/case
+slug: "case"
+title: "CASE"
+fullTitle: "IEEE International Conference on Automation Science and Engineering"
+summary: "Flagship IEEE RAS automation conference with strong robotics overlap in manufacturing, logistics, healthcare, autonomous systems, and intelligent automation."
+venueType: "conference"
+category: "RAS"
+caaRank: "B"
+ccfRank: "N/A"
+homepage: "https://www.ieee-ras.org/conferences-workshops/financially-co-sponsored/case"
+dblp: "conf/case"
 keywords:
-- case
-- automation
-- manufacturing
-- logistics
-- autonomous systems
-submissionModel: deadline
+  - "case"
+  - "automation"
+  - "manufacturing"
+  - "logistics"
+  - "autonomous systems"
+submissionModel: "deadline"
 knownEditions:
-- year: 2025
-  paperDeadline: '2025-03-15T23:59:00'
-  timezone: PST
-  conferenceDates: August 17-21, 2025
-  location: Los Angeles, California, USA
-  link: https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2025/2025.ieeecase.org/index.html
-  deadlineSourceLabel: CASE 2025 official website
-  deadlineSourceUrl: https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2025/2025.ieeecase.org/index.html
-- year: 2026
-  paperDeadline: '2026-03-15T23:59:00'
-  timezone: PST
-  conferenceDates: August 17-21, 2026
-  location: Los Angeles, California, USA
-  link: https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2026/2026.ieeecase.org/index.html
-  deadlineSourceLabel: CASE 2026 official website
-  deadlineSourceUrl: https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2025/2025.ieeecase.org/index.html
-- year: 2027
-  paperDeadline: '2027-03-15T23:59:00'
-  timezone: PST
-  conferenceDates: August 17-21, 2027
-  location: Los Angeles, California, USA
-  link: https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2027/2027.ieeecase.org/index.html
-  deadlineSourceLabel: CASE 2027 official website
-  deadlineSourceUrl: https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2025/2025.ieeecase.org/index.html
+  - year: 2025
+    paperDeadline: "2025-03-15T23:59:00"
+    timezone: "PST"
+    conferenceDates: "August 17-21, 2025"
+    location: "Los Angeles, California, USA"
+    link: "https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2025/2025.ieeecase.org/index.html"
+    deadlineSourceLabel: "CASE 2025 official website"
+    deadlineSourceUrl: "https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2025/2025.ieeecase.org/index.html"
+  - year: 2026
+    paperDeadline: "2026-03-15T23:59:00"
+    timezone: "PST"
+    conferenceDates: "August 17-21, 2026"
+    location: "Los Angeles, California, USA"
+    link: "https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2026/2026.ieeecase.org/index.html"
+    deadlineSourceLabel: "CASE 2026 official website"
+    deadlineSourceUrl: "https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2025/2025.ieeecase.org/index.html"
+  - year: 2027
+    paperDeadline: "2027-03-15T23:59:00"
+    timezone: "PST"
+    conferenceDates: "August 17-21, 2027"
+    location: "Los Angeles, California, USA"
+    link: "https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2027/2027.ieeecase.org/index.html"
+    deadlineSourceLabel: "CASE 2027 official website"
+    deadlineSourceUrl: "https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2025/2025.ieeecase.org/index.html"
 futureHints:
-- year: 2026
-  conferenceDates: August 17-21, 2026
-  location: Shenyang, China
-  link: https://2026.ieeecase.org/
+  - year: 2026
+    conferenceDates: "August 17-21, 2026"
+    location: "Shenyang, China"
+    link: "https://2026.ieeecase.org/"
