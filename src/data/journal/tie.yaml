@@ -6,6 +6,9 @@ venueType: "journal"
 category: "Journal"
 organizationTags:
   - "IES"
+caaRank: "A"
+ccfRank: "N/A"
+casPartition: "CAS 1"
 jcrQuartile: "Q1"
 homepage: "https://www.ieee-ies.org/pubs/transactions-on-industrial-electronics"
 keywords:
