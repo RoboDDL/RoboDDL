@@ -28,20 +28,7 @@ knownEditions:
     paperDeadline: "2026-03-15T23:59:00"
     timezone: "PST"
     conferenceDates: "August 17-21, 2026"
-    location: "Los Angeles, California, USA"
-    link: "https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2026/2026.ieeecase.org/index.html"
-    deadlineSourceLabel: "CASE 2026 official website"
-    deadlineSourceUrl: "https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2025/2025.ieeecase.org/index.html"
-  - year: 2027
-    paperDeadline: "2027-03-15T23:59:00"
-    timezone: "PST"
-    conferenceDates: "August 17-21, 2027"
-    location: "Los Angeles, California, USA"
-    link: "https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2027/2027.ieeecase.org/index.html"
-    deadlineSourceLabel: "CASE 2027 official website"
-    deadlineSourceUrl: "https://ewh.ieee.org/soc/ras/conf/fullysponsored/case/CASE2025/2025.ieeecase.org/index.html"
-futureHints:
-  - year: 2026
-    conferenceDates: "August 17-21, 2026"
     location: "Shenyang, China"
     link: "https://2026.ieeecase.org/"
+    deadlineSourceLabel: "CASE 2026 official website"
+    deadlineSourceUrl: "https://2026.ieeecase.org/"

@@ -17,11 +17,11 @@ keywords:
 submissionModel: "deadline"
 knownEditions:
   - year: 2026
-    paperDeadline: "2026-01-29T23:59:59"
-    abstractDeadline: "2026-01-22T23:59:59"
+    paperDeadline: "2026-01-28T23:59:59"
+    abstractDeadline: "2026-01-23T23:59:59"
     timezone: "AoE"
-    conferenceDates: "July 18-24, 2026"
-    location: "Seoul, South Korea"
+    conferenceDates: "July 6-11, 2026"
+    location: "Seoul, Korea"
     link: "https://icml.cc/Conferences/2026"
     deadlineSourceLabel: "ICML 2026 dates page"
     deadlineSourceUrl: "https://icml.cc/Conferences/2026/Dates"

@@ -16,10 +16,11 @@ keywords:
 submissionModel: "deadline"
 knownEditions:
   - year: 2026
-    paperDeadline: "2025-10-29T23:59:59"
+    paperDeadline: "2025-10-08T23:59:59"
+    abstractDeadline: "2025-10-01T23:59:59"
     timezone: "AoE"
-    conferenceDates: "TBA"
-    location: "TBA"
-    link: "https://aamas2026.org/"
+    conferenceDates: "May 27-29, 2026"
+    location: "Paphos, Cyprus"
+    link: "https://cyprusconferences.org/aamas2026"
     deadlineSourceLabel: "AAMAS 2026 Calls page"
     deadlineSourceUrl: "https://aamas2026.org/calls/"

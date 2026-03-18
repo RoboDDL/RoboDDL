@@ -17,11 +17,11 @@ keywords:
 submissionModel: "deadline"
 knownEditions:
   - year: 2026
-    paperDeadline: "2026-03-01T23:59:59"
-    timezone: "AoE"
-    conferenceDates: "TBA"
-    location: "TBA"
-    link: "https://ras.papercept.net/conferences/conferences/IROS26/program/IROS26_ContentListWeb_1.html"
+    paperDeadline: "2026-03-02T23:59:59"
+    timezone: "PST"
+    conferenceDates: "September 27 - October 1, 2026"
+    location: "Pittsburgh, PA, USA"
+    link: "https://2026.ieee-iros.org/"
     deadlineSourceLabel: "IROS 2026 PaperCept submission page"
     deadlineSourceUrl: "https://ras.papercept.net/conferences/conferences/IROS26/program/IROS26_ContentListWeb_1.html"
-    note: "Official page exposes the date but not a timezone; countdown uses end-of-day AoE."
+    note: "Paper deadline aligned with the ccfddl baseline for IROS 2026."

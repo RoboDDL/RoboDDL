@@ -19,10 +19,11 @@ cycleYears: 2
 knownEditions:
   - year: 2026
     paperDeadline: "2026-03-05T23:00:00"
+    abstractDeadline: "2026-02-26T23:00:00"
     timezone: "UTC+1"
     conferenceDates: "September 8-13, 2026"
     location: "Malmo, Sweden"
-    link: "https://eccv.ecva.net/Conferences/2026"
+    link: "https://eccv.ecva.net/"
     deadlineSourceLabel: "ECCV 2026 Call for Papers"
     deadlineSourceUrl: "https://eccv.ecva.net/Conferences/2026/CallForPapers"
     note: "Paper registration closes earlier on February 26, 2026 at 23:00 CET according to the official CFP."

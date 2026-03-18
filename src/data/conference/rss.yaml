@@ -16,10 +16,11 @@ keywords:
 submissionModel: "deadline"
 knownEditions:
   - year: 2026
-    paperDeadline: "2026-01-30T23:59:59"
+    paperDeadline: "2026-01-30T23:59:00"
+    abstractDeadline: "2026-01-23T23:59:00"
     timezone: "AoE"
-    conferenceDates: "July 11-15, 2026"
-    location: "Los Angeles, USA"
+    conferenceDates: "July 13-17, 2026"
+    location: "Sydney, Australia"
     link: "https://roboticsconference.org/"
     deadlineSourceLabel: "RSS 2026 official website"
     deadlineSourceUrl: "https://roboticsconference.org/"

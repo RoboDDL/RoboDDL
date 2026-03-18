@@ -14,7 +14,7 @@ If you're comfortable making code or data changes, PRs are very welcome. If not,
 ## Highlights
 
 - 🤖 Conference deadline tracking and a recommended journal list
-- ⏳ AoE-normalized deadline display and countdowns
+- ⏳ Deadline display normalized by venue type, with countdowns computed from each stored timezone
 - 🧭 Estimated deadlines when a new official paper deadline has not been announced yet
 - 🔎 Venue filters for `Conference` and `Journal`
 - ⭐ One-click follow with local persistence and favorite-first sorting
@@ -29,6 +29,6 @@ If you're comfortable making code or data changes, PRs are very welcome. If not,
 
 ## Notes
 
-- 🌍 All displayed deadlines are normalized to AoE
+- 🌍 Deadlines are stored with explicit source timezones; the UI currently displays `RAS` venues in `PST` and other venues in `AoE`
 - 🛠️ Most updates should only require editing a single venue YAML file
 - 🧪 Development workflow, project structure, Issue guide, and PR guide live in [`CONTRIBUTING.md`](./CONTRIBUTING.md)
