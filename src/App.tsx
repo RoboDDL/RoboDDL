@@ -352,6 +352,11 @@ function App() {
           </div>
         </section>
 
+        <section className="seo-copy-card" aria-labelledby="search-intent-title">
+          <h2 id="search-intent-title">{text.seoIntro.title}</h2>
+          <p>{text.seoIntro.body}</p>
+        </section>
+
         <section className="calendar-card top-panel-card">
           <div className="top-panel-switches">
             <button

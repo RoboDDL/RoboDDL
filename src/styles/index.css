@@ -37,6 +37,7 @@ a {
   }
 
   .hero-card,
+  .seo-copy-card,
   .toolbar-card,
   .control-card,
   .venue-card {
@@ -44,6 +45,10 @@ a {
   }
 
   .hero-card {
+    @apply p-4 lg:p-5;
+  }
+
+  .seo-copy-card {
     @apply p-4 lg:p-5;
   }
 
@@ -92,6 +97,14 @@ a {
 
   .hero-note {
     @apply inline-flex w-fit rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700;
+  }
+
+  .seo-copy-card h2 {
+    @apply m-0 text-lg font-semibold text-slate-950 sm:text-xl;
+  }
+
+  .seo-copy-card p {
+    @apply mb-0 mt-2 max-w-4xl text-sm leading-6 text-slate-600;
   }
 
   .hero-mobile-tip {
@@ -708,6 +721,7 @@ a {
 }
 
 :root[data-theme='dark'] .hero-card,
+:root[data-theme='dark'] .seo-copy-card,
 :root[data-theme='dark'] .toolbar-card,
 :root[data-theme='dark'] .control-card,
 :root[data-theme='dark'] .venue-card,
@@ -718,6 +732,7 @@ a {
 }
 
 :root[data-theme='dark'] .hero-copy h1,
+:root[data-theme='dark'] .seo-copy-card h2,
 :root[data-theme='dark'] .top-panel-switch-title,
 :root[data-theme='dark'] .time-zone-time,
 :root[data-theme='dark'] .calendar-title,
@@ -738,6 +753,7 @@ a {
 }
 
 :root[data-theme='dark'] .hero-copy p,
+:root[data-theme='dark'] .seo-copy-card p,
 :root[data-theme='dark'] .time-zone-label,
 :root[data-theme='dark'] .time-zone-date,
 :root[data-theme='dark'] .calendar-note,

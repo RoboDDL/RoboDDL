@@ -77,7 +77,6 @@ export interface VenueView {
   category: Category;
   isNew?: boolean;
   organizationTags?: string[];
-  caaRank?: string;
   caaiRank?: string;
   ccfRank?: string;
   casPartition?: string;
