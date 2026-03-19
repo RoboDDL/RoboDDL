@@ -64,7 +64,7 @@ a {
   }
 
   .hero-tools-pill {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/90 p-1.5 shadow-sm backdrop-blur;
+    @apply inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 p-2 shadow-sm backdrop-blur;
   }
 
   .hero-tool-button {
@@ -72,11 +72,11 @@ a {
   }
 
   .hero-tool-button-language {
-    @apply min-w-[4.5rem] px-4 py-2;
+    @apply min-w-[3.5rem] px-3 py-1.5;
   }
 
   .hero-tool-button-icon {
-    @apply h-9 w-9 p-2;
+    @apply h-8 w-8 p-1.5;
   }
 
   .hero-tool-button.active {
@@ -84,7 +84,7 @@ a {
   }
 
   .hero-tools-divider {
-    @apply mx-1 h-6 w-px bg-slate-200;
+    @apply mx-1.5 h-5 w-px bg-slate-200;
   }
 
   .hero-copy h1 {

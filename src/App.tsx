@@ -327,7 +327,7 @@ function App() {
                   aria-label={githubLabel}
                   title={githubLabel}
                 >
-                  <Github className="h-4 w-4" />
+                  <Github className="h-3.5 w-3.5" />
                 </a>
                 <button
                   type="button"
@@ -336,7 +336,7 @@ function App() {
                   aria-label={themeToggleLabel}
                   title={themeToggleLabel}
                 >
-                  {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+                  {theme === 'light' ? <Moon className="h-3.5 w-3.5" /> : <Sun className="h-3.5 w-3.5" />}
                 </button>
               </div>
             </div>
