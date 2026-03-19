@@ -1,16 +1,23 @@
 import { useEffect, useState } from 'react';
-import { calculateTimeRemaining, formatTimeRemaining, getUrgencyTone } from '../utils/dateUtils';
+import { Language, uiText } from '../i18n';
+import { calculateTimeRemaining, getUrgencyTone } from '../utils/dateUtils';
 
 interface CountdownTimerProps {
   deadline: string;
   timezone: string;
+  language: Language;
   compact?: boolean;
 }
 
-function CountdownTimer({ deadline, timezone, compact = false }: CountdownTimerProps) {
+function pad(value: number): string {
+  return String(value).padStart(2, '0');
+}
+
+function CountdownTimer({ deadline, timezone, language, compact = false }: CountdownTimerProps) {
   const [timeRemaining, setTimeRemaining] = useState(() =>
     calculateTimeRemaining(deadline, timezone),
   );
+  const text = uiText[language];
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -23,7 +30,19 @@ function CountdownTimer({ deadline, timezone, compact = false }: CountdownTimerP
   const toneClass = getUrgencyTone(timeRemaining.totalSeconds);
 
   if (compact) {
-    return <div className={`countdown-compact ${toneClass}`}>{formatTimeRemaining(timeRemaining)}</div>;
+    if (timeRemaining.isPast) {
+      return <div className={`countdown-compact ${toneClass}`}>{text.countdown.passed}</div>;
+    }
+
+    return (
+      <div className={`countdown-compact ${toneClass}`}>
+        {timeRemaining.days}
+        {text.countdown.compactDays} {pad(timeRemaining.hours)}
+        {text.countdown.compactHours} {pad(timeRemaining.minutes)}
+        {text.countdown.compactMinutes} {pad(timeRemaining.seconds)}
+        {text.countdown.compactSeconds}
+      </div>
+    );
   }
 
   return (
@@ -32,23 +51,23 @@ function CountdownTimer({ deadline, timezone, compact = false }: CountdownTimerP
         <div className={`countdown-grid ${toneClass}`}>
           <div>
             <strong className={toneClass}>{timeRemaining.days}</strong>
-            <span>D</span>
+            <span>{text.countdown.days}</span>
           </div>
           <div>
             <strong className={toneClass}>{timeRemaining.hours}</strong>
-            <span>H</span>
+            <span>{text.countdown.hours}</span>
           </div>
           <div>
             <strong className={toneClass}>{timeRemaining.minutes}</strong>
-            <span>M</span>
+            <span>{text.countdown.minutes}</span>
           </div>
           <div>
             <strong className={toneClass}>{timeRemaining.seconds}</strong>
-            <span>S</span>
+            <span>{text.countdown.seconds}</span>
           </div>
         </div>
       ) : (
-        <div className="countdown-passed">Deadline passed</div>
+        <div className="countdown-passed">{text.countdown.passed}</div>
       )}
     </div>
   );

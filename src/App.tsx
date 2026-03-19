@@ -5,6 +5,16 @@ import FilterPanel from './components/FilterPanel';
 import SearchBar from './components/SearchBar';
 import SubmissionCalendar from './components/SubmissionCalendar';
 import { buildVenueViews, Category, RatingFilter, VenueType } from './data/conferences';
+import {
+  getCategoryLabel,
+  getInitialLanguage,
+  getLocale,
+  getLocalizedVenue,
+  getThemeToggleLabel,
+  getVenueTypeLabel,
+  Language,
+  uiText,
+} from './i18n';
 
 type Theme = 'light' | 'dark';
 
@@ -23,6 +33,7 @@ function getInitialTheme(): Theme {
 
 function App() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [language, setLanguage] = useState<Language>(getInitialLanguage);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTopPanel, setActiveTopPanel] = useState<'calendar' | 'timezones' | null>(null);
   const [selectedVenueType, setSelectedVenueType] = useState<'All' | VenueType>('All');
@@ -57,6 +68,12 @@ function App() {
   }, [theme]);
 
   useEffect(() => {
+    document.documentElement.lang = language;
+    document.title = uiText[language].pageTitle;
+    window.localStorage.setItem('roboddl:language', language);
+  }, [language]);
+
+  useEffect(() => {
     const timer = window.setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
@@ -88,19 +105,28 @@ function App() {
   }, []);
 
   const venues = useMemo(() => buildVenueViews(currentTime), [currentTime]);
+  const text = uiText[language];
+  const locale = getLocale(language);
 
   const filteredVenues = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
 
     const filtered = venues.filter((venue) => {
+      const localizedVenue = getLocalizedVenue(venue, language);
       const searchText = [
         venue.title,
         venue.fullTitle,
         venue.summary,
+        localizedVenue.fullTitle,
+        localizedVenue.summary,
         venue.category,
+        getCategoryLabel(venue.category, language),
         venue.venueType,
+        getVenueTypeLabel(venue.venueType, language),
         venue.location,
+        localizedVenue.location,
         ...venue.keywords,
+        ...localizedVenue.searchKeywords,
       ]
         .filter(Boolean)
         .join(' ')
@@ -146,6 +172,7 @@ function App() {
     selectedRatingFilter,
     showFavoritesOnly,
     favoriteVenueIds,
+    language,
     venues,
   ]);
 
@@ -160,18 +187,18 @@ function App() {
     };
   }, [favoriteVenueIds.length, venues]);
 
-  const themeToggleLabel = theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
-  const githubLabel = 'Open RoboDDL on GitHub';
+  const themeToggleLabel = getThemeToggleLabel(theme, language);
+  const githubLabel = text.githubLabel;
   const timeZoneCards = [
     {
       id: 'aoe',
-      label: 'AoE Time Zone',
+      label: text.timezones.aoe,
       badge: 'UTC-12',
       timeZone: 'Etc/GMT+12',
     },
     {
       id: 'pt',
-      label: 'Pacific Time',
+      label: text.timezones.pacific,
       badge: 'PT',
       timeZone: 'America/Los_Angeles',
     },
@@ -242,6 +269,21 @@ function App() {
             <div className="hero-topbar">
               <h1>Robo<span className="hero-title-ddl">DDL</span></h1>
               <div className="hero-tools">
+                <div className="language-toggle" role="group" aria-label={text.languageGroupLabel}>
+                  {[
+                    { value: 'en', label: 'EN' },
+                    { value: 'zh-CN', label: '中文' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      className={language === option.value ? 'language-toggle-button active' : 'language-toggle-button'}
+                      onClick={() => setLanguage(option.value as Language)}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
                 <div className="hero-actions">
                   <a
                     href="https://github.com/RoboDDL/RoboDDL"
@@ -265,12 +307,12 @@ function App() {
                 </div>
               </div>
             </div>
-            <p>Your one-stop tracker for robotics conferences and journals</p>
+            <p>{text.heroTagline}</p>
             <div className="hero-mobile-tip sm:hidden">
               <Monitor className="h-3.5 w-3.5" />
-              <span>Best experienced on desktop</span>
+              <span>{text.heroDesktopTip}</span>
             </div>
-            <div className="hero-note">🚧 [WIP] Deadlines and ratings may still contain errors!</div>
+            <div className="hero-note">🚧 {text.heroWipNote}</div>
           </div>
         </section>
 
@@ -284,7 +326,7 @@ function App() {
               <span className="top-panel-switch-icon" aria-hidden="true">
                 <CalendarDays className="h-4 w-4" />
               </span>
-              <strong className="top-panel-switch-title">Submission Calendar</strong>
+              <strong className="top-panel-switch-title">{text.topPanels.calendar}</strong>
             </button>
             <button
               type="button"
@@ -294,14 +336,19 @@ function App() {
               <span className="top-panel-switch-icon" aria-hidden="true">
                 <Clock3 className="h-4 w-4" />
               </span>
-              <strong className="top-panel-switch-title">Time Zones</strong>
+              <strong className="top-panel-switch-title">{text.topPanels.timezones}</strong>
             </button>
           </div>
 
           {activeTopPanel ? (
             <div className="top-panel-body">
               {activeTopPanel === 'calendar' ? (
-                <SubmissionCalendar venues={filteredVenues} now={currentTime} favoriteVenueIds={favoriteVenueIds} />
+                <SubmissionCalendar
+                  venues={filteredVenues}
+                  now={currentTime}
+                  favoriteVenueIds={favoriteVenueIds}
+                  language={language}
+                />
               ) : (
                 <div className="time-zone-grid">
                   {timeZoneCards.map((zone) => (
@@ -325,17 +372,21 @@ function App() {
                                 scheduleAoEHelpClose();
                               }}
                             >
-                              <button type="button" className="live-help-trigger" aria-label="What is AoE time?">
+                              <button
+                                type="button"
+                                className="live-help-trigger"
+                                aria-label={text.timezones.aoeHelpLabel}
+                              >
                                 <HelpCircle className="h-3.5 w-3.5" />
                               </button>
                               <div className={isAoEHelpOpen ? 'live-help-popover open' : 'live-help-popover'} role="tooltip">
-                                <p>AoE means "Anywhere on Earth" and follows UTC-12 for deadline cutoffs.</p>
+                                <p>{text.timezones.aoeHelpText}</p>
                                 <a
                                   href="https://en.wikipedia.org/wiki/Anywhere_on_Earth"
                                   target="_blank"
                                   rel="noreferrer"
                                 >
-                                  Learn more on Wikipedia
+                                  {text.timezones.aoeHelpLink}
                                 </a>
                               </div>
                             </div>
@@ -344,13 +395,13 @@ function App() {
                         <span className="time-zone-badge">{zone.badge}</span>
                       </div>
                       <div className="time-zone-time">
-                        {currentTime.toLocaleTimeString('en-US', {
+                        {currentTime.toLocaleTimeString(locale, {
                           hour12: false,
                           timeZone: zone.timeZone,
                         })}
                       </div>
                       <div className="time-zone-date">
-                        {currentTime.toLocaleDateString('en-US', {
+                        {currentTime.toLocaleDateString(locale, {
                           timeZone: zone.timeZone,
                         })}
                       </div>
@@ -364,6 +415,7 @@ function App() {
 
         <section className="content-grid">
           <FilterPanel
+            language={language}
             selectedVenueType={selectedVenueType}
             showFavoritesOnly={showFavoritesOnly}
             totalVenueCount={stats.conferenceCount + stats.journalCount}
@@ -383,12 +435,13 @@ function App() {
           />
 
           <div className="results-column">
-            <SearchBar value={searchQuery} onChange={setSearchQuery} />
+            <SearchBar value={searchQuery} onChange={setSearchQuery} language={language} />
             <div className="results-list">
               {filteredVenues.map((venue) => (
                 <ConferenceCard
                   key={venue.id}
                   venue={venue}
+                  language={language}
                   isFavorite={favoriteVenueIds.includes(venue.id)}
                   onToggleFavorite={toggleFavorite}
                 />
@@ -401,11 +454,11 @@ function App() {
       <footer className="page-footer">
         <div className="page-footer-divider" aria-hidden="true" />
         <p>
-          Maintained by{' '}
+          {text.footer.maintainedBy}{' '}
           <a href="https://github.com/RoboDDL/RoboDDL" target="_blank" rel="noreferrer">
             RoboDDL
           </a>
-          . Contributions welcome.
+          {text.footer.contributionsWelcome}
         </p>
       </footer>
 
@@ -414,7 +467,7 @@ function App() {
           type="button"
           className="back-to-top"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          aria-label="Back to top"
+          aria-label={text.backToTop}
         >
           <ArrowUp className="h-5 w-5" />
         </button>

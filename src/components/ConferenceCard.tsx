@@ -1,21 +1,37 @@
 import { useState } from 'react';
 import { BookOpen, CalendarDays, ChevronDown, ExternalLink, Globe2, MapPin, Star } from 'lucide-react';
 import { VenueView } from '../data/conferences';
+import {
+  getAbstractDeadlineNote,
+  getCountdownLabel,
+  getEstimatedSourceNote,
+  getExpandButtonLabel,
+  getFavoriteButtonLabel,
+  getLocalizedVenue,
+  Language,
+  uiText,
+} from '../i18n';
 import CountdownTimer from './CountdownTimer';
 import { formatDeadline } from '../utils/dateUtils';
 
 interface ConferenceCardProps {
   venue: VenueView;
+  language: Language;
   isFavorite: boolean;
   onToggleFavorite: (venueId: string) => void;
 }
 
-function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardProps) {
+function ConferenceCard({ venue, language, isFavorite, onToggleFavorite }: ConferenceCardProps) {
   const title = venue.year ? `${venue.title} ${venue.year}` : venue.title;
   const [isExpanded, setIsExpanded] = useState(false);
+  const text = uiText[language];
+  const venueInfoLanguage = venue.venueType === 'conference' ? 'en' : language;
+  const venueInfoText = uiText[venueInfoLanguage];
+  const localizedVenue = getLocalizedVenue(venue, language);
   const isJournal = venue.submissionModel === 'rolling';
-  const venueTypeLabel = venue.venueType[0].toUpperCase() + venue.venueType.slice(1);
-  const deadlineLabel = venue.submissionModel === 'deadline' ? venue.countdownLabel : 'Status';
+  const venueTypeLabel = localizedVenue.venueTypeLabel;
+  const deadlineLabel =
+    venue.submissionModel === 'deadline' ? getCountdownLabel(venue.countdownLabel, language) : text.venue.status;
   const hasCaaRank = Boolean(venue.caaRank && venue.caaRank !== 'N/A');
   const hasCcfRank = Boolean(venue.ccfRank && venue.ccfRank !== 'N/A');
   const hasCaaiRank = Boolean(venue.caaiRank && venue.caaiRank !== 'N/A');
@@ -28,7 +44,6 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
         .trim()
     : '';
   const jcrDisplayValue = hasJcrQuartile ? venue.jcrQuartile!.replace(/^JCR\s*/i, '').trim() : '';
-  const normalizedTimezoneLabel = venue.timezone === 'PST' ? 'Pacific Time' : 'AoE';
   const journalMetricItems = [
     hasCcfRank ? `CCF: ${venue.ccfRank}` : null,
     hasCaaiRank ? `CAAI: ${venue.caaiRank}` : null,
@@ -44,16 +59,16 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
         <div className="venue-summary-main">
           <div>
             <h2>{title}</h2>
-            <p className="venue-full-title">{venue.fullTitle}</p>
+            <p className="venue-full-title">{localizedVenue.fullTitle}</p>
             <div className="badge-row">
               {venue.venueType !== 'conference' ? <span className="pill pill-strong">{venueTypeLabel}</span> : null}
-              {venue.isNew ? <span className="pill pill-new">NEW</span> : null}
+              {venue.isNew ? <span className="pill pill-new">{venueInfoText.venue.new}</span> : null}
               {venue.organizationTags?.map((tag) => (
                 <span key={tag} className="pill">
                   {tag}
                 </span>
               ))}
-              {venue.venueType === 'conference' ? <span className="pill">{venue.category}</span> : null}
+              {venue.venueType === 'conference' ? <span className="pill">{localizedVenue.categoryLabel}</span> : null}
               {hasCcfRank ? <span className="pill">CCF {venue.ccfRank}</span> : null}
               {hasCaaiRank ? <span className="pill">CAAI {venue.caaiRank}</span> : null}
               {hasCaaRank ? <span className="pill">CAA {venue.caaRank}</span> : null}
@@ -65,11 +80,16 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
             <div className="summary-deadline">
               <div className="summary-deadline-head">
                 <span className="summary-deadline-label">{deadlineLabel}</span>
-                {venue.isEstimated ? <span className="summary-deadline-badge">EST.</span> : null}
+                {venue.isEstimated ? <span className="summary-deadline-badge">{text.venue.estimatedShort}</span> : null}
               </div>
               <>
                 <strong>{formatDeadline(venue.countdownDeadline!, venue.timezone!)}</strong>
-                <CountdownTimer deadline={venue.countdownDeadline!} timezone={venue.timezone!} compact />
+                <CountdownTimer
+                  deadline={venue.countdownDeadline!}
+                  timezone={venue.timezone!}
+                  language={language}
+                  compact
+                />
               </>
             </div>
           ) : null}
@@ -79,7 +99,7 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
             type="button"
             className={isFavorite ? 'favorite-button active' : 'favorite-button'}
             onClick={() => onToggleFavorite(venue.id)}
-            aria-label={isFavorite ? `Unfollow ${title}` : `Follow ${title}`}
+            aria-label={getFavoriteButtonLabel(isFavorite, title, language)}
           >
             <Star className="h-4 w-4" />
           </button>
@@ -88,7 +108,7 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
             className="expand-button"
             onClick={() => setIsExpanded((current) => !current)}
             aria-expanded={isExpanded}
-            aria-label={isExpanded ? `Collapse ${title}` : `Expand ${title}`}
+            aria-label={getExpandButtonLabel(isExpanded, title, language)}
           >
             <ChevronDown className={isExpanded ? 'expand-chevron open' : 'expand-chevron'} />
           </button>
@@ -98,7 +118,7 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
       {isExpanded ? (
         <div className={isJournal ? 'venue-expanded journal-layout' : 'venue-expanded'}>
           <div className={isJournal ? 'venue-main venue-main-journal' : 'venue-main'}>
-            <p className="venue-summary">{venue.summary}</p>
+            <p className="venue-summary">{localizedVenue.summary}</p>
 
             {venue.submissionModel === 'deadline' ? (
               <div className="venue-meta-grid">
@@ -107,26 +127,28 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
                     <div className="meta-head">
                       <div className="meta-label">
                         <CalendarDays className="h-4 w-4" />
-                        Paper DDL
+                        {text.venue.paperDdl}
                       </div>
-                      {venue.isEstimated ? <span className="pill pill-warn">Est.</span> : null}
+                      {venue.isEstimated ? <span className="pill pill-warn">{text.venue.estimatedLong}</span> : null}
                     </div>
                     <div className="meta-value">{formatDeadline(venue.paperDeadline!, venue.timezone!)}</div>
-                    <div className="meta-sub">All displayed times are normalized to {normalizedTimezoneLabel}.</div>
+                    <div className="meta-sub">
+                      {text.venue.normalizedToPrefix} {localizedVenue.normalizedTimezoneLabel}。
+                    </div>
                   </div>
                   <div className="meta-block">
                     <div className="meta-label">
                       <CalendarDays className="h-4 w-4" />
-                      Conference
+                      {text.venue.conferenceDates}
                     </div>
-                    <div className="meta-value">{venue.conferenceDates}</div>
+                    <div className="meta-value">{localizedVenue.conferenceDates}</div>
                   </div>
                   <div className="meta-block">
                     <div className="meta-label">
                       <MapPin className="h-4 w-4" />
-                      Location
+                      {text.venue.location}
                     </div>
-                    <div className="meta-value">{venue.location}</div>
+                    <div className="meta-value">{localizedVenue.location}</div>
                   </div>
                 </>
               </div>
@@ -137,7 +159,7 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
                 <div className="meta-block journal-metrics-block">
                   <div className="meta-label">
                     <BookOpen className="h-4 w-4" />
-                    Journal metrics
+                    {text.venue.journalMetrics}
                   </div>
                   <div className="journal-metrics">
                     {journalMetricItems.map((item) => (
@@ -149,34 +171,34 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
             ) : null}
 
             <div className="source-strip">
-              <span className="source-label">Source</span>
+              <span className="source-label">{text.venue.source}</span>
               <a href={venue.sourceUrl} target="_blank" rel="noreferrer">
-                {venue.sourceLabel}
+                {localizedVenue.sourceLabel}
               </a>
               {venue.isEstimated && venue.estimatedFromYear ? (
-                <span className="source-note">
-                  No official deadline is out yet. This date is estimated from the {venue.estimatedFromYear}
-                  paper deadline.
-                </span>
+                <span className="source-note">{getEstimatedSourceNote(venue.estimatedFromYear, venueInfoLanguage)}</span>
               ) : null}
               {venue.abstractDeadline ? (
                 <span className="source-note">
-                  Abstract deadline: {formatDeadline(venue.abstractDeadline, venue.timezone!)}
+                  {getAbstractDeadlineNote(
+                    formatDeadline(venue.abstractDeadline, venue.timezone!),
+                    venueInfoLanguage,
+                  )}
                 </span>
               ) : null}
-              {!venue.isEstimated && venue.note ? <span className="source-note">{venue.note}</span> : null}
+              {!venue.isEstimated && localizedVenue.note ? <span className="source-note">{localizedVenue.note}</span> : null}
             </div>
 
             {isJournal ? (
               <div className="action-row">
                 <a href={venue.homepage} target="_blank" rel="noreferrer" className="action-button primary">
                   <Globe2 className="h-4 w-4" />
-                  Journal Page
+                  {text.venue.journalPage}
                 </a>
                 {venue.specialIssueUrl ? (
                   <a href={venue.specialIssueUrl} target="_blank" rel="noreferrer" className="action-button">
                     <ExternalLink className="h-4 w-4" />
-                    {venue.specialIssueLabel ?? 'Special Issue'}
+                    {venue.specialIssueLabel ?? text.venue.specialIssue}
                   </a>
                 ) : null}
                 {venue.dblp ? (
@@ -197,18 +219,20 @@ function ConferenceCard({ venue, isFavorite, onToggleFavorite }: ConferenceCardP
           {!isJournal ? (
             <aside className="venue-side">
               <>
-                <div className="side-title">Countdown to {venue.countdownLabel}</div>
-                <CountdownTimer deadline={venue.countdownDeadline!} timezone={venue.timezone!} />
+                <div className="side-title">
+                  {text.countdown.to} {getCountdownLabel(venue.countdownLabel, language)}
+                </div>
+                <CountdownTimer deadline={venue.countdownDeadline!} timezone={venue.timezone!} language={language} />
               </>
               <div className="action-row">
                 <>
                   <a href={venue.link} target="_blank" rel="noreferrer" className="action-button primary">
                     <ExternalLink className="h-4 w-4" />
-                    Website
+                    {text.venue.website}
                   </a>
                   <a href={venue.homepage} target="_blank" rel="noreferrer" className="action-button">
                     <Globe2 className="h-4 w-4" />
-                    Series Page
+                    {text.venue.seriesPage}
                   </a>
                 </>
                 {venue.dblp ? (

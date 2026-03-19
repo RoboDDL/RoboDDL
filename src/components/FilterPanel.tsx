@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { HelpCircle } from 'lucide-react';
 import { categories, ratingFilters, Category, RatingFilter } from '../data/conferences';
+import { getCategoryLabel, getRatingFilterLabel, Language, uiText } from '../i18n';
 
 interface FilterPanelProps {
+  language: Language;
   selectedVenueType: 'All' | 'conference' | 'journal';
   showFavoritesOnly: boolean;
   totalVenueCount: number;
@@ -22,6 +24,7 @@ interface FilterPanelProps {
 }
 
 function FilterPanel({
+  language,
   selectedVenueType,
   showFavoritesOnly,
   totalVenueCount,
@@ -39,6 +42,7 @@ function FilterPanel({
   selectedRatingFilter,
   onRatingFilterChange,
 }: FilterPanelProps) {
+  const text = uiText[language];
   const [isRasHelpOpen, setIsRasHelpOpen] = useState(false);
   const rasHelpHideTimeoutRef = useRef<number | null>(null);
 
@@ -73,7 +77,7 @@ function FilterPanel({
   return (
     <aside className="control-card space-y-6">
       <section>
-        <p className="filter-title">Track</p>
+        <p className="filter-title">{text.filters.track}</p>
         <div className="chip-row">
           {categories.map((category) =>
             category === 'RAS' ? (
@@ -98,15 +102,15 @@ function FilterPanel({
                   className={selectedCategory === category ? 'filter-chip filter-chip-with-help active' : 'filter-chip filter-chip-with-help'}
                   onClick={() => onCategoryChange(category)}
                 >
-                  <span className="filter-chip-label">{category}</span>
+                  <span className="filter-chip-label">{getCategoryLabel(category, language)}</span>
                   <span className="filter-chip-help-icon" aria-hidden="true">
                     <HelpCircle className="h-3.5 w-3.5" />
                   </span>
                 </button>
                 <div className={isRasHelpOpen ? 'filter-chip-help-popover open' : 'filter-chip-help-popover'} role="tooltip">
-                  <p>RAS stands for IEEE Robotics and Automation Society.</p>
+                  <p>{text.filters.rasHelpText}</p>
                   <a href="https://www.ieee-ras.org/" target="_blank" rel="noreferrer">
-                    Learn more on IEEE RAS
+                    {text.filters.rasHelpLink}
                   </a>
                 </div>
               </div>
@@ -117,7 +121,7 @@ function FilterPanel({
                 className={selectedCategory === category ? 'filter-chip active' : 'filter-chip'}
                 onClick={() => onCategoryChange(category)}
               >
-                {category}
+                {getCategoryLabel(category, language)}
               </button>
             ),
           )}
@@ -125,7 +129,7 @@ function FilterPanel({
       </section>
 
       <section>
-        <p className="filter-title">Ratings</p>
+        <p className="filter-title">{text.filters.ratings}</p>
         <div className="chip-row">
           {ratingFilters.map((rating) => (
             <button
@@ -134,18 +138,18 @@ function FilterPanel({
               className={selectedRatingFilter === rating ? 'filter-chip active' : 'filter-chip'}
               onClick={() => onRatingFilterChange(rating)}
             >
-              {rating}
+              {getRatingFilterLabel(rating, language)}
             </button>
           ))}
         </div>
       </section>
 
       <section>
-        <p className="filter-title">Sort</p>
+        <p className="filter-title">{text.filters.sort}</p>
         <div className="chip-row">
           {[
-            ['deadline', 'Nearest'],
-            ['title', 'A-Z'],
+            ['deadline', text.sortLabels.deadline],
+            ['title', text.sortLabels.title],
           ].map(([value, label]) => (
             <button
               key={value}
@@ -160,14 +164,14 @@ function FilterPanel({
       </section>
 
       <section>
-        <p className="filter-title">View</p>
+        <p className="filter-title">{text.filters.view}</p>
         <div className="chip-row">
           <button
             type="button"
             className={selectedVenueType === 'All' && !showFavoritesOnly ? 'filter-chip filter-chip-with-count active' : 'filter-chip filter-chip-with-count'}
             onClick={onShowAllVenues}
           >
-            <span className="filter-chip-label">All</span>
+            <span className="filter-chip-label">{text.viewLabels.all}</span>
             <span className="filter-chip-count">{totalVenueCount}</span>
           </button>
           <button
@@ -175,7 +179,7 @@ function FilterPanel({
             className={selectedVenueType === 'conference' && !showFavoritesOnly ? 'filter-chip filter-chip-with-count active' : 'filter-chip filter-chip-with-count'}
             onClick={onShowConferenceView}
           >
-            <span className="filter-chip-label">Conferences</span>
+            <span className="filter-chip-label">{text.viewLabels.conferences}</span>
             <span className="filter-chip-count">{conferenceCount}</span>
           </button>
           <button
@@ -183,21 +187,21 @@ function FilterPanel({
             className={selectedVenueType === 'journal' && !showFavoritesOnly ? 'filter-chip filter-chip-with-count active' : 'filter-chip filter-chip-with-count'}
             onClick={onShowJournalView}
           >
-            <span className="filter-chip-label">Journals</span>
+            <span className="filter-chip-label">{text.viewLabels.journals}</span>
             <span className="filter-chip-count">{journalCount}</span>
           </button>
         </div>
       </section>
 
       <section>
-        <p className="filter-title">Focus</p>
+        <p className="filter-title">{text.filters.focus}</p>
         <label className="filter-toggle">
           <input
             type="checkbox"
             checked={showFavoritesOnly}
             onChange={(event) => onShowFavoritesOnlyChange(event.target.checked)}
           />
-          <span className="filter-toggle-label">Followed only</span>
+          <span className="filter-toggle-label">{text.filters.favoritesOnly}</span>
           <span className="filter-toggle-count">{favoriteCount}</span>
         </label>
       </section>

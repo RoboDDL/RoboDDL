@@ -1,9 +1,11 @@
 import { VenueView } from '../data/conferences';
+import { getLocale, Language, uiText } from '../i18n';
 
 interface SubmissionCalendarProps {
   venues: VenueView[];
   now: Date;
   favoriteVenueIds: string[];
+  language: Language;
 }
 
 interface MonthBucket {
@@ -24,8 +26,8 @@ function getMonthKey(year: number, month: number) {
   return `${year}-${String(month + 1).padStart(2, '0')}`;
 }
 
-function getMonthLabel(year: number, month: number) {
-  return new Date(Date.UTC(year, month, 1)).toLocaleString('en-US', {
+function getMonthLabel(year: number, month: number, locale: string) {
+  return new Date(Date.UTC(year, month, 1)).toLocaleString(locale, {
     month: 'short',
     year: 'numeric',
     timeZone: 'UTC',
@@ -44,7 +46,9 @@ function getDeadlineDay(venue: VenueView) {
   return day;
 }
 
-function SubmissionCalendar({ venues, now, favoriteVenueIds }: SubmissionCalendarProps) {
+function SubmissionCalendar({ venues, now, favoriteVenueIds, language }: SubmissionCalendarProps) {
+  const locale = getLocale(language);
+  const text = uiText[language];
   const conferenceVenues = venues.filter((venue) => {
     return (
       venue.venueType === 'conference' &&
@@ -62,7 +66,7 @@ function SubmissionCalendar({ venues, now, favoriteVenueIds }: SubmissionCalenda
 
     return {
       key,
-      label: getMonthLabel(year, month),
+      label: getMonthLabel(year, month, locale),
       venues: conferenceVenues
         .filter((venue) => getDeadlineMonthKey(venue) === key)
         .sort((left, right) => (left.countdownDeadline! < right.countdownDeadline! ? -1 : 1)),
@@ -89,7 +93,10 @@ function SubmissionCalendar({ venues, now, favoriteVenueIds }: SubmissionCalenda
                 >
                   <span>{venue.title}</span>
                   <span>
-                    {venue.countdownLabel === 'Abstract deadline' ? 'Abs.' : 'Paper'} {getDeadlineDay(venue)}
+                    {venue.countdownLabel === 'Abstract deadline'
+                      ? text.calendar.abstractShort
+                      : text.calendar.paperShort}{' '}
+                    {getDeadlineDay(venue)}
                   </span>
                 </div>
               ))}

@@ -56,7 +56,19 @@ a {
   }
 
   .hero-tools {
-    @apply relative flex-shrink-0 self-start;
+    @apply relative flex flex-shrink-0 items-center gap-2 self-start;
+  }
+
+  .language-toggle {
+    @apply inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white/90 p-1 shadow-sm backdrop-blur;
+  }
+
+  .language-toggle-button {
+    @apply inline-flex min-w-[3.25rem] items-center justify-center rounded-full px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2;
+  }
+
+  .language-toggle-button.active {
+    @apply bg-slate-900 text-white;
   }
 
   .hero-copy h1 {
@@ -826,10 +838,20 @@ a {
   color: #dbe7f4;
 }
 
+:root[data-theme='dark'] .language-toggle {
+  border-color: rgba(71, 85, 105, 0.42);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(17, 24, 39, 0.88));
+  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.22);
+}
+
 :root[data-theme='dark'] .hero-actions {
   border-color: rgba(71, 85, 105, 0.42);
   background: linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(17, 24, 39, 0.88));
   box-shadow: 0 14px 30px rgba(2, 6, 23, 0.22);
+}
+
+:root[data-theme='dark'] .language-toggle-button {
+  color: #cbd5e1;
 }
 
 :root[data-theme='dark'] .hero-icon-button {
@@ -877,7 +899,8 @@ a {
 :root[data-theme='dark'] .favorite-button:hover,
 :root[data-theme='dark'] .action-button:hover,
 :root[data-theme='dark'] .hero-icon-button:hover,
-:root[data-theme='dark'] .live-help-trigger:hover {
+:root[data-theme='dark'] .live-help-trigger:hover,
+:root[data-theme='dark'] .language-toggle-button:hover {
   border-color: rgba(100, 116, 139, 0.18);
   background: rgba(30, 41, 59, 0.88);
   color: #f8fafc;
@@ -899,6 +922,12 @@ a {
 }
 
 :root[data-theme='dark'] .hero-icon-button.active {
+  border-color: rgba(251, 191, 36, 0.34);
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.9), rgba(245, 158, 11, 0.82));
+  color: #111827;
+}
+
+:root[data-theme='dark'] .language-toggle-button.active {
   border-color: rgba(251, 191, 36, 0.34);
   background: linear-gradient(135deg, rgba(251, 191, 36, 0.9), rgba(245, 158, 11, 0.82));
   color: #111827;
