@@ -49,6 +49,8 @@ cd RoboDDL
 npm install
 ```
 
+This also installs the repository's `pre-commit` hook automatically.
+
 ### 5. Start the local dev server
 
 ```bash
@@ -61,9 +63,10 @@ Vite will print a local URL such as `http://localhost:5173`. Open it in your bro
 
 Please confirm you are opening the PR from your forked repository.
 
-Make sure the project still builds successfully:
+Make sure the data format and build both pass:
 
 ```bash
+npm run validate:data
 npm run build
 ```
 
@@ -99,6 +102,7 @@ npm run build
 
 ```bash
 npm install
+npm run validate:data
 npm run build
 ```
 
@@ -126,6 +130,8 @@ Venue files are parsed by a small custom loader in [`src/data/loadVenueRecords.t
 - Do not use advanced YAML features such as anchors, inline objects, or complex multiline syntax.
 - Keep `venueType: "conference"` files in `src/data/conference` and `venueType: "journal"` files in `src/data/journal`.
 - Delete optional lines that do not apply instead of leaving placeholder content behind.
+- Run `npm run validate:data` after editing YAML. CI and deploy both use the same check.
+- `npm install` also installs a `pre-commit` hook that runs the same YAML validation locally.
 
 Supported timezones come from [`src/utils/dateUtils.ts`](./src/utils/dateUtils.ts): `AoE`, `PST`, `PDT`, `EST`, `EDT`, `UTC`, `GMT`, and `UTC±HH[:MM]`.
 

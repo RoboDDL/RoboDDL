@@ -1,4 +1,4 @@
-import { loadVenueRecords } from './loadVenueRecords';
+import { getVenueDataIssues, loadVenueRecords } from './loadVenueRecords';
 import {
   convertLocalDateTimeToTimezone,
   parseDeadlineToUtcMs,
@@ -105,6 +105,13 @@ export interface VenueView {
 }
 
 const records = loadVenueRecords<VenueRecord>();
+const loadIssues = getVenueDataIssues();
+
+if (loadIssues.length > 0) {
+  console.warn(
+    `[venue-data] Loaded ${records.length} valid records; skipped ${loadIssues.length} invalid YAML file(s).`,
+  );
+}
 
 export const categories: Array<'All' | Exclude<Category, 'Journal'>> = [
   'All',
@@ -291,11 +298,18 @@ function resolveRollingVenue(record: RollingVenueRecord): VenueView {
 }
 
 export function buildVenueViews(now = new Date()): VenueView[] {
-  return records.map((record) => {
-    if (record.submissionModel === 'rolling') {
-      return resolveRollingVenue(record);
-    }
+  return records.flatMap((record) => {
+    try {
+      if (record.submissionModel === 'rolling') {
+        return [resolveRollingVenue(record)];
+      }
 
-    return resolveDeadlineVenue(record, now);
+      return [resolveDeadlineVenue(record, now)];
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      const slug = typeof record.slug === 'string' ? record.slug : '<unknown>';
+      console.error(`[venue-data] Skipping invalid venue "${slug}": ${message}`);
+      return [];
+    }
   });
 }

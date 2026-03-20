@@ -3,6 +3,12 @@ type VenueType = 'conference' | 'journal';
 type YamlScalar = string | number | boolean | null;
 type YamlValue = YamlScalar | YamlValue[] | { [key: string]: YamlValue };
 
+export interface VenueDataIssue {
+  path: string;
+  venueType: VenueType;
+  message: string;
+}
+
 interface YamlLine {
   indent: number;
   content: string;
@@ -20,6 +26,8 @@ const journalModules = import.meta.glob('./journal/*.yaml', {
   import: 'default',
   query: '?raw',
 }) as Record<string, string>;
+
+const venueDataIssues: VenueDataIssue[] = [];
 
 function parseScalar(raw: string): YamlScalar {
   return JSON.parse(raw) as YamlScalar;
@@ -241,27 +249,37 @@ function parseYamlDocument(raw: string): YamlValue {
 function loadYamlCollection(modules: Record<string, string>, expectedVenueType: VenueType) {
   return Object.entries(modules)
     .sort(([leftPath], [rightPath]) => leftPath.localeCompare(rightPath))
-    .map(([path, source]) => {
-      const document = parseYamlDocument(source);
+    .flatMap(([path, source]) => {
+      try {
+        const document = parseYamlDocument(source);
 
-      if (!document || Array.isArray(document) || typeof document !== 'object') {
-        throw new Error(`Invalid venue document in ${path}: expected a top-level object.`);
+        if (!document || Array.isArray(document) || typeof document !== 'object') {
+          throw new Error(`expected a top-level object.`);
+        }
+
+        const venueType = document.venueType;
+        if (venueType !== expectedVenueType) {
+          throw new Error(
+            `expected venueType "${expectedVenueType}", received "${String(venueType)}".`,
+          );
+        }
+
+        return [document];
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        venueDataIssues.push({ path, venueType: expectedVenueType, message });
+        console.error(`[venue-data] Skipping invalid ${expectedVenueType} YAML "${path}": ${message}`);
+        return [];
       }
-
-      const venueType = document.venueType;
-      if (venueType !== expectedVenueType) {
-        throw new Error(
-          `Invalid venue document in ${path}: expected venueType "${expectedVenueType}", received "${String(
-            venueType,
-          )}".`,
-        );
-      }
-
-      return document;
     });
 }
 
+export function getVenueDataIssues(): VenueDataIssue[] {
+  return [...venueDataIssues];
+}
+
 export function loadVenueRecords<T>(): T[] {
+  venueDataIssues.length = 0;
   return [
     ...loadYamlCollection(conferenceModules, 'conference'),
     ...loadYamlCollection(journalModules, 'journal'),

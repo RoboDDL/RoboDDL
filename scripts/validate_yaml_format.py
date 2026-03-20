@@ -67,6 +67,10 @@ def check_file(path: Path) -> list[tuple[int, str, str]]:
             continue
 
         # Has a colon: could be  key: value  or  - key: value
+        key = content[:colon].strip()
+        if key.startswith('"') and key.endswith('"'):
+            errors.append((lineno, line, f"quoted keys are not supported by the parser: {key!r}"))
+
         value = content[colon + 1:].strip()
 
         if value and not is_valid_scalar(value):

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -eu
+
+echo "Running YAML validation before commit..."
+npm run validate:data

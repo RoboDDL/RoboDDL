@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Validate YAML format
-        run: python3 scripts/validate_yaml_format.py
+        run: npm run validate:data
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

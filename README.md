@@ -31,4 +31,5 @@ If you're comfortable making code or data changes, PRs are very welcome. If not,
 
 - 🌍 Deadlines are stored with explicit source timezones; the UI currently displays `RAS` venues in `PST` and other venues in `AoE`
 - 🛠️ Most updates should only require editing a single venue YAML file
+- 🛡️ Invalid venue YAML files are skipped instead of crashing the whole site, and the same format check now runs in local hooks, CI, and deploy
 - 🧪 Development workflow, project structure, Issue guide, and PR guide live in [`CONTRIBUTING.md`](./CONTRIBUTING.md)
