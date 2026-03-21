@@ -118,7 +118,7 @@ export const uiText: Record<Language, UiText> = {
     languageGroupLabel: 'Page language',
     themeToggleLight: 'Switch to light mode',
     themeToggleDark: 'Switch to dark mode',
-    heroTagline: 'Track robot conference deadlines, robotics CFPs, and journal submissions in one place',
+    heroTagline: 'Track robot conference deadlines and journal submissions in one place',
     heroDesktopTip: 'Best experienced on desktop',
     heroWipNote: '[WIP] Deadlines and ratings may still contain errors!',
     topPanels: {
@@ -196,7 +196,7 @@ export const uiText: Record<Language, UiText> = {
     },
     footer: {
       maintainedBy: 'Maintained by',
-      contributionsWelcome: 'Contributions welcome.',
+      contributionsWelcome: '. Contributions welcome.',
     },
     backToTop: 'Back to top',
   },

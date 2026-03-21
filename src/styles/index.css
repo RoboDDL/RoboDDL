@@ -56,15 +56,16 @@ a {
   }
 
   .hero-topbar {
-    @apply flex flex-wrap items-start justify-between gap-3 sm:gap-4;
+    @apply grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3 sm:gap-4;
   }
 
   .hero-tools {
-    @apply relative flex w-fit max-w-full flex-shrink-0 items-center gap-2 self-start;
+    @apply relative flex w-fit max-w-full flex-shrink-0 items-center gap-2 self-start justify-self-end;
   }
 
   .hero-tools-pill {
-    @apply inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-slate-200 bg-white/90 p-2 shadow-sm backdrop-blur;
+    @apply inline-flex flex-shrink-0 items-center gap-1 rounded-[999px] border border-slate-200 bg-white/90 p-2 shadow-sm backdrop-blur;
+    box-shadow: 0 10px 26px rgba(148, 163, 184, 0.14);
   }
 
   .hero-tool-button {
@@ -72,24 +73,30 @@ a {
   }
 
   .hero-tool-button-language {
-    @apply min-w-[3.5rem] px-3 py-1.5;
+    @apply font-semibold tracking-[0.04em];
   }
 
   .hero-tool-button-icon {
-    @apply h-8 w-8 p-1.5;
+    @apply h-10 w-10 p-0;
   }
 
   .hero-tool-button.active {
     @apply bg-slate-900 text-white;
   }
 
-  .hero-tools-divider {
-    @apply mx-1.5 h-5 w-px bg-slate-200;
+  .hero-tool-button-label {
+    font-family: 'JetBrains Mono', 'SFMono-Regular', monospace;
+    @apply text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400;
+  }
+
+  .hero-language-text {
+    font-family: 'JetBrains Mono', 'Noto Sans SC', 'SFMono-Regular', monospace;
+    @apply text-base font-semibold leading-none;
   }
 
   .hero-copy h1 {
     font-family: 'Audiowide', 'Bricolage Grotesque', 'Plus Jakarta Sans', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
-    @apply min-w-0 max-w-4xl text-5xl font-extrabold leading-none tracking-[-0.04em] text-slate-950 sm:text-6xl;
+    @apply min-w-0 max-w-4xl text-4xl font-extrabold leading-none tracking-[-0.04em] text-slate-950 sm:text-6xl;
   }
 
   :root:lang(zh-CN) .hero-copy h1 {
@@ -856,8 +863,12 @@ a {
   color: #e2e8f0;
 }
 
-:root[data-theme='dark'] .hero-tools-divider {
-  background: rgba(71, 85, 105, 0.5);
+:root[data-theme='dark'] .hero-tool-button-label {
+  color: #94a3b8;
+}
+
+:root[data-theme='dark'] .hero-language-text {
+  color: #e2e8f0;
 }
 
 :root[data-theme='dark'] .time-zone-badge {
@@ -1031,11 +1042,29 @@ a {
 
 @media (max-width: 767px) {
   .hero-topbar {
-    @apply flex-col items-start;
+    @apply grid grid-cols-[minmax(0,1fr)_auto] items-center;
   }
 
   .hero-copy h1 {
     font-size: 2.5rem;
+  }
+
+  .hero-tools {
+    align-self: center;
+  }
+
+  .hero-tools-pill {
+    gap: 0.125rem;
+    padding: 0.375rem;
+  }
+
+  .hero-tool-button-icon {
+    height: 2.25rem;
+    width: 2.25rem;
+  }
+
+  .hero-language-text {
+    font-size: 0.9375rem;
   }
 
   .top-panel-card {

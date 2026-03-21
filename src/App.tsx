@@ -226,20 +226,19 @@ function App() {
   const themeToggleLabel = getThemeToggleLabel(theme, language);
   const githubLabel = text.githubLabel;
   const nextLanguage = language === 'en' ? 'zh-CN' : 'en';
-  const languageToggleText = nextLanguage === 'en' ? 'EN' : '中文';
   const languageToggleLabel =
     language === 'en' ? 'Switch page language to Chinese' : '将页面语言切换为英文';
   const timeZoneCards = [
     {
       id: 'aoe',
       label: text.timezones.aoe,
-      badge: 'UTC-12',
+      badge: 'AoE',
       timeZone: 'Etc/GMT+12',
     },
     {
       id: 'pt',
       label: text.timezones.pacific,
-      badge: 'PT',
+      badge: 'PST',
       timeZone: 'America/Los_Angeles',
     },
   ] as const;
@@ -310,25 +309,15 @@ function App() {
               <h1>Robo<span className="hero-title-ddl">DDL</span></h1>
               <div className="hero-tools">
                 <div className="hero-tools-pill">
-                  <button
-                    type="button"
-                    className="hero-tool-button hero-tool-button-language active"
-                    onClick={() => setLanguage(nextLanguage)}
-                    aria-label={languageToggleLabel}
-                    title={languageToggleLabel}
-                  >
-                    {languageToggleText}
-                  </button>
-                  <span className="hero-tools-divider" aria-hidden="true" />
                   <a
+                    className="hero-tool-button hero-tool-button-icon"
                     href="https://github.com/RoboDDL/RoboDDL"
                     target="_blank"
                     rel="noreferrer"
-                    className="hero-tool-button hero-tool-button-icon"
                     aria-label={githubLabel}
                     title={githubLabel}
                   >
-                    <Github className="h-3.5 w-3.5" />
+                    <Github className="h-4 w-4" />
                   </a>
                   <button
                     type="button"
@@ -337,7 +326,16 @@ function App() {
                     aria-label={themeToggleLabel}
                     title={themeToggleLabel}
                   >
-                    {theme === 'light' ? <Moon className="h-3.5 w-3.5" /> : <Sun className="h-3.5 w-3.5" />}
+                    {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+                  </button>
+                  <button
+                    type="button"
+                    className="hero-tool-button hero-tool-button-icon hero-tool-button-language"
+                    onClick={() => setLanguage(nextLanguage)}
+                    aria-label={languageToggleLabel}
+                    title={languageToggleLabel}
+                  >
+                    <span className="hero-language-text">{language === 'zh-CN' ? '中' : 'EN'}</span>
                   </button>
                 </div>
               </div>
@@ -347,7 +345,6 @@ function App() {
               <Monitor className="h-3.5 w-3.5" />
               <span>{text.heroDesktopTip}</span>
             </div>
-            <div className="hero-note">🚧 {text.heroWipNote}</div>
           </div>
         </section>
 
