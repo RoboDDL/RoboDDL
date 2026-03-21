@@ -118,7 +118,7 @@ export const uiText: Record<Language, UiText> = {
     languageGroupLabel: 'Page language',
     themeToggleLight: 'Switch to light mode',
     themeToggleDark: 'Switch to dark mode',
-    heroTagline: 'Track robot conference deadlines and journal submissions in one place',
+    heroTagline: 'One stop for tracking robotics conferences and journals',
     heroDesktopTip: 'Best experienced on desktop',
     heroWipNote: '[WIP] Deadlines and ratings may still contain errors!',
     topPanels: {
