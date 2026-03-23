@@ -5,12 +5,9 @@
 :root {
   color: #102027;
   background: #f5f7fa;
-  font-family: 'Plus Jakarta Sans', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  /* 统一字体：英文用 Plus Jakarta Sans，中文用 Noto Sans SC */
+  font-family: 'Plus Jakarta Sans', 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
   color-scheme: light;
-}
-
-:root:lang(zh-CN) {
-  font-family: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 
 body {
