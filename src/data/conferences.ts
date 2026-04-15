@@ -116,6 +116,7 @@ if (loadIssues.length > 0) {
 export const categories: Array<'All' | Exclude<Category, 'Journal'>> = [
   'All',
   'RAS',
+  'Robot Learning',
   'AI x Robotics',
 ];
 

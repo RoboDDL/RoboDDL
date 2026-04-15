@@ -5,7 +5,11 @@ export type Language = 'en' | 'zh-CN';
 interface UiText {
   pageTitle: string;
   githubLabel: string;
+  wechatLabel: string;
+  xhsLabel: string;
   languageGroupLabel: string;
+  languageToggleToChinese: string;
+  languageToggleToEnglish: string;
   themeToggleLight: string;
   themeToggleDark: string;
   heroTagline: string;
@@ -115,7 +119,11 @@ export const uiText: Record<Language, UiText> = {
   en: {
     pageTitle: 'RoboDDL | Robot Conference Deadlines and Robotics CFP Tracker',
     githubLabel: 'Open RoboDDL on GitHub',
+    wechatLabel: 'Show RoboDDL WeChat QR code',
+    xhsLabel: 'Show RoboDDL Xiaohongshu QR code',
     languageGroupLabel: 'Page language',
+    languageToggleToChinese: 'Switch page language to Chinese',
+    languageToggleToEnglish: 'Switch page language to English',
     themeToggleLight: 'Switch to light mode',
     themeToggleDark: 'Switch to dark mode',
     heroTagline: 'One stop for tracking robotics conferences and journals',
@@ -203,7 +211,11 @@ export const uiText: Record<Language, UiText> = {
   'zh-CN': {
     pageTitle: 'RoboDDL | 机器人会议与期刊截止日期追踪',
     githubLabel: '在 GitHub 上打开 RoboDDL',
+    wechatLabel: '显示 RoboDDL 微信二维码',
+    xhsLabel: '显示 RoboDDL 小红书二维码',
     languageGroupLabel: '页面语言',
+    languageToggleToChinese: '将页面语言切换为中文',
+    languageToggleToEnglish: '将页面语言切换为英文',
     themeToggleLight: '切换到浅色模式',
     themeToggleDark: '切换到深色模式',
     heroTagline: '一站式追踪机器人领域会议与期刊',
@@ -293,10 +305,9 @@ export const uiText: Record<Language, UiText> = {
 const categoryLabels: Record<string, Record<Language, string>> = {
   All: { en: 'All', 'zh-CN': '全部' },
   RAS: { en: 'RAS', 'zh-CN': 'RAS' },
-  'AI x Robotics': { en: 'AI x Robotics', 'zh-CN': 'AI x 机器人' },
+  'AI x Robotics': { en: 'AI x Robotics', 'zh-CN': 'AI 与机器人' },
   'Robot Learning': { en: 'Robot Learning', 'zh-CN': '机器人学习' },
   Journal: { en: 'Journal', 'zh-CN': '期刊' },
-  'N/A': { en: 'N/A', 'zh-CN': '未分类' },
 };
 
 const venueTypeLabels: Record<'All' | VenueType, Record<Language, string>> = {
@@ -418,6 +429,10 @@ const zhVenueTranslations: Record<string, VenueTranslation> = {
   rss: {
     fullTitle: '机器人：科学与系统会议',
     summary: '顶级机器人会议，聚焦核心机器人科学、系统、规划、感知与学习。',
+  },
+  siggraph: {
+    fullTitle: '计算机图形学与交互技术特别兴趣组大会',
+    summary: '计算机图形学与交互技术顶会，在仿真、可视化、几何建模、物理动画和数字人等方向与机器人研究存在交叉。',
   },
   ijrr: {
     fullTitle: '国际机器人研究期刊',
@@ -678,35 +693,45 @@ export function localizeVenueNote(
 }
 
 export function getLocalizedVenue(venue: VenueView, language: Language): LocalizedVenueView {
+  const venueTranslation = language === 'zh-CN' ? zhVenueTranslations[venue.slug] : undefined;
+
   if (venue.venueType === 'conference') {
-    const normalizedTimezoneLabel = getTimezoneDisplayLabel(venue.timezone, 'en');
+    const normalizedTimezoneLabel = getTimezoneDisplayLabel(venue.timezone, language);
+    const fullTitle = venueTranslation?.fullTitle ?? venue.fullTitle;
+    const summary = venueTranslation?.summary ?? venue.summary;
+    const note = localizeVenueNote(venue, language);
+    const sourceLabel = localizeSourceLabel(venue.sourceLabel, language);
+    const conferenceDates = localizeConferenceDate(venue.conferenceDates, language);
+    const location = localizeLocation(venue.location, language);
+    const countdownLabel = getCountdownLabel(venue.countdownLabel, language);
+    const venueTypeLabel = getVenueTypeLabel(venue.venueType, language);
+    const categoryLabel = getCategoryLabel(venue.category, language);
 
     return {
-      fullTitle: venue.fullTitle,
-      summary: venue.summary,
-      note: venue.note,
-      sourceLabel: venue.sourceLabel,
-      conferenceDates: venue.conferenceDates,
-      location: venue.location,
-      countdownLabel: venue.countdownLabel,
-      venueTypeLabel: getVenueTypeLabel(venue.venueType, 'en'),
-      categoryLabel: venue.category,
+      fullTitle,
+      summary,
+      note,
+      sourceLabel,
+      conferenceDates,
+      location,
+      countdownLabel,
+      venueTypeLabel,
+      categoryLabel,
       normalizedTimezoneLabel,
       searchKeywords: [
-        venue.fullTitle,
-        venue.summary,
-        venue.note ?? '',
-        venue.sourceLabel,
-        venue.conferenceDates ?? '',
-        venue.location ?? '',
-        venue.category,
+        fullTitle,
+        summary,
+        note ?? '',
+        sourceLabel,
+        conferenceDates ?? '',
+        location ?? '',
+        categoryLabel,
         normalizedTimezoneLabel,
       ].filter(Boolean),
     };
   }
 
-  const venueTranslation = language === 'zh-CN' ? zhVenueTranslations[venue.slug] : undefined;
-  const fullTitle = venue.fullTitle;
+  const fullTitle = venueTranslation?.fullTitle ?? venue.fullTitle;
   const summary = venueTranslation?.summary ?? venue.summary;
   const note = localizeVenueNote(venue, language);
   const sourceLabel = localizeSourceLabel(venue.sourceLabel, language);

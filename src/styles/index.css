@@ -77,6 +77,32 @@ a {
     @apply h-10 w-10 p-0;
   }
 
+  .hero-social-popover {
+    @apply pointer-events-none absolute right-0 top-full z-20 mt-3 w-44 max-w-[calc(100vw-2rem)] translate-y-1 rounded-2xl border border-slate-200 bg-white p-3 opacity-0 shadow-lg transition;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+  }
+
+  .hero-social-popover-large {
+    width: min(14rem, calc(100vw - 2rem));
+  }
+
+  .hero-social-popover.open {
+    @apply pointer-events-auto translate-y-0 opacity-100;
+  }
+
+  .hero-social-popover-frame {
+    @apply overflow-hidden rounded-xl border border-slate-200 bg-slate-50;
+  }
+
+  .hero-social-popover-image {
+    @apply block h-auto w-full object-contain;
+    max-height: min(19rem, 60vh);
+  }
+
+  .hero-social-popover-large .hero-social-popover-image {
+    max-height: min(23rem, 68vh);
+  }
+
   .hero-tool-button.active {
     @apply bg-slate-900 text-white;
   }
@@ -854,6 +880,17 @@ a {
   border-color: rgba(71, 85, 105, 0.42);
   background: linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(17, 24, 39, 0.88));
   box-shadow: 0 14px 30px rgba(2, 6, 23, 0.22);
+}
+
+:root[data-theme='dark'] .hero-social-popover {
+  border-color: rgba(71, 85, 105, 0.4);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.94));
+  box-shadow: 0 18px 44px rgba(2, 6, 23, 0.38);
+}
+
+:root[data-theme='dark'] .hero-social-popover-frame {
+  border-color: rgba(71, 85, 105, 0.42);
+  background: rgba(15, 23, 42, 0.92);
 }
 
 :root[data-theme='dark'] .hero-tool-button {

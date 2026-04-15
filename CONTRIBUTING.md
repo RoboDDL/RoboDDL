@@ -193,7 +193,8 @@ Conference notes:
 - `knownEditions` should contain official editions, not guesses.
 - Prefer official CFP or official event pages for `deadlineSourceUrl`.
 - Use the real local deadline with the correct `timezone`; the app converts it for display.
-- Conference categories should stay aligned with existing filters unless you are also updating the UI logic.
+- Conference `category` should use one of: `RAS`, `Robot Learning`, `AI x Robotics`.
+- Suggested rule of thumb: use `Robot Learning` for venues centered on robot learning / embodied intelligence (for example `RSS`, `CoRL`); use `AI x Robotics` for broader AI venues with strong robotics relevance.
 </details>
 
 ### Journals

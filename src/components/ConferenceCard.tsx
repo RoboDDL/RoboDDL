@@ -3,11 +3,13 @@ import { BookOpen, CalendarDays, ChevronDown, ExternalLink, Globe2, MapPin, Star
 import { VenueView } from '../data/conferences';
 import {
   getAbstractDeadlineNote,
+  getCategoryLabel,
   getCountdownLabel,
   getEstimatedSourceNote,
   getExpandButtonLabel,
   getFavoriteButtonLabel,
   getLocalizedVenue,
+  getVenueTypeLabel,
   Language,
   uiText,
 } from '../i18n';
@@ -29,8 +31,10 @@ function ConferenceCard({ venue, language, isFavorite, onToggleFavorite }: Confe
   const venueInfoText = uiText[venueInfoLanguage];
   const localizedVenue = getLocalizedVenue(venue, language);
   const isJournal = venue.submissionModel === 'rolling';
-  const venueTypeLabel = venue.venueType[0].toUpperCase() + venue.venueType.slice(1);
-  const deadlineLabel = venue.submissionModel === 'deadline' ? venue.countdownLabel : 'Status';
+  const venueTypeLabel = getVenueTypeLabel(venue.venueType, language);
+  const deadlineLabel =
+    venue.submissionModel === 'deadline' ? getCountdownLabel(venue.countdownLabel, language) : text.venue.status;
+  const categoryLabel = getCategoryLabel(venue.category, language);
   const hasCcfRank = Boolean(venue.ccfRank && venue.ccfRank !== 'N/A');
   const hasCaaiRank = Boolean(venue.caaiRank && venue.caaiRank !== 'N/A');
   const hasCasPartition = Boolean(venue.casPartition && venue.casPartition !== 'N/A');
@@ -65,7 +69,7 @@ function ConferenceCard({ venue, language, isFavorite, onToggleFavorite }: Confe
                   {tag}
                 </span>
               ))}
-              {venue.venueType === 'conference' ? <span className="pill">{venue.category}</span> : null}
+              {venue.venueType === 'conference' ? <span className="pill">{categoryLabel}</span> : null}
               {hasCcfRank ? <span className="pill">CCF-{venue.ccfRank}</span> : null}
               {hasCaaiRank ? <span className="pill">CAAI-{venue.caaiRank}</span> : null}
               {hasCasPartition ? <span className="pill">CAS-{casDisplayValue}</span> : null}
@@ -129,7 +133,7 @@ function ConferenceCard({ venue, language, isFavorite, onToggleFavorite }: Confe
                     </div>
                     <div className="meta-value">{formatDeadline(venue.paperDeadline!, venue.timezone!)}</div>
                     <div className="meta-sub">
-                      {text.venue.normalizedToPrefix} {localizedVenue.normalizedTimezoneLabel}。
+                      {text.venue.normalizedToPrefix} {localizedVenue.normalizedTimezoneLabel}
                     </div>
                   </div>
                   <div className="meta-block">
@@ -194,7 +198,7 @@ function ConferenceCard({ venue, language, isFavorite, onToggleFavorite }: Confe
                 {venue.specialIssueUrl ? (
                   <a href={venue.specialIssueUrl} target="_blank" rel="noreferrer" className="action-button">
                     <ExternalLink className="h-4 w-4" />
-                    {venue.specialIssueLabel ?? text.venue.specialIssue}
+                    {language === 'zh-CN' ? text.venue.specialIssue : venue.specialIssueLabel ?? text.venue.specialIssue}
                   </a>
                 ) : null}
                 {venue.dblp ? (
@@ -229,7 +233,7 @@ function ConferenceCard({ venue, language, isFavorite, onToggleFavorite }: Confe
                   {venue.homepage ? (
                     <a href={venue.homepage} target="_blank" rel="noreferrer" className="action-button">
                       <Globe2 className="h-4 w-4" />
-                      Series Page
+                      {text.venue.seriesPage}
                     </a>
                   ) : null}
                 </>
