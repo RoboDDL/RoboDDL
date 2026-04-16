@@ -18,7 +18,6 @@ import {
 
 type Theme = 'light' | 'dark';
 type SocialPreviewId = 'wechat' | 'xhs';
-const PRODUCTION_HOSTNAMES = new Set(['roboddl.com', 'www.roboddl.com']);
 
 function getInitialTheme(): Theme {
   if (typeof window === 'undefined') {
@@ -287,8 +286,7 @@ function App() {
   const xLabel = text.xLabel;
   const wechatLabel = text.wechatLabel;
   const xhsLabel = text.xhsLabel;
-  const isPreviewEnvironment =
-    typeof window !== 'undefined' && !PRODUCTION_HOSTNAMES.has(window.location.hostname);
+  const isPreviewEnvironment = __DEPLOY_BRANCH__ === 'dev';
   const nextLanguage = language === 'en' ? 'zh-CN' : 'en';
   const languageToggleLabel =
     language === 'en' ? text.languageToggleToChinese : text.languageToggleToEnglish;

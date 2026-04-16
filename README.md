@@ -11,6 +11,12 @@ RoboDDL is a deadline tracker for robotics conferences and strong journals, insp
 Contribution and collaboration guidelines live in [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 If you're comfortable making code or data changes, PRs are very welcome. If not, opening an issue with the source link and the field that needs fixing is still hugely helpful.
 
+## Deployments
+
+- Production site: https://roboddl.com
+- Vercel dev preview: https://robo-ddl.vercel.app
+- The top-right `Preview` ribbon is only shown for `dev` branch builds
+
 ## Highlights
 
 - 🤖 Conference deadline tracking and a recommended journal list
