@@ -408,8 +408,8 @@ function App() {
   return (
     <div className="app-shell">
       {isPreviewEnvironment ? (
-        <div className="environment-ribbon" aria-label="Preview / Dev environment">
-          Preview / Dev
+        <div className="environment-ribbon" aria-label="Preview environment">
+          Preview
         </div>
       ) : null}
       <main className="page-frame">
