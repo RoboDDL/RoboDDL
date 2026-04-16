@@ -18,6 +18,7 @@ import {
 
 type Theme = 'light' | 'dark';
 type SocialPreviewId = 'wechat' | 'xhs';
+const PRODUCTION_HOSTNAMES = new Set(['roboddl.com', 'www.roboddl.com']);
 
 function getInitialTheme(): Theme {
   if (typeof window === 'undefined') {
@@ -32,7 +33,15 @@ function getInitialTheme(): Theme {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-// Minimal brand glyphs adapted from Simple Icons for monochrome toolbar buttons.
+// Minimal brand glyphs for monochrome toolbar buttons.
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M18.244 2.25h3.308l-7.227 8.26L22.823 21.75h-6.652l-5.21-6.817L4.995 21.75H1.685l7.73-8.835L1.286 2.25h6.82l4.71 6.231zm-1.161 17.52h1.833L7.113 4.126H5.146z" />
+    </svg>
+  );
+}
+
 function WeChatIcon({ className }: { className?: string }) {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -275,8 +284,11 @@ function App() {
 
   const themeToggleLabel = getThemeToggleLabel(theme, language);
   const githubLabel = text.githubLabel;
+  const xLabel = text.xLabel;
   const wechatLabel = text.wechatLabel;
   const xhsLabel = text.xhsLabel;
+  const isPreviewEnvironment =
+    typeof window !== 'undefined' && !PRODUCTION_HOSTNAMES.has(window.location.hostname);
   const nextLanguage = language === 'en' ? 'zh-CN' : 'en';
   const languageToggleLabel =
     language === 'en' ? text.languageToggleToChinese : text.languageToggleToEnglish;
@@ -395,6 +407,11 @@ function App() {
 
   return (
     <div className="app-shell">
+      {isPreviewEnvironment ? (
+        <div className="environment-ribbon" aria-label="Preview / Dev environment">
+          Preview / Dev
+        </div>
+      ) : null}
       <main className="page-frame">
         <section className="hero-card">
           <div className="hero-copy">
@@ -420,6 +437,17 @@ function App() {
                     title={githubLabel}
                   >
                     <Github className="h-4 w-4" />
+                  </a>
+                  <a
+                    className="hero-tool-button hero-tool-button-icon"
+                    href="https://x.com/roboddl"
+                    target="_blank"
+                    rel="noreferrer"
+                    onFocus={closeSocialPreview}
+                    aria-label={xLabel}
+                    title={xLabel}
+                  >
+                    <XIcon className="h-[16px] w-[16px]" />
                   </a>
                   <button
                     type="button"

@@ -5,6 +5,7 @@ export type Language = 'en' | 'zh-CN';
 interface UiText {
   pageTitle: string;
   githubLabel: string;
+  xLabel: string;
   wechatLabel: string;
   xhsLabel: string;
   languageGroupLabel: string;
@@ -119,6 +120,7 @@ export const uiText: Record<Language, UiText> = {
   en: {
     pageTitle: 'RoboDDL | Robot Conference Deadlines and Robotics CFP Tracker',
     githubLabel: 'Open RoboDDL on GitHub',
+    xLabel: 'Open RoboDDL on X',
     wechatLabel: 'Show RoboDDL WeChat QR code',
     xhsLabel: 'Show RoboDDL Xiaohongshu QR code',
     languageGroupLabel: 'Page language',
@@ -211,6 +213,7 @@ export const uiText: Record<Language, UiText> = {
   'zh-CN': {
     pageTitle: 'RoboDDL | 机器人会议与期刊截止日期追踪',
     githubLabel: '在 GitHub 上打开 RoboDDL',
+    xLabel: '在 X 上打开 RoboDDL',
     wechatLabel: '显示 RoboDDL 微信二维码',
     xhsLabel: '显示 RoboDDL 小红书二维码',
     languageGroupLabel: '页面语言',

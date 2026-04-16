@@ -23,6 +23,7 @@ coverage/
 .vscode/*
 !.vscode/extensions.json
 .cache/
+.vercel/
 
 agents/
 reports/
