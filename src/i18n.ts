@@ -245,7 +245,7 @@ export const uiText: Record<Language, UiText> = {
       sort: '排序',
       view: '视图',
       focus: '关注',
-      favoritesOnly: '已跟踪',
+      favoritesOnly: '已收藏',
       rasHelpText: 'RAS 指的是 IEEE Robotics and Automation Society（IEEE 机器人与自动化学会）。',
       rasHelpLink: '前往 IEEE RAS 了解更多',
     },
@@ -256,7 +256,7 @@ export const uiText: Record<Language, UiText> = {
     },
     sortLabels: {
       deadline: '最近截止',
-      title: 'A-Z',
+      title: '首字母',
     },
     countdown: {
       days: '天',
@@ -308,8 +308,8 @@ export const uiText: Record<Language, UiText> = {
 const categoryLabels: Record<string, Record<Language, string>> = {
   All: { en: 'All', 'zh-CN': '全部' },
   RAS: { en: 'RAS', 'zh-CN': 'RAS' },
-  'AI x Robotics': { en: 'AI x Robotics', 'zh-CN': 'AI 与机器人' },
-  'Robot Learning': { en: 'Robot Learning', 'zh-CN': '机器人学习' },
+  'AI x Robotics': { en: 'AI x Robotics', 'zh-CN': 'AI x Robotics' },
+  'Robot Learning': { en: 'Robot Learning', 'zh-CN': 'Robot Learning' },
   Journal: { en: 'Journal', 'zh-CN': '期刊' },
 };
 
