@@ -23,12 +23,7 @@
       (() => {
         try {
           const savedTheme = window.localStorage.getItem('roboddl:theme');
-          const theme =
-            savedTheme === 'light' || savedTheme === 'dark'
-              ? savedTheme
-              : window.matchMedia('(prefers-color-scheme: dark)').matches
-                ? 'dark'
-                : 'light';
+          const theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : 'light';
           document.documentElement.dataset.theme = theme;
           document.documentElement.style.colorScheme = theme;
           document
