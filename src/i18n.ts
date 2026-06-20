@@ -353,10 +353,6 @@ const zhVenueTranslations: Record<string, VenueTranslation> = {
     fullTitle: 'IEEE/ASME 高级智能机电一体化国际会议',
     summary: '机电一体化旗舰会议，涵盖机器人、智能系统、感知、执行、人机交互、设计与集成应用。',
   },
-  biorob: {
-    fullTitle: 'IEEE RAS/EMBS 生物医学机器人与生物机电一体化国际会议',
-    summary: '生物医学机器人重要会议，覆盖手术机器人、康复机器人、可穿戴机器人、触觉、神经机器人与辅助系统。',
-  },
   case: {
     fullTitle: 'IEEE 自动化科学与工程国际会议',
     summary: 'IEEE RAS 自动化旗舰会议，在制造、物流、医疗、自主系统与智能自动化方向与机器人高度交叉。',
@@ -380,10 +376,6 @@ const zhVenueTranslations: Record<string, VenueTranslation> = {
   humanoids: {
     fullTitle: 'IEEE-RAS 人形机器人国际会议',
     summary: '人形机器人旗舰会议，涵盖全身控制、运动、操作、具身性、人本交互与综合人形系统。',
-  },
-  icar: {
-    fullTitle: '高级机器人国际会议',
-    summary: '历史悠久的机器人会议，涵盖先进机器人系统、操作、自主性、具身智能与真实世界应用。',
   },
   iccv: {
     fullTitle: 'IEEE/CVF 国际计算机视觉会议',
@@ -413,17 +405,9 @@ const zhVenueTranslations: Record<string, VenueTranslation> = {
     fullTitle: '神经信息处理系统会议',
     summary: '重要 AI 顶会，在机器人、具身智能、控制与模仿学习方向影响力很强。',
   },
-  rcar: {
-    fullTitle: 'IEEE 实时计算与机器人国际会议',
-    summary: '聚焦机器人与实时计算，涵盖机器人控制、感知、传感器融合、人机交互、机器人智能与真实系统。',
-  },
   robio: {
     fullTitle: 'IEEE 机器人与仿生学国际会议',
     summary: '成熟的机器人与仿生会议，涵盖仿生机器人、具身智能、人机交互、机器人视觉、康复机器人与智能制造。',
-  },
-  robosoft: {
-    fullTitle: 'IEEE-RAS 软体机器人国际会议',
-    summary: '软体机器人旗舰会议，涵盖软执行、软传感、形态设计、制造、医疗器械与具身智能。',
   },
   roman: {
     fullTitle: 'IEEE 机器人与人交互通信国际会议',
@@ -531,8 +515,7 @@ export function getInitialLanguage(): Language {
     return savedLanguage;
   }
 
-  const preferredLanguage = window.navigator.languages?.[0] ?? window.navigator.language;
-  return preferredLanguage.toLowerCase().startsWith('zh') ? 'zh-CN' : 'en';
+  return 'en';
 }
 
 export function getLocale(language: Language): string {

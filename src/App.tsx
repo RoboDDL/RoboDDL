@@ -499,7 +499,7 @@ function App() {
                     aria-label={languageToggleLabel}
                     title={languageToggleLabel}
                   >
-                    <span className="hero-language-text">{language === 'zh-CN' ? '中' : 'EN'}</span>
+                    <span className="hero-language-text">{language === 'en' ? '中' : 'EN'}</span>
                   </button>
                 </div>
                 <div
