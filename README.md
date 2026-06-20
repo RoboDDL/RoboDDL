@@ -6,6 +6,8 @@
 [![Build Status](https://img.shields.io/github/actions/workflow/status/RoboDDL/RoboDDL/.github/workflows/deploy.yml?branch=main)](https://github.com/RoboDDL/RoboDDL/actions/workflows/deploy.yml)
 [![Open PRs](https://img.shields.io/github/issues-pr/RoboDDL/RoboDDL)](https://github.com/RoboDDL/RoboDDL/pulls)
 
+English | [简体中文](./README.zh-CN.md)
+
 RoboDDL is a deadline tracker for robotics conferences and strong journals, inspired by [ccf-ddl](https://github.com/ccfddl/ccf-deadlines).
 
 Contribution and collaboration guidelines live in [`CONTRIBUTING.md`](./CONTRIBUTING.md).

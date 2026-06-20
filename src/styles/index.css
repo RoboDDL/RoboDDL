@@ -33,10 +33,10 @@ a {
     @apply relative min-h-screen overflow-x-hidden px-3 py-4 sm:px-5 lg:px-6;
   }
 
-  .environment-ribbon {
+  .dev-badge {
     font-family: 'JetBrains Mono', 'SFMono-Regular', monospace;
-    @apply pointer-events-none fixed right-[-3.25rem] top-6 z-40 w-56 rotate-45 border border-amber-300/80 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 px-4 py-1.5 text-center text-[11px] font-bold uppercase tracking-[0.24em] text-white shadow-lg;
-    box-shadow: 0 16px 34px rgba(249, 115, 22, 0.28);
+    @apply pointer-events-none fixed right-[-3rem] top-4 z-40 w-40 rotate-45 border border-amber-300/80 bg-amber-500 px-4 py-1.5 text-center text-[11px] font-bold uppercase tracking-[0.22em] text-white shadow-lg;
+    box-shadow: 0 16px 32px rgba(249, 115, 22, 0.26);
   }
 
   .page-frame {
@@ -903,9 +903,9 @@ a {
   color: #e2e8f0;
 }
 
-:root[data-theme='dark'] .environment-ribbon {
+:root[data-theme='dark'] .dev-badge {
   border-color: rgba(253, 186, 116, 0.75);
-  box-shadow: 0 18px 36px rgba(244, 114, 23, 0.3);
+  box-shadow: 0 18px 36px rgba(244, 114, 23, 0.34);
 }
 
 :root[data-theme='dark'] .hero-tool-button-label {
@@ -1098,10 +1098,10 @@ a {
     align-self: center;
   }
 
-  .environment-ribbon {
-    right: -4.5rem;
-    top: 1rem;
-    width: 13.5rem;
+  .dev-badge {
+    right: -3.4rem;
+    top: 0.9rem;
+    width: 10.5rem;
     font-size: 0.625rem;
     letter-spacing: 0.18em;
   }

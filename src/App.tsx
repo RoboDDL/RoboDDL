@@ -286,7 +286,7 @@ function App() {
   const xLabel = text.xLabel;
   const wechatLabel = text.wechatLabel;
   const xhsLabel = text.xhsLabel;
-  const isPreviewEnvironment = __DEPLOY_BRANCH__ === 'dev';
+  const isDevBranch = __DEPLOY_BRANCH__ === 'dev';
   const nextLanguage = language === 'en' ? 'zh-CN' : 'en';
   const languageToggleLabel =
     language === 'en' ? text.languageToggleToChinese : text.languageToggleToEnglish;
@@ -405,9 +405,9 @@ function App() {
 
   return (
     <div className="app-shell">
-      {isPreviewEnvironment ? (
-        <div className="environment-ribbon" aria-label="Preview environment">
-          Preview
+      {isDevBranch ? (
+        <div className="dev-badge" aria-label="Dev branch">
+          DEV
         </div>
       ) : null}
       <main className="page-frame">
