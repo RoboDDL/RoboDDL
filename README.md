@@ -14,8 +14,7 @@ If you're comfortable making code or data changes, PRs are very welcome. If not,
 ## Deployments
 
 - Production site: https://roboddl.com
-- Vercel dev preview: https://robo-ddl.vercel.app
-- The top-right `Preview` ribbon is only shown for `dev` branch builds
+- Dev preview: https://dev.roboddl.com
 
 ## Highlights
 
