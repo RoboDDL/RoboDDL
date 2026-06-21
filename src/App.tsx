@@ -584,6 +584,7 @@ function App() {
               type="button"
               className={activeTopPanel === 'calendar' ? 'top-panel-switch active' : 'top-panel-switch'}
               onClick={() => toggleTopPanel('calendar')}
+              aria-label={text.topPanels.calendar}
             >
               <span className="top-panel-switch-icon" aria-hidden="true">
                 <CalendarDays className="h-4 w-4" />
@@ -594,6 +595,7 @@ function App() {
               type="button"
               className={activeTopPanel === 'timezones' ? 'top-panel-switch active' : 'top-panel-switch'}
               onClick={() => toggleTopPanel('timezones')}
+              aria-label={text.topPanels.timezones}
             >
               <span className="top-panel-switch-icon" aria-hidden="true">
                 <Clock3 className="h-4 w-4" />
@@ -605,6 +607,7 @@ function App() {
                 type="button"
                 className={activeTopPanel === 'filters' ? 'top-panel-switch active' : 'top-panel-switch'}
                 onClick={() => toggleTopPanel('filters')}
+                aria-label={text.topPanels.filters}
               >
                 <span className="top-panel-switch-icon" aria-hidden="true">
                   <SlidersHorizontal className="h-4 w-4" />
