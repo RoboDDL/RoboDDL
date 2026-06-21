@@ -305,6 +305,12 @@ a {
     @apply rounded-[16px] border border-slate-200 bg-slate-50 p-3;
   }
 
+  @media (max-width: 767px) {
+    .calendar-month-empty {
+      display: none;
+    }
+  }
+
   .calendar-month-head {
     @apply flex items-center justify-between gap-3;
   }
@@ -737,6 +743,8 @@ a {
 }
 
 :root[data-theme='dark'] {
+  --dark-selected-border: rgba(235, 235, 245, 0.72);
+  --dark-selected-inner: rgba(255, 255, 255, 0.08);
   --dark-system-background: #000;
   --dark-secondary-background: #1c1c1e;
   --dark-tertiary-background: #2c2c2e;
@@ -834,9 +842,10 @@ a {
 }
 
 :root[data-theme='dark'] .top-panel-switch.active {
-  border-color: rgba(251, 191, 36, 0.34);
-  background: linear-gradient(135deg, rgba(251, 191, 36, 0.9), rgba(245, 158, 11, 0.82));
-  color: #050505;
+  border-color: var(--dark-selected-border);
+  background: var(--dark-tertiary-grouped-background);
+  color: var(--dark-label);
+  box-shadow: inset 0 0 0 1px var(--dark-selected-inner);
 }
 
 :root[data-theme='dark'] .top-panel-switch-icon {
@@ -847,13 +856,13 @@ a {
 }
 
 :root[data-theme='dark'] .top-panel-switch.active .top-panel-switch-title {
-  color: #050505;
+  color: var(--dark-label);
 }
 
 :root[data-theme='dark'] .top-panel-switch.active .top-panel-switch-icon {
-  border-color: rgba(0, 0, 0, 0.16);
-  background: rgba(0, 0, 0, 0.16);
-  color: #050505;
+  border-color: var(--dark-selected-border);
+  background: transparent;
+  color: var(--dark-label);
 }
 
 :root[data-theme='dark'] .live-help-popover a:hover {
@@ -942,7 +951,7 @@ a {
 }
 
 :root[data-theme='dark'] .filter-toggle input {
-  accent-color: #fbbf24;
+  accent-color: #8e8e93;
   border-color: var(--dark-separator);
   background: var(--dark-system-grouped-background);
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.7);
@@ -976,29 +985,36 @@ a {
 
 :root[data-theme='dark'] .filter-chip.active,
 :root[data-theme='dark'] .action-button.primary {
-  border-color: rgba(251, 191, 36, 0.34);
-  background: linear-gradient(135deg, rgba(251, 191, 36, 0.9), rgba(245, 158, 11, 0.82));
-  color: #050505;
+  border-color: var(--dark-selected-border);
+  background: var(--dark-tertiary-grouped-background);
+  color: var(--dark-label);
+  box-shadow: inset 0 0 0 1px var(--dark-selected-inner);
 }
 
 :root[data-theme='dark'] .hero-tool-button.active {
-  border-color: rgba(251, 191, 36, 0.34);
-  background: linear-gradient(135deg, rgba(251, 191, 36, 0.9), rgba(245, 158, 11, 0.82));
-  color: #050505;
+  border-color: var(--dark-selected-border);
+  background: transparent;
+  color: var(--dark-label);
+  box-shadow: inset 0 0 0 1px var(--dark-selected-inner);
 }
 
 :root[data-theme='dark'] .filter-chip.active .filter-chip-count {
-  border-color: rgba(0, 0, 0, 0.16);
-  background: rgba(0, 0, 0, 0.16);
-  color: #050505;
+  border-color: var(--dark-selected-border);
+  background: transparent;
+  color: var(--dark-label);
+}
+
+:root[data-theme='dark'] .filter-chip-help .filter-chip.active .filter-chip-help-icon {
+  border-color: var(--dark-selected-border);
+  color: var(--dark-label);
 }
 
 :root[data-theme='dark'] .filter-chip.active:hover,
 :root[data-theme='dark'] .action-button.primary:hover,
 :root[data-theme='dark'] .back-to-top:hover {
-  border-color: rgba(251, 191, 36, 0.36);
-  background: linear-gradient(135deg, rgba(252, 211, 77, 0.95), rgba(245, 158, 11, 0.86));
-  color: #050505;
+  border-color: var(--dark-selected-border);
+  background: var(--dark-fill);
+  color: var(--dark-label);
 }
 
 :root[data-theme='dark'] .hero-note,
@@ -1008,9 +1024,9 @@ a {
 :root[data-theme='dark'] .summary-deadline-badge,
 :root[data-theme='dark'] .calendar-item-following,
 :root[data-theme='dark'] .favorite-button.active {
-  border-color: rgba(251, 191, 36, 0.28);
-  background: rgba(251, 191, 36, 0.12);
-  color: #fcd34d;
+  border-color: var(--dark-selected-border);
+  background: transparent;
+  color: var(--dark-label);
 }
 
 :root[data-theme='dark'] .calendar-item-following span:last-child,
@@ -1020,7 +1036,7 @@ a {
 :root[data-theme='dark'] .pill-warn,
 :root[data-theme='dark'] .summary-deadline-badge,
 :root[data-theme='dark'] .favorite-button.active {
-  color: #fcd34d;
+  color: var(--dark-label);
 }
 
 :root[data-theme='dark'] .pill {
@@ -1032,14 +1048,14 @@ a {
 :root[data-theme='dark'] .pill-strong,
 :root[data-theme='dark'] .source-label,
 :root[data-theme='dark'] .back-to-top {
-  border-color: rgba(251, 191, 36, 0.3);
-  background: #fbbf24;
-  color: #050505;
-  box-shadow: none;
+  border-color: var(--dark-selected-border);
+  background: transparent;
+  color: var(--dark-label);
+  box-shadow: inset 0 0 0 1px var(--dark-selected-inner);
 }
 
 :root[data-theme='dark'] .calendar-title span {
-  border-color: rgba(251, 191, 36, 0.78);
+  border-color: var(--dark-selected-border);
   background: transparent;
   color: var(--dark-label);
   box-shadow: none;

@@ -76,7 +76,10 @@ function SubmissionCalendar({ venues, now, favoriteVenueIds, language }: Submiss
   return (
     <div className="calendar-grid">
       {months.map((month) => (
-        <article key={month.key} className="calendar-month">
+        <article
+          key={month.key}
+          className={month.venues.length > 0 ? 'calendar-month' : 'calendar-month calendar-month-empty'}
+        >
           <div className="calendar-month-head">
             <strong>{month.label}</strong>
           </div>

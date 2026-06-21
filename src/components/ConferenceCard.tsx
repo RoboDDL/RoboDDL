@@ -101,7 +101,7 @@ function ConferenceCard({ venue, language, isFavorite, onToggleFavorite }: Confe
             onClick={() => onToggleFavorite(venue.id)}
             aria-label={getFavoriteButtonLabel(isFavorite, title, language)}
           >
-            <Star className="h-4 w-4" />
+            <Star className="h-4 w-4 fill-current" />
           </button>
           <button
             type="button"
