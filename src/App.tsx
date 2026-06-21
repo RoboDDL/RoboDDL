@@ -93,7 +93,7 @@ function App() {
     window.localStorage.setItem('roboddl:theme', theme);
 
     const themeColor = document.querySelector('meta[name="theme-color"]');
-    themeColor?.setAttribute('content', theme === 'dark' ? '#08111f' : '#f8fafc');
+    themeColor?.setAttribute('content', theme === 'dark' ? '#000000' : '#f8fafc');
   }, [theme]);
 
   useEffect(() => {

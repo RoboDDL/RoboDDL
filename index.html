@@ -28,7 +28,7 @@
           document.documentElement.style.colorScheme = theme;
           document
             .querySelector('meta[name="theme-color"]')
-            ?.setAttribute('content', theme === 'dark' ? '#08111f' : '#f8fafc');
+            ?.setAttribute('content', theme === 'dark' ? '#000000' : '#f8fafc');
         } catch {
           document.documentElement.dataset.theme = 'light';
           document.documentElement.style.colorScheme = 'light';
