@@ -1227,9 +1227,187 @@ a {
 
   .venue-card {
     padding: 0.75rem;
+    gap: 0.625rem;
+  }
+
+  .venue-card h2 {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+
+  .venue-summary-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 2.25rem;
+    column-gap: 0.75rem;
+    row-gap: 0.625rem;
+    align-items: start;
+  }
+
+  .venue-summary-main {
+    display: contents;
+  }
+
+  .venue-summary-main > div:first-child {
+    grid-column: 1;
+    min-width: 0;
+  }
+
+  .venue-summary-main > .summary-deadline {
+    grid-column: 1 / -1;
+  }
+
+  .venue-summary-actions {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    width: auto;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .favorite-button,
+  .expand-button {
+    height: 2.25rem;
+    width: 2.25rem;
+  }
+
+  .venue-full-title {
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.3;
+  }
+
+  .badge-row {
+    gap: 0.375rem;
+    margin-top: 0.625rem;
+  }
+
+  .pill {
+    padding: 0.35rem 0.625rem;
+    font-size: 0.75rem;
+    line-height: 1;
+  }
+
+  .summary-deadline {
+    border-radius: 14px;
+    padding: 0.75rem 0.875rem;
+  }
+
+  .summary-deadline strong {
+    font-size: 0.9375rem;
+    line-height: 1.35;
+  }
+
+  .summary-deadline .countdown-compact {
+    font-size: 0.875rem;
+    line-height: 1.35;
+  }
+
+  .venue-expanded {
+    gap: 0.75rem;
+    padding-top: 0.75rem;
+  }
+
+  .venue-main > :not([hidden]) ~ :not([hidden]),
+  .venue-main-journal > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-bottom: calc(0.625rem * var(--tw-space-y-reverse));
+    margin-top: calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));
+  }
+
+  .venue-summary {
+    margin-top: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .venue-meta-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .venue-meta-grid .meta-block:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .meta-block {
+    border-radius: 14px;
+    padding: 0.75rem;
+  }
+
+  .meta-label {
+    gap: 0.375rem;
+    font-size: 0.75rem;
+  }
+
+  .meta-label svg {
+    height: 0.9375rem;
+    width: 0.9375rem;
   }
 
   .meta-value {
+    font-size: 0.875rem;
+    line-height: 1.35;
+    margin-top: 0.625rem;
+  }
+
+  .meta-sub {
+    line-height: 1.4;
+    margin-top: 0.375rem;
+  }
+
+  .source-strip {
+    border-radius: 12px;
+    gap: 0.5rem 0.625rem;
+    padding: 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  .source-label {
+    padding: 0.35rem 0.55rem;
+  }
+
+  .venue-side {
+    gap: 0.5rem;
+  }
+
+  .side-title {
+    font-size: 0.75rem;
+  }
+
+  .countdown-panel,
+  .rolling-panel {
+    border-radius: 14px;
+    padding: 0.75rem;
+  }
+
+  .countdown-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.375rem;
+    margin-top: 0;
+  }
+
+  .countdown-grid div {
+    border-radius: 10px;
+    padding: 0.5rem 0.375rem;
+  }
+
+  .countdown-grid strong {
+    font-size: 1.25rem;
+    line-height: 1.1;
+  }
+
+  .countdown-grid span {
+    margin-top: 0.25rem;
+  }
+
+  .action-row {
+    gap: 0.5rem;
+  }
+
+  .action-button {
+    gap: 0.375rem;
+    padding: 0.625rem 0.75rem;
     font-size: 0.875rem;
   }
 }
