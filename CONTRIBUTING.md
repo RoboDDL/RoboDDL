@@ -34,13 +34,16 @@ node -v
 npm -v
 ```
 
-### 3. Clone the repository
+### 3. Fork and branch from `dev`
 
-Before contributing, please **Fork** this repository to your own GitHub account. Then clone your fork and make changes there.
+Before contributing, please **fork** this repository to your own GitHub account. All development should start from the upstream `dev` branch, and PRs should target `dev`. The `main` branch is reserved for production releases.
 
 ```bash
 git clone https://github.com/USERNAME/RoboDDL.git
 cd RoboDDL
+git remote add upstream https://github.com/RoboDDL/RoboDDL.git
+git fetch upstream dev
+git switch -c your-change upstream/dev
 ```
 
 ### 4. Install dependencies
@@ -61,7 +64,7 @@ Vite will print a local URL such as `http://localhost:5173`. Open it in your bro
 
 ### 6. Before opening a PR
 
-Please confirm you are opening the PR from your forked repository.
+Please confirm you are opening the PR from your forked repository and that the base branch is `RoboDDL/RoboDDL:dev`.
 
 Make sure the data format and build both pass:
 
@@ -95,10 +98,11 @@ npm run build
 ## Quick workflow
 
 1. Fork this repository.
-2. Identify which contribution type your change belongs to.
-3. Update the relevant files in your fork.
-4. Verify sources or behavior.
-4. Run:
+2. Clone your fork, add the upstream remote, and create your work branch from `upstream/dev`.
+3. Identify which contribution type your change belongs to.
+4. Update the relevant files in your fork.
+5. Verify sources or behavior.
+6. Run:
 
 ```bash
 npm install
@@ -106,8 +110,8 @@ npm run validate:data
 npm run build
 ```
 
-5. If you changed the UI, also check desktop and a narrow mobile viewport.
-6. Open a PR from your fork with enough context for review.
+7. If you changed the UI, also check desktop and a narrow mobile viewport.
+8. Open a PR from your fork to `RoboDDL/RoboDDL:dev` with enough context for review.
 
 
 ## What to edit
@@ -130,7 +134,7 @@ Venue files are parsed by a small custom loader in [`src/data/loadVenueRecords.t
 - Do not use advanced YAML features such as anchors, inline objects, or complex multiline syntax.
 - Keep `venueType: "conference"` files in `src/data/conference` and `venueType: "journal"` files in `src/data/journal`.
 - Delete optional lines that do not apply instead of leaving placeholder content behind.
-- Run `npm run validate:data` after editing YAML. CI and deploy both use the same check.
+- Run `npm run validate:data` after editing YAML. The local pre-commit hook and fallback GitHub Pages workflow use the same check.
 - `npm install` also installs a `pre-commit` hook that runs the same YAML validation locally.
 
 Supported timezones come from [`src/utils/dateUtils.ts`](./src/utils/dateUtils.ts): `AoE`, `PST`, `PDT`, `EST`, `EDT`, `UTC`, `GMT`, and `UTC±HH[:MM]`.

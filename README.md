@@ -11,7 +11,7 @@ English | [简体中文](./README.zh-CN.md)
 RoboDDL is a deadline tracker for robotics conferences and strong journals, inspired by [ccf-ddl](https://github.com/ccfddl/ccf-deadlines).
 
 Contribution and collaboration guidelines live in [`CONTRIBUTING.md`](./CONTRIBUTING.md).
-If you're comfortable making code or data changes, PRs are very welcome. If not, opening an issue with the source link and the field that needs fixing is still hugely helpful.
+Please fork the repository, base your work on the `dev` branch, and open PRs against `dev`. If you're not making code or data changes, opening an issue with the source link and the field that needs fixing is still hugely helpful.
 
 ## Deployments
 
@@ -38,5 +38,5 @@ If you're comfortable making code or data changes, PRs are very welcome. If not,
 
 - 🌍 Deadlines are stored with explicit source timezones; the UI currently displays `RAS` venues in `PST` and other venues in `AoE`
 - 🛠️ Most updates should only require editing a single venue YAML file
-- 🛡️ Invalid venue YAML files are skipped instead of crashing the whole site, and the same format check now runs in local hooks, CI, and deploy
+- 🛡️ Invalid venue YAML files are skipped instead of crashing the whole site, and the same format check runs in the local pre-commit hook and fallback deploy workflow
 - 🧪 Development workflow, project structure, Issue guide, and PR guide live in [`CONTRIBUTING.md`](./CONTRIBUTING.md)
