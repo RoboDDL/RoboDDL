@@ -341,14 +341,22 @@ function App() {
     {
       id: 'aoe',
       label: text.timezones.aoe,
-      badge: 'AoE',
       timeZone: 'Etc/GMT+12',
     },
     {
       id: 'pt',
       label: text.timezones.pacific,
-      badge: 'PST',
       timeZone: 'America/Los_Angeles',
+    },
+    {
+      id: 'utc',
+      label: text.timezones.utc,
+      timeZone: 'UTC',
+    },
+    {
+      id: 'gmt',
+      label: text.timezones.gmt,
+      timeZone: 'Etc/GMT',
     },
   ] as const;
 
@@ -671,7 +679,6 @@ function App() {
                             </div>
                           ) : null}
                         </div>
-                        <span className="time-zone-badge">{zone.badge}</span>
                       </div>
                       <div className="time-zone-time">
                         {currentTime.toLocaleTimeString(locale, {

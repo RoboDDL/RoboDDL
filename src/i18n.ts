@@ -23,6 +23,8 @@ interface UiText {
   timezones: {
     aoe: string;
     pacific: string;
+    utc: string;
+    gmt: string;
     aoeHelpLabel: string;
     aoeHelpText: string;
     aoeHelpLink: string;
@@ -137,6 +139,8 @@ export const uiText: Record<Language, UiText> = {
     timezones: {
       aoe: 'AoE Time Zone',
       pacific: 'Pacific Time',
+      utc: 'UTC Time',
+      gmt: 'GMT Time',
       aoeHelpLabel: 'What is AoE time?',
       aoeHelpText: 'AoE means "Anywhere on Earth" and follows UTC-12 for deadline cutoffs.',
       aoeHelpLink: 'Learn more on Wikipedia',
@@ -227,8 +231,10 @@ export const uiText: Record<Language, UiText> = {
       filters: '筛选',
     },
     timezones: {
-      aoe: 'AoE 时区',
-      pacific: '太平洋时间',
+      aoe: 'AoE 时间',
+      pacific: '太平洋标准时间 (PST)',
+      utc: 'UTC 时间',
+      gmt: 'GMT 时间',
       aoeHelpLabel: 'AoE 时间是什么？',
       aoeHelpText: 'AoE 是 “Anywhere on Earth” 的缩写，对应 UTC-12，常用于论文截止时间计算。',
       aoeHelpLink: '前往 Wikipedia 了解更多',
