@@ -75,7 +75,7 @@ function FilterPanel({
   }, []);
 
   return (
-    <aside className="control-card space-y-6">
+    <aside className="filter-panel space-y-6">
       <section>
         <p className="filter-title">{text.filters.track}</p>
         <div className="chip-row">

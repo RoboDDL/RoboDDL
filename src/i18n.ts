@@ -14,11 +14,11 @@ interface UiText {
   themeToggleLight: string;
   themeToggleDark: string;
   heroTagline: string;
-  heroDesktopTip: string;
   heroWipNote: string;
   topPanels: {
     calendar: string;
     timezones: string;
+    filters: string;
   };
   timezones: {
     aoe: string;
@@ -129,11 +129,11 @@ export const uiText: Record<Language, UiText> = {
     themeToggleLight: 'Switch to light mode',
     themeToggleDark: 'Switch to dark mode',
     heroTagline: 'One stop for tracking robotics conferences and journals',
-    heroDesktopTip: 'Best experienced on desktop',
     heroWipNote: '[WIP] Deadlines and ratings may still contain errors!',
     topPanels: {
-      calendar: 'Submission Calendar',
+      calendar: 'Calendar',
       timezones: 'Time Zones',
+      filters: 'Filters',
     },
     timezones: {
       aoe: 'AoE Time Zone',
@@ -222,11 +222,11 @@ export const uiText: Record<Language, UiText> = {
     themeToggleLight: '切换到浅色模式',
     themeToggleDark: '切换到深色模式',
     heroTagline: '一站式追踪机器人领域会议与期刊',
-    heroDesktopTip: '桌面端浏览体验更佳',
     heroWipNote: '[开发中] 截止日期和评级信息可能存在错误',
     topPanels: {
       calendar: '投稿日历',
       timezones: '标准时间',
+      filters: '筛选',
     },
     timezones: {
       aoe: 'AoE 时区',

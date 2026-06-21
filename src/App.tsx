@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUp, CalendarDays, Clock3, Github, HelpCircle, Monitor, Moon, Sun } from 'lucide-react';
+import { ArrowUp, CalendarDays, Clock3, Github, HelpCircle, Moon, SlidersHorizontal, Sun } from 'lucide-react';
 import ConferenceCard from './components/ConferenceCard';
 import FilterPanel from './components/FilterPanel';
 import SearchBar from './components/SearchBar';
@@ -18,6 +18,7 @@ import {
 
 type Theme = 'light' | 'dark';
 type SocialPreviewId = 'wechat' | 'xhs';
+type TopPanelId = 'calendar' | 'timezones' | 'filters';
 
 function getInitialTheme(): Theme {
   if (typeof window === 'undefined') {
@@ -61,7 +62,7 @@ function App() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const [language, setLanguage] = useState<Language>(getInitialLanguage);
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeTopPanel, setActiveTopPanel] = useState<'calendar' | 'timezones' | null>(null);
+  const [activeTopPanel, setActiveTopPanel] = useState<TopPanelId | null>(null);
   const [selectedVenueType, setSelectedVenueType] = useState<'All' | VenueType>('All');
   const [selectedCategory, setSelectedCategory] = useState<'All' | Category>('All');
   const [sortBy, setSortBy] = useState<'deadline' | 'title'>('deadline');
@@ -399,7 +400,7 @@ function App() {
     setShowFavoritesOnly(false);
   };
 
-  const toggleTopPanel = (panel: 'calendar' | 'timezones') => {
+  const toggleTopPanel = (panel: TopPanelId) => {
     setActiveTopPanel((current) => (current === panel ? null : panel));
   };
 
@@ -522,10 +523,6 @@ function App() {
               </div>
             </div>
             <p className="hero-tagline">{text.heroTagline}</p>
-            <div className="hero-mobile-tip sm:hidden">
-              <Monitor className="h-3.5 w-3.5" />
-              <span>{text.heroDesktopTip}</span>
-            </div>
           </div>
         </section>
 
@@ -551,6 +548,16 @@ function App() {
               </span>
               <strong className="top-panel-switch-title">{text.topPanels.timezones}</strong>
             </button>
+            <button
+              type="button"
+              className={activeTopPanel === 'filters' ? 'top-panel-switch active' : 'top-panel-switch'}
+              onClick={() => toggleTopPanel('filters')}
+            >
+              <span className="top-panel-switch-icon" aria-hidden="true">
+                <SlidersHorizontal className="h-4 w-4" />
+              </span>
+              <strong className="top-panel-switch-title">{text.topPanels.filters}</strong>
+            </button>
           </div>
 
           {activeTopPanel ? (
@@ -562,7 +569,9 @@ function App() {
                   favoriteVenueIds={favoriteVenueIds}
                   language={language}
                 />
-              ) : (
+              ) : null}
+
+              {activeTopPanel === 'timezones' ? (
                 <div className="time-zone-grid">
                   {timeZoneCards.map((zone) => (
                     <section key={zone.id} className="time-zone-card">
@@ -621,32 +630,34 @@ function App() {
                     </section>
                   ))}
                 </div>
-              )}
+              ) : null}
+
+              {activeTopPanel === 'filters' ? (
+                <FilterPanel
+                  language={language}
+                  selectedVenueType={selectedVenueType}
+                  showFavoritesOnly={showFavoritesOnly}
+                  totalVenueCount={stats.conferenceCount + stats.journalCount}
+                  conferenceCount={stats.conferenceCount}
+                  journalCount={stats.journalCount}
+                  favoriteCount={stats.favoriteCount}
+                  onShowAllVenues={showAllVenues}
+                  onShowConferenceView={toggleConferenceView}
+                  onShowJournalView={toggleJournalView}
+                  onShowFavoritesOnlyChange={setShowFavoritesOnly}
+                  selectedCategory={selectedCategory}
+                  onCategoryChange={setSelectedCategory}
+                  sortBy={sortBy}
+                  onSortChange={setSortBy}
+                  selectedRatingFilter={selectedRatingFilter}
+                  onRatingFilterChange={setSelectedRatingFilter}
+                />
+              ) : null}
             </div>
           ) : null}
         </section>
 
         <section className="content-grid">
-          <FilterPanel
-            language={language}
-            selectedVenueType={selectedVenueType}
-            showFavoritesOnly={showFavoritesOnly}
-            totalVenueCount={stats.conferenceCount + stats.journalCount}
-            conferenceCount={stats.conferenceCount}
-            journalCount={stats.journalCount}
-            favoriteCount={stats.favoriteCount}
-            onShowAllVenues={showAllVenues}
-            onShowConferenceView={toggleConferenceView}
-            onShowJournalView={toggleJournalView}
-            onShowFavoritesOnlyChange={setShowFavoritesOnly}
-            selectedCategory={selectedCategory}
-            onCategoryChange={setSelectedCategory}
-            sortBy={sortBy}
-            onSortChange={setSortBy}
-            selectedRatingFilter={selectedRatingFilter}
-            onRatingFilterChange={setSelectedRatingFilter}
-          />
-
           <div className="results-column">
             <SearchBar value={searchQuery} onChange={setSearchQuery} language={language} />
             <div className="results-list">
