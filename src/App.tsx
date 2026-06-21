@@ -521,7 +521,7 @@ function App() {
                 </div>
               </div>
             </div>
-            <p>{text.heroTagline}</p>
+            <p className="hero-tagline">{text.heroTagline}</p>
             <div className="hero-mobile-tip sm:hidden">
               <Monitor className="h-3.5 w-3.5" />
               <span>{text.heroDesktopTip}</span>

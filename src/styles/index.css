@@ -67,8 +67,7 @@ a {
   }
 
   .hero-tools-pill {
-    @apply inline-flex flex-shrink-0 items-center gap-1 rounded-[999px] border border-slate-200 bg-white/90 p-2 shadow-sm backdrop-blur;
-    box-shadow: 0 10px 26px rgba(148, 163, 184, 0.14);
+    @apply inline-flex flex-shrink-0 items-center gap-1;
   }
 
   .hero-tool-button {
@@ -142,7 +141,7 @@ a {
     background-clip: text;
   }
 
-  .hero-copy p {
+  .hero-tagline {
     @apply max-w-3xl text-sm leading-6 text-slate-600;
   }
 
@@ -781,7 +780,7 @@ a {
   color: #f8fafc;
 }
 
-:root[data-theme='dark'] .hero-copy p,
+:root[data-theme='dark'] .hero-tagline,
 :root[data-theme='dark'] .time-zone-label,
 :root[data-theme='dark'] .time-zone-date,
 :root[data-theme='dark'] .calendar-note,
@@ -880,12 +879,6 @@ a {
   border-color: rgba(71, 85, 105, 0.42);
   background: linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(17, 24, 39, 0.86));
   color: #dbe7f4;
-}
-
-:root[data-theme='dark'] .hero-tools-pill {
-  border-color: rgba(71, 85, 105, 0.42);
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(17, 24, 39, 0.88));
-  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.22);
 }
 
 :root[data-theme='dark'] .hero-social-popover {
@@ -1087,15 +1080,22 @@ a {
 
 @media (max-width: 767px) {
   .hero-topbar {
-    @apply grid grid-cols-[minmax(0,1fr)_auto] items-center;
+    @apply grid grid-cols-1 items-start gap-3;
   }
 
   .hero-copy h1 {
     font-size: 2.5rem;
+    max-width: 100%;
   }
 
   .hero-tools {
-    align-self: center;
+    align-self: start;
+    justify-self: start;
+    width: 100%;
+  }
+
+  .hero-tagline {
+    display: none;
   }
 
   .dev-badge {
@@ -1107,8 +1107,8 @@ a {
   }
 
   .hero-tools-pill {
+    max-width: 100%;
     gap: 0.125rem;
-    padding: 0.375rem;
   }
 
   .hero-tool-button-icon {
