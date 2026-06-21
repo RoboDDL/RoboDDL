@@ -60,7 +60,7 @@ function ConferenceCard({ venue, language, isFavorite, onToggleFavorite }: Confe
     venue.abstractDeadline
       ? getAbstractDeadlineNote(formatDeadline(venue.abstractDeadline, venue.timezone!), venueInfoLanguage)
       : null,
-    !venue.isEstimated && localizedVenue.note ? localizedVenue.note : null,
+    !isJournal && !venue.isEstimated && localizedVenue.note ? localizedVenue.note : null,
   ].filter((item): item is string => Boolean(item));
 
   return (
