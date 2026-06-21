@@ -827,7 +827,6 @@ a {
 :root[data-theme='dark'] .filter-chip-help-popover,
 :root[data-theme='dark'] .time-zone-card,
 :root[data-theme='dark'] .calendar-month,
-:root[data-theme='dark'] .venue-expanded,
 :root[data-theme='dark'] .summary-deadline,
 :root[data-theme='dark'] .meta-block,
 :root[data-theme='dark'] .countdown-panel,
@@ -835,6 +834,11 @@ a {
 :root[data-theme='dark'] .source-strip {
   border-color: var(--dark-separator);
   background: var(--dark-tertiary-grouped-background);
+}
+
+:root[data-theme='dark'] .venue-expanded {
+  border-color: var(--dark-separator);
+  background: transparent;
 }
 
 :root[data-theme='dark'] .top-panel-switch {
