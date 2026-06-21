@@ -20,6 +20,8 @@ type Theme = 'light' | 'dark';
 type SocialPreviewId = 'wechat' | 'xhs';
 type TopPanelId = 'calendar' | 'timezones' | 'filters';
 
+const mobileTopPanelQuery = '(max-width: 767px)';
+
 function getInitialTheme(): Theme {
   if (typeof window === 'undefined') {
     return 'light';
@@ -31,6 +33,14 @@ function getInitialTheme(): Theme {
   }
 
   return 'light';
+}
+
+function getInitialIsMobileTopPanelLayout() {
+  if (typeof window === 'undefined' || !window.matchMedia) {
+    return false;
+  }
+
+  return window.matchMedia(mobileTopPanelQuery).matches;
 }
 
 // Minimal brand glyphs for monochrome toolbar buttons.
@@ -72,6 +82,7 @@ function App() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [isAoEHelpOpen, setIsAoEHelpOpen] = useState(false);
   const [activeSocialPreview, setActiveSocialPreview] = useState<SocialPreviewId | null>(null);
+  const [isMobileTopPanelLayout, setIsMobileTopPanelLayout] = useState(getInitialIsMobileTopPanelLayout);
   const aoeHelpHideTimeoutRef = useRef<number | null>(null);
   const socialPreviewHideTimeoutRef = useRef<number | null>(null);
   const heroToolsRef = useRef<HTMLDivElement | null>(null);
@@ -120,6 +131,25 @@ function App() {
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(mobileTopPanelQuery);
+    const handleMediaChange = (matchesMobile: boolean) => {
+      setIsMobileTopPanelLayout(matchesMobile);
+
+      if (!matchesMobile) {
+        setActiveTopPanel((current) => (current === 'filters' ? null : current));
+      }
+    };
+    const handleChange = (event: MediaQueryListEvent) => {
+      handleMediaChange(event.matches);
+    };
+
+    handleMediaChange(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
   useEffect(() => {
@@ -404,6 +434,28 @@ function App() {
     setActiveTopPanel((current) => (current === panel ? null : panel));
   };
 
+  const renderFilterPanel = () => (
+    <FilterPanel
+      language={language}
+      selectedVenueType={selectedVenueType}
+      showFavoritesOnly={showFavoritesOnly}
+      totalVenueCount={stats.conferenceCount + stats.journalCount}
+      conferenceCount={stats.conferenceCount}
+      journalCount={stats.journalCount}
+      favoriteCount={stats.favoriteCount}
+      onShowAllVenues={showAllVenues}
+      onShowConferenceView={toggleConferenceView}
+      onShowJournalView={toggleJournalView}
+      onShowFavoritesOnlyChange={setShowFavoritesOnly}
+      selectedCategory={selectedCategory}
+      onCategoryChange={setSelectedCategory}
+      sortBy={sortBy}
+      onSortChange={setSortBy}
+      selectedRatingFilter={selectedRatingFilter}
+      onRatingFilterChange={setSelectedRatingFilter}
+    />
+  );
+
   return (
     <div className="app-shell">
       {showDevBadge ? (
@@ -548,16 +600,18 @@ function App() {
               </span>
               <strong className="top-panel-switch-title">{text.topPanels.timezones}</strong>
             </button>
-            <button
-              type="button"
-              className={activeTopPanel === 'filters' ? 'top-panel-switch active' : 'top-panel-switch'}
-              onClick={() => toggleTopPanel('filters')}
-            >
-              <span className="top-panel-switch-icon" aria-hidden="true">
-                <SlidersHorizontal className="h-4 w-4" />
-              </span>
-              <strong className="top-panel-switch-title">{text.topPanels.filters}</strong>
-            </button>
+            {isMobileTopPanelLayout ? (
+              <button
+                type="button"
+                className={activeTopPanel === 'filters' ? 'top-panel-switch active' : 'top-panel-switch'}
+                onClick={() => toggleTopPanel('filters')}
+              >
+                <span className="top-panel-switch-icon" aria-hidden="true">
+                  <SlidersHorizontal className="h-4 w-4" />
+                </span>
+                <strong className="top-panel-switch-title">{text.topPanels.filters}</strong>
+              </button>
+            ) : null}
           </div>
 
           {activeTopPanel ? (
@@ -632,32 +686,18 @@ function App() {
                 </div>
               ) : null}
 
-              {activeTopPanel === 'filters' ? (
-                <FilterPanel
-                  language={language}
-                  selectedVenueType={selectedVenueType}
-                  showFavoritesOnly={showFavoritesOnly}
-                  totalVenueCount={stats.conferenceCount + stats.journalCount}
-                  conferenceCount={stats.conferenceCount}
-                  journalCount={stats.journalCount}
-                  favoriteCount={stats.favoriteCount}
-                  onShowAllVenues={showAllVenues}
-                  onShowConferenceView={toggleConferenceView}
-                  onShowJournalView={toggleJournalView}
-                  onShowFavoritesOnlyChange={setShowFavoritesOnly}
-                  selectedCategory={selectedCategory}
-                  onCategoryChange={setSelectedCategory}
-                  sortBy={sortBy}
-                  onSortChange={setSortBy}
-                  selectedRatingFilter={selectedRatingFilter}
-                  onRatingFilterChange={setSelectedRatingFilter}
-                />
-              ) : null}
+              {activeTopPanel === 'filters' && isMobileTopPanelLayout ? renderFilterPanel() : null}
             </div>
           ) : null}
         </section>
 
         <section className="content-grid">
+          {!isMobileTopPanelLayout ? (
+            <div className="desktop-filter-panel">
+              {renderFilterPanel()}
+            </div>
+          ) : null}
+
           <div className="results-column">
             <SearchBar value={searchQuery} onChange={setSearchQuery} language={language} />
             <div className="results-list">
