@@ -1,3 +1,5 @@
 /// <reference types="vite/client" />
 
-declare const __DEPLOY_BRANCH__: string;
+interface ImportMetaEnv {
+  readonly VITE_SHOW_DEV_BADGE?: string;
+}

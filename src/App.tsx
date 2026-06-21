@@ -286,7 +286,7 @@ function App() {
   const xLabel = text.xLabel;
   const wechatLabel = text.wechatLabel;
   const xhsLabel = text.xhsLabel;
-  const isDevBranch = __DEPLOY_BRANCH__ === 'dev';
+  const showDevBadge = import.meta.env.VITE_SHOW_DEV_BADGE === 'true';
   const nextLanguage = language === 'en' ? 'zh-CN' : 'en';
   const languageToggleLabel =
     language === 'en' ? text.languageToggleToChinese : text.languageToggleToEnglish;
@@ -405,8 +405,8 @@ function App() {
 
   return (
     <div className="app-shell">
-      {isDevBranch ? (
-        <div className="dev-badge" aria-label="Dev branch">
+      {showDevBadge ? (
+        <div className="dev-badge" aria-label="Development preview">
           DEV
         </div>
       ) : null}
