@@ -74,7 +74,6 @@ interface UiText {
     paperDdl: string;
     conferenceDates: string;
     location: string;
-    normalizedToPrefix: string;
     journalMetrics: string;
     source: string;
     estimatedShort: string;
@@ -189,7 +188,6 @@ export const uiText: Record<Language, UiText> = {
       paperDdl: 'Paper DDL',
       conferenceDates: 'Conference',
       location: 'Location',
-      normalizedToPrefix: 'All displayed times are normalized to',
       journalMetrics: 'Journal metrics',
       source: 'Source',
       estimatedShort: 'EST.',
@@ -282,7 +280,6 @@ export const uiText: Record<Language, UiText> = {
       paperDdl: '论文 DDL',
       conferenceDates: '会议时间',
       location: '地点',
-      normalizedToPrefix: '页面显示时间统一换算为',
       journalMetrics: '期刊指标',
       source: '来源',
       estimatedShort: '预计',

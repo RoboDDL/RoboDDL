@@ -524,7 +524,7 @@ a {
   }
 
   .venue-expanded {
-    @apply grid gap-4 border-t border-slate-200 pt-3 lg:grid-cols-[minmax(0,1fr)_280px];
+    @apply grid gap-3 border-t border-slate-200 pt-3 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start lg:gap-x-5;
   }
 
   .venue-expanded.journal-layout {
@@ -532,11 +532,11 @@ a {
   }
 
   .venue-main {
-    @apply min-w-0 flex-1 space-y-4;
+    @apply flex min-w-0 flex-1 flex-col gap-3;
   }
 
   .venue-main-journal {
-    @apply space-y-5;
+    @apply gap-4;
   }
 
   .venue-main-journal .venue-summary {
@@ -556,7 +556,7 @@ a {
   }
 
   .venue-summary {
-    @apply mt-3 text-sm leading-7 text-slate-600;
+    @apply m-0 text-sm leading-7 text-slate-600;
   }
 
   .badge-row {
@@ -588,7 +588,8 @@ a {
   }
 
   .venue-meta-grid {
-    @apply grid gap-2.5 sm:grid-cols-2;
+    @apply grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3;
+    grid-auto-rows: 1fr;
   }
 
   .journal-metrics-grid {
@@ -596,7 +597,7 @@ a {
   }
 
   .meta-block {
-    @apply rounded-[16px] border border-slate-200 bg-slate-50 p-3;
+    @apply flex min-h-[104px] flex-col rounded-[14px] border border-slate-200 bg-white p-3.5;
   }
 
   .journal-metrics-block {
@@ -608,16 +609,16 @@ a {
   }
 
   .meta-label {
-    @apply inline-flex items-center gap-2 text-xs font-semibold text-slate-500;
+    @apply inline-flex min-w-0 items-center gap-2 whitespace-nowrap text-xs font-semibold text-slate-500;
+  }
+
+  .meta-head .pill {
+    @apply flex-shrink-0;
   }
 
   .meta-value {
     font-family: 'JetBrains Mono', 'SFMono-Regular', monospace;
-    @apply mt-3 break-words text-sm font-semibold text-slate-900;
-  }
-
-  .meta-sub {
-    @apply mt-2 text-xs leading-6 text-slate-500;
+    @apply mt-2 break-words text-sm font-semibold leading-6 text-slate-900;
   }
 
   .journal-metrics {
@@ -630,32 +631,44 @@ a {
   }
 
   .source-strip {
-    @apply flex flex-wrap items-center gap-2 rounded-[16px] border border-dashed border-slate-300 bg-slate-50 px-3 py-2.5 text-sm text-slate-600;
+    @apply grid grid-cols-[5.25rem_minmax(0,1fr)] items-start gap-x-3 rounded-[14px] border border-slate-200 bg-white p-3 text-sm text-slate-600;
   }
 
   .source-label {
-    @apply rounded-full bg-slate-900 px-2 py-1 text-[11px] font-semibold text-white;
+    @apply px-0 text-sm font-semibold leading-6 text-slate-500;
+  }
+
+  .source-content {
+    @apply min-w-0;
   }
 
   .source-strip a {
-    @apply font-medium text-slate-900 underline decoration-slate-300 underline-offset-4;
+    @apply inline-block font-semibold leading-6 text-slate-900 no-underline transition hover:text-slate-700;
+  }
+
+  .source-notes {
+    @apply mt-1.5 grid gap-1 text-sm leading-6 text-slate-500;
   }
 
   .source-note {
-    @apply text-slate-500;
+    @apply block max-w-[68ch];
   }
 
   .venue-side {
-    @apply flex w-full flex-col gap-3 lg:w-[280px];
+    @apply flex w-full flex-col gap-3 lg:w-[320px];
   }
 
   .side-title {
-    @apply text-xs font-semibold text-slate-500;
+    @apply flex min-h-7 items-center text-sm font-semibold text-slate-500;
   }
 
   .countdown-panel,
   .rolling-panel {
-    @apply rounded-[16px] border border-slate-200 bg-slate-50 p-3.5;
+    @apply rounded-[14px] border border-slate-200 bg-white p-3.5;
+  }
+
+  .countdown-panel {
+    @apply flex min-h-[104px] items-center;
   }
 
   .countdown-compact {
@@ -677,11 +690,11 @@ a {
   }
 
   .countdown-grid {
-    @apply mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4;
+    @apply mt-0 grid w-full grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-4;
   }
 
   .countdown-grid div {
-    @apply rounded-[14px] bg-white px-3 py-2.5 text-center;
+    @apply flex min-h-[72px] flex-col justify-center rounded-[12px] bg-slate-50 px-2 py-2 text-center;
   }
 
   .countdown-grid strong {
@@ -808,7 +821,6 @@ a {
 :root[data-theme='dark'] .venue-full-title,
 :root[data-theme='dark'] .venue-summary,
 :root[data-theme='dark'] .meta-label,
-:root[data-theme='dark'] .meta-sub,
 :root[data-theme='dark'] .source-note,
 :root[data-theme='dark'] .countdown-grid span,
 :root[data-theme='dark'] .countdown-passed,
@@ -830,8 +842,7 @@ a {
 :root[data-theme='dark'] .summary-deadline,
 :root[data-theme='dark'] .meta-block,
 :root[data-theme='dark'] .countdown-panel,
-:root[data-theme='dark'] .rolling-panel,
-:root[data-theme='dark'] .source-strip {
+:root[data-theme='dark'] .rolling-panel {
   border-color: var(--dark-separator);
   background: var(--dark-tertiary-grouped-background);
 }
@@ -839,6 +850,11 @@ a {
 :root[data-theme='dark'] .venue-expanded {
   border-color: var(--dark-separator);
   background: transparent;
+}
+
+:root[data-theme='dark'] .source-strip {
+  border-color: var(--dark-separator);
+  background: var(--dark-tertiary-grouped-background);
 }
 
 :root[data-theme='dark'] .top-panel-switch {
@@ -1304,15 +1320,13 @@ a {
   }
 
   .venue-expanded {
-    gap: 0.75rem;
+    gap: 0.625rem;
     padding-top: 0.75rem;
   }
 
-  .venue-main > :not([hidden]) ~ :not([hidden]),
-  .venue-main-journal > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-y-reverse: 0;
-    margin-bottom: calc(0.625rem * var(--tw-space-y-reverse));
-    margin-top: calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));
+  .venue-main,
+  .venue-main-journal {
+    gap: 0.625rem;
   }
 
   .venue-summary {
@@ -1324,6 +1338,7 @@ a {
   .venue-meta-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.5rem;
+    grid-auto-rows: auto;
   }
 
   .venue-meta-grid .meta-block:first-child {
@@ -1332,6 +1347,7 @@ a {
 
   .meta-block {
     border-radius: 14px;
+    min-height: auto;
     padding: 0.75rem;
   }
 
@@ -1351,20 +1367,18 @@ a {
     margin-top: 0.625rem;
   }
 
-  .meta-sub {
-    line-height: 1.4;
-    margin-top: 0.375rem;
-  }
-
   .source-strip {
-    border-radius: 12px;
-    gap: 0.5rem 0.625rem;
-    padding: 0.75rem;
+    grid-template-columns: 4.25rem minmax(0, 1fr);
+    gap: 0.25rem 0.625rem;
+    padding: 0.625rem;
     font-size: 0.8125rem;
   }
 
-  .source-label {
-    padding: 0.35rem 0.55rem;
+  .source-notes {
+    margin-top: 0.25rem;
+    gap: 0.125rem;
+    font-size: 0.8125rem;
+    line-height: 1.45;
   }
 
   .venue-side {
@@ -1373,11 +1387,13 @@ a {
 
   .side-title {
     font-size: 0.75rem;
+    min-height: 0;
   }
 
   .countdown-panel,
   .rolling-panel {
     border-radius: 14px;
+    min-height: auto;
     padding: 0.75rem;
   }
 
@@ -1389,6 +1405,7 @@ a {
 
   .countdown-grid div {
     border-radius: 10px;
+    min-height: 3.625rem;
     padding: 0.5rem 0.375rem;
   }
 

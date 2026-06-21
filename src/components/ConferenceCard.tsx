@@ -53,6 +53,15 @@ function ConferenceCard({ venue, language, isFavorite, onToggleFavorite }: Confe
     hasJcrQuartile ? `JCR-${jcrDisplayValue}` : null,
   ].filter((item): item is string => Boolean(item));
   const showJournalMetrics = isJournal && journalMetricItems.length > 0;
+  const sourceNotes = [
+    venue.isEstimated && venue.estimatedFromYear
+      ? getEstimatedSourceNote(venue.estimatedFromYear, venueInfoLanguage)
+      : null,
+    venue.abstractDeadline
+      ? getAbstractDeadlineNote(formatDeadline(venue.abstractDeadline, venue.timezone!), venueInfoLanguage)
+      : null,
+    !venue.isEstimated && localizedVenue.note ? localizedVenue.note : null,
+  ].filter((item): item is string => Boolean(item));
 
   return (
     <article className="venue-card">
@@ -132,9 +141,6 @@ function ConferenceCard({ venue, language, isFavorite, onToggleFavorite }: Confe
                       {venue.isEstimated ? <span className="pill pill-warn">{text.venue.estimatedLong}</span> : null}
                     </div>
                     <div className="meta-value">{formatDeadline(venue.paperDeadline!, venue.timezone!)}</div>
-                    <div className="meta-sub">
-                      {text.venue.normalizedToPrefix} {localizedVenue.normalizedTimezoneLabel}
-                    </div>
                   </div>
                   <div className="meta-block">
                     <div className="meta-label">
@@ -172,21 +178,20 @@ function ConferenceCard({ venue, language, isFavorite, onToggleFavorite }: Confe
 
             <div className="source-strip">
               <span className="source-label">{text.venue.source}</span>
-              <a href={venue.sourceUrl} target="_blank" rel="noreferrer">
-                {localizedVenue.sourceLabel}
-              </a>
-              {venue.isEstimated && venue.estimatedFromYear ? (
-                <span className="source-note">{getEstimatedSourceNote(venue.estimatedFromYear, venueInfoLanguage)}</span>
-              ) : null}
-              {venue.abstractDeadline ? (
-                <span className="source-note">
-                  {getAbstractDeadlineNote(
-                    formatDeadline(venue.abstractDeadline, venue.timezone!),
-                    venueInfoLanguage,
-                  )}
-                </span>
-              ) : null}
-              {!venue.isEstimated && localizedVenue.note ? <span className="source-note">{localizedVenue.note}</span> : null}
+              <div className="source-content">
+                <a href={venue.sourceUrl} target="_blank" rel="noreferrer">
+                  {localizedVenue.sourceLabel}
+                </a>
+                {sourceNotes.length > 0 ? (
+                  <div className="source-notes">
+                    {sourceNotes.map((note) => (
+                      <span key={note} className="source-note">
+                        {note}
+                      </span>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
             </div>
 
             {isJournal ? (
