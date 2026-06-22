@@ -57,7 +57,7 @@ function pad(value: number): string {
   return String(value).padStart(2, '0');
 }
 
-function formatUtcMsInTimezone(utcMs: number, timezone: string): string {
+export function formatUtcMsInTimezone(utcMs: number, timezone: string): string {
   const offsetMinutes = getZoneOffsetMinutes(timezone);
   const zonedDate = new Date(utcMs + offsetMinutes * 60 * 1000);
 
@@ -92,7 +92,11 @@ export function convertLocalDateTimeToTimezone(
 }
 
 export function calculateTimeRemaining(deadline: string, timezone: string): TimeRemaining {
-  const totalSeconds = Math.floor((parseDeadlineToUtcMs(deadline, timezone) - Date.now()) / 1000);
+  return calculateTimeRemainingFromUtcMs(parseDeadlineToUtcMs(deadline, timezone));
+}
+
+export function calculateTimeRemainingFromUtcMs(deadlineUtcMs: number): TimeRemaining {
+  const totalSeconds = Math.floor((deadlineUtcMs - Date.now()) / 1000);
 
   if (totalSeconds <= 0) {
     return {

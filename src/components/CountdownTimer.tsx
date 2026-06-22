@@ -1,31 +1,50 @@
 import { useEffect, useState } from 'react';
 import { Language, uiText } from '../i18n';
-import { calculateTimeRemaining, getUrgencyTone } from '../utils/dateUtils';
+import { calculateTimeRemaining, calculateTimeRemainingFromUtcMs, getUrgencyTone } from '../utils/dateUtils';
 
-interface CountdownTimerProps {
-  deadline: string;
-  timezone: string;
+type CountdownTimerProps = {
   language: Language;
   compact?: boolean;
-}
+} & (
+  | {
+      deadline: string;
+      timezone: string;
+      targetUtcMs?: never;
+    }
+  | {
+      targetUtcMs: number;
+      deadline?: never;
+      timezone?: never;
+    }
+);
 
 function pad(value: number): string {
   return String(value).padStart(2, '0');
 }
 
-function CountdownTimer({ deadline, timezone, language, compact = false }: CountdownTimerProps) {
-  const [timeRemaining, setTimeRemaining] = useState(() =>
-    calculateTimeRemaining(deadline, timezone),
-  );
+function getTimeRemaining(props: CountdownTimerProps) {
+  if ('targetUtcMs' in props && typeof props.targetUtcMs === 'number') {
+    return calculateTimeRemainingFromUtcMs(props.targetUtcMs);
+  }
+
+  return calculateTimeRemaining(props.deadline, props.timezone);
+}
+
+function CountdownTimer(props: CountdownTimerProps) {
+  const { language, compact = false } = props;
+  const deadline = 'deadline' in props ? props.deadline : undefined;
+  const timezone = 'timezone' in props ? props.timezone : undefined;
+  const targetUtcMs = 'targetUtcMs' in props ? props.targetUtcMs : undefined;
+  const [timeRemaining, setTimeRemaining] = useState(() => getTimeRemaining(props));
   const text = uiText[language];
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setTimeRemaining(calculateTimeRemaining(deadline, timezone));
+      setTimeRemaining(getTimeRemaining(props));
     }, 1000);
 
     return () => window.clearInterval(timer);
-  }, [deadline, timezone]);
+  }, [deadline, targetUtcMs, timezone]);
 
   const toneClass = getUrgencyTone(timeRemaining.totalSeconds);
 

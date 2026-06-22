@@ -1,10 +1,24 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUp, CalendarDays, Clock3, Github, HelpCircle, Moon, SlidersHorizontal, Sun } from 'lucide-react';
+import {
+  ArrowUp,
+  CalendarCheck,
+  CalendarDays,
+  Clock3,
+  Github,
+  HelpCircle,
+  Moon,
+  SlidersHorizontal,
+  Sun,
+} from 'lucide-react';
 import ConferenceCard from './components/ConferenceCard';
 import FilterPanel from './components/FilterPanel';
+import PersonalDeadlinePanel from './components/PersonalDeadlinePanel';
+import type { PersonalDeadlineVenueOption } from './components/PersonalDeadlinePanel';
 import SearchBar from './components/SearchBar';
 import SubmissionCalendar from './components/SubmissionCalendar';
 import { buildVenueViews, Category, RatingFilter, VenueType } from './data/conferences';
+import { loadPersonalDeadlines, savePersonalDeadlines, sortPersonalDeadlines } from './data/personalDeadlines';
+import type { PersonalDeadline } from './data/personalDeadlines';
 import {
   getCategoryLabel,
   getInitialLanguage,
@@ -18,7 +32,7 @@ import {
 
 type Theme = 'light' | 'dark';
 type SocialPreviewId = 'wechat' | 'xhs';
-type TopPanelId = 'calendar' | 'timezones' | 'filters';
+type TopPanelId = 'calendar' | 'personal' | 'timezones' | 'filters';
 
 const mobileTopPanelQuery = '(max-width: 767px)';
 
@@ -83,6 +97,7 @@ function App() {
   const [isAoEHelpOpen, setIsAoEHelpOpen] = useState(false);
   const [activeSocialPreview, setActiveSocialPreview] = useState<SocialPreviewId | null>(null);
   const [isMobileTopPanelLayout, setIsMobileTopPanelLayout] = useState(getInitialIsMobileTopPanelLayout);
+  const [personalDeadlines, setPersonalDeadlines] = useState<PersonalDeadline[]>(loadPersonalDeadlines);
   const aoeHelpHideTimeoutRef = useRef<number | null>(null);
   const socialPreviewHideTimeoutRef = useRef<number | null>(null);
   const heroToolsRef = useRef<HTMLDivElement | null>(null);
@@ -157,6 +172,10 @@ function App() {
   }, [favoriteVenueIds]);
 
   useEffect(() => {
+    savePersonalDeadlines(personalDeadlines);
+  }, [personalDeadlines]);
+
+  useEffect(() => {
     return () => {
       if (aoeHelpHideTimeoutRef.current !== null) {
         window.clearTimeout(aoeHelpHideTimeoutRef.current);
@@ -196,6 +215,41 @@ function App() {
   const venues = useMemo(() => buildVenueViews(currentTime), [currentTime]);
   const text = uiText[language];
   const locale = getLocale(language);
+  const personalDeadlineVenueOptions = useMemo<PersonalDeadlineVenueOption[]>(() => {
+    const optionsBySlug = new Map<string, PersonalDeadlineVenueOption>();
+
+    venues.forEach((venue) => {
+      if (optionsBySlug.has(venue.slug)) {
+        return;
+      }
+
+      const localizedVenue = getLocalizedVenue(venue, language);
+
+      optionsBySlug.set(venue.slug, {
+        id: venue.slug,
+        title: venue.title,
+        fullTitle: localizedVenue.fullTitle,
+        venueTypeLabel: getVenueTypeLabel(venue.venueType, language),
+        keywords: [
+          venue.title,
+          venue.fullTitle,
+          localizedVenue.fullTitle,
+          venue.summary,
+          localizedVenue.summary,
+          venue.venueType,
+          getVenueTypeLabel(venue.venueType, language),
+          venue.category,
+          getCategoryLabel(venue.category, language),
+          venue.location,
+          localizedVenue.location,
+          ...venue.keywords,
+          ...localizedVenue.searchKeywords,
+        ].filter((value): value is string => Boolean(value)),
+      });
+    });
+
+    return [...optionsBySlug.values()].sort((left, right) => left.title.localeCompare(right.title));
+  }, [language, venues]);
 
   const filteredVenues = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
@@ -366,6 +420,20 @@ function App() {
         ? current.filter((id) => id !== venueId)
         : [...current, venueId];
     });
+  };
+
+  const savePersonalDeadline = (deadline: PersonalDeadline) => {
+    setPersonalDeadlines((current) => {
+      const nextDeadlines = current.some((item) => item.id === deadline.id)
+        ? current.map((item) => (item.id === deadline.id ? deadline : item))
+        : [...current, deadline];
+
+      return sortPersonalDeadlines(nextDeadlines);
+    });
+  };
+
+  const deletePersonalDeadline = (deadlineId: string) => {
+    setPersonalDeadlines((current) => current.filter((deadline) => deadline.id !== deadlineId));
   };
 
   const clearAoEHelpHideTimeout = () => {
@@ -601,6 +669,17 @@ function App() {
             </button>
             <button
               type="button"
+              className={activeTopPanel === 'personal' ? 'top-panel-switch active' : 'top-panel-switch'}
+              onClick={() => toggleTopPanel('personal')}
+              aria-label={text.topPanels.personal}
+            >
+              <span className="top-panel-switch-icon" aria-hidden="true">
+                <CalendarCheck className="h-4 w-4" />
+              </span>
+              <strong className="top-panel-switch-title">{text.topPanels.personal}</strong>
+            </button>
+            <button
+              type="button"
               className={activeTopPanel === 'timezones' ? 'top-panel-switch active' : 'top-panel-switch'}
               onClick={() => toggleTopPanel('timezones')}
               aria-label={text.topPanels.timezones}
@@ -633,6 +712,17 @@ function App() {
                   now={currentTime}
                   favoriteVenueIds={favoriteVenueIds}
                   language={language}
+                />
+              ) : null}
+
+              {activeTopPanel === 'personal' ? (
+                <PersonalDeadlinePanel
+                  deadlines={personalDeadlines}
+                  venueOptions={personalDeadlineVenueOptions}
+                  currentTime={currentTime}
+                  language={language}
+                  onSaveDeadline={savePersonalDeadline}
+                  onDeleteDeadline={deletePersonalDeadline}
                 />
               ) : null}
 

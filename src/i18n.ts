@@ -1,4 +1,5 @@
 import type { Category, RatingFilter, VenueType, VenueView } from './data/conferences';
+import type { PersonalDeadlineKind } from './data/personalDeadlines';
 
 export type Language = 'en' | 'zh-CN';
 
@@ -17,6 +18,7 @@ interface UiText {
   heroWipNote: string;
   topPanels: {
     calendar: string;
+    personal: string;
     timezones: string;
     filters: string;
   };
@@ -67,6 +69,45 @@ interface UiText {
   calendar: {
     paperShort: string;
     abstractShort: string;
+  };
+  personalDeadlines: {
+    title: string;
+    emptyTitle: string;
+    emptyBody: string;
+    addTitle: string;
+    editTitle: string;
+    expandFormButton: string;
+    collapseFormButton: string;
+    typeLabel: string;
+    venueLabel: string;
+    venuePlaceholder: string;
+    inputModeLabel: string;
+    modeDays: string;
+    modeDate: string;
+    daysLabel: string;
+    daysSuffix: string;
+    timeLabel: string;
+    dateLabel: string;
+    timezoneLabel: string;
+    timezoneLocal: string;
+    datePending: string;
+    noteLabel: string;
+    notePlaceholder: string;
+    addButton: string;
+    saveButton: string;
+    cancelButton: string;
+    editButton: string;
+    deleteButton: string;
+    remainingLabel: string;
+    dueLabel: string;
+    overdueLabel: string;
+    validation: {
+      venueRequired: string;
+      daysRequired: string;
+      dateRequired: string;
+      invalidDate: string;
+    };
+    kinds: Record<PersonalDeadlineKind, string>;
   };
   venue: {
     new: string;
@@ -133,6 +174,7 @@ export const uiText: Record<Language, UiText> = {
     heroWipNote: '[WIP] Deadlines and ratings may still contain errors!',
     topPanels: {
       calendar: 'Calendar',
+      personal: 'Personal DDL',
       timezones: 'Time Zones',
       filters: 'Filters',
     },
@@ -184,6 +226,51 @@ export const uiText: Record<Language, UiText> = {
       paperShort: 'Paper',
       abstractShort: 'Abs.',
     },
+    personalDeadlines: {
+      title: 'Personal DDL',
+      emptyTitle: 'No personal deadlines yet',
+      emptyBody: 'Add review, rebuttal, and final-version dates here.',
+      addTitle: 'Add DDL',
+      editTitle: 'Edit DDL',
+      expandFormButton: 'Expand Add DDL',
+      collapseFormButton: 'Collapse Add DDL',
+      typeLabel: 'Type',
+      venueLabel: 'Venue',
+      venuePlaceholder: 'Conference / Journal',
+      inputModeLabel: 'Deadline input',
+      modeDays: 'Days left',
+      modeDate: 'Exact date',
+      daysLabel: 'Days from now',
+      daysSuffix: 'days',
+      timeLabel: 'Time',
+      dateLabel: 'Deadline',
+      timezoneLabel: 'Time zone',
+      timezoneLocal: 'Local time',
+      datePending: 'Select a deadline',
+      noteLabel: 'Note',
+      notePlaceholder: 'Round, paper id, track, or reminder',
+      addButton: 'Add',
+      saveButton: 'Save',
+      cancelButton: 'Cancel',
+      editButton: 'Edit',
+      deleteButton: 'Delete',
+      remainingLabel: 'Remaining',
+      dueLabel: 'Due',
+      overdueLabel: 'Overdue',
+      validation: {
+        venueRequired: 'Venue is required.',
+        daysRequired: 'Enter a whole number of days.',
+        dateRequired: 'Select a valid deadline.',
+        invalidDate: 'Enter a valid deadline.',
+      },
+      kinds: {
+        review: 'Review DDL',
+        'conference-rebuttal': 'Conference rebuttal',
+        'journal-rebuttal': 'Journal rebuttal',
+        'final-version': 'Final version',
+        other: 'Other',
+      },
+    },
     venue: {
       new: 'NEW',
       status: 'Status',
@@ -227,6 +314,7 @@ export const uiText: Record<Language, UiText> = {
     heroWipNote: '[开发中] 截止日期和评级信息可能存在错误',
     topPanels: {
       calendar: '投稿日历',
+      personal: '个人 DDL',
       timezones: '标准时间',
       filters: '筛选',
     },
@@ -277,6 +365,51 @@ export const uiText: Record<Language, UiText> = {
     calendar: {
       paperShort: '正文',
       abstractShort: '摘要',
+    },
+    personalDeadlines: {
+      title: '个人 DDL',
+      emptyTitle: '还没有个人 DDL',
+      emptyBody: '可以记录审稿、rebuttal 和 final version 截止时间。',
+      addTitle: '新增 DDL',
+      editTitle: '编辑 DDL',
+      expandFormButton: '展开新增 DDL',
+      collapseFormButton: '折叠新增 DDL',
+      typeLabel: '类型',
+      venueLabel: '会议 / 期刊',
+      venuePlaceholder: 'Conference / Journal',
+      inputModeLabel: '截止时间填写方式',
+      modeDays: '剩余天数',
+      modeDate: '具体日期',
+      daysLabel: '距今还有',
+      daysSuffix: '天',
+      timeLabel: '时间',
+      dateLabel: '截止时间',
+      timezoneLabel: '时区',
+      timezoneLocal: '本地时间',
+      datePending: '请选择截止时间',
+      noteLabel: '备注',
+      notePlaceholder: '轮次、稿件编号、track 或提醒',
+      addButton: '新增',
+      saveButton: '保存',
+      cancelButton: '取消',
+      editButton: '编辑',
+      deleteButton: '删除',
+      remainingLabel: '剩余时间',
+      dueLabel: '截止',
+      overdueLabel: '已过期',
+      validation: {
+        venueRequired: '请填写会议或期刊名称。',
+        daysRequired: '请输入非负整数天数。',
+        dateRequired: '请选择有效的截止时间。',
+        invalidDate: '请输入有效的截止时间。',
+      },
+      kinds: {
+        review: '审稿 DDL',
+        'conference-rebuttal': '会议 rebuttal',
+        'journal-rebuttal': '期刊 rebuttal',
+        'final-version': 'Final version',
+        other: '其他',
+      },
     },
     venue: {
       new: '新增',

@@ -153,7 +153,8 @@ a {
   }
 
   .top-panel-switches {
-    @apply grid w-full grid-cols-2 gap-3;
+    @apply grid w-full gap-3;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .top-panel-switch {
@@ -237,6 +238,219 @@ a {
 
   .time-zone-date {
     @apply mt-1 text-sm text-slate-500 sm:text-base;
+  }
+
+  .personal-ddl-panel {
+    @apply grid gap-3 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.15fr)] lg:items-start;
+  }
+
+  .personal-ddl-form,
+  .personal-ddl-list {
+    @apply rounded-[16px] border border-slate-200 bg-slate-50 p-3;
+  }
+
+  .personal-ddl-form {
+    @apply grid gap-3;
+  }
+
+  .personal-ddl-form-body {
+    @apply grid gap-3;
+  }
+
+  .personal-ddl-form-head,
+  .personal-ddl-list-head {
+    @apply flex items-center justify-between gap-3;
+  }
+
+  .personal-ddl-form-head h2,
+  .personal-ddl-list-head h2 {
+    @apply text-base font-semibold text-slate-950;
+  }
+
+  .personal-ddl-form-toggle {
+    @apply hidden h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-slate-300 hover:bg-slate-50;
+  }
+
+  .personal-ddl-form-toggle svg {
+    @apply transition-transform;
+  }
+
+  .personal-ddl-field {
+    @apply grid gap-1.5;
+  }
+
+  .personal-ddl-venue-field {
+    @apply relative;
+  }
+
+  .personal-ddl-field label {
+    @apply text-xs font-semibold text-slate-500;
+  }
+
+  .personal-ddl-field input,
+  .personal-ddl-field select,
+  .personal-ddl-field textarea {
+    @apply w-full rounded-[12px] border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-2 focus:ring-slate-200;
+  }
+
+  .personal-ddl-field textarea {
+    @apply min-h-[5.5rem] resize-y leading-6;
+  }
+
+  .personal-ddl-venue-suggestions {
+    @apply absolute left-0 right-0 top-full z-30 mt-1 max-h-72 overflow-y-auto rounded-[14px] border border-slate-200 bg-white p-1.5 shadow-lg;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+  }
+
+  .personal-ddl-venue-option {
+    @apply grid w-full gap-1 rounded-[10px] px-3 py-2 text-left transition hover:bg-slate-100 focus:bg-slate-100 focus:outline-none;
+  }
+
+  .personal-ddl-venue-option-title {
+    @apply flex min-w-0 items-center justify-between gap-3;
+  }
+
+  .personal-ddl-venue-option-title strong {
+    @apply min-w-0 truncate text-sm font-semibold text-slate-950;
+  }
+
+  .personal-ddl-venue-option-title em {
+    @apply flex-shrink-0 not-italic rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[11px] font-semibold text-slate-500;
+  }
+
+  .personal-ddl-venue-option-full {
+    @apply min-w-0 truncate text-xs text-slate-500;
+  }
+
+  .personal-ddl-kind-grid {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .personal-ddl-kind-tab {
+    @apply rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-600 transition hover:border-slate-300 hover:bg-slate-100;
+  }
+
+  .personal-ddl-kind-tab.active {
+    @apply border-slate-950 bg-slate-950 text-white;
+  }
+
+  .personal-ddl-segmented {
+    @apply grid grid-cols-2 rounded-[12px] border border-slate-200 bg-white p-1;
+  }
+
+  .personal-ddl-segmented button {
+    @apply rounded-[10px] px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100;
+  }
+
+  .personal-ddl-segmented button.active {
+    @apply bg-slate-950 text-white shadow-sm;
+  }
+
+  .personal-ddl-days-row {
+    @apply grid gap-3 sm:grid-cols-[minmax(0,1fr)_9rem];
+  }
+
+  .personal-ddl-date-row {
+    @apply grid gap-3 sm:grid-cols-[minmax(0,1fr)_10rem];
+  }
+
+  .personal-ddl-input-affix {
+    @apply grid grid-cols-[minmax(0,1fr)_auto] items-center rounded-[12px] border border-slate-200 bg-white focus-within:border-slate-400 focus-within:ring-2 focus-within:ring-slate-200;
+  }
+
+  .personal-ddl-input-affix input {
+    @apply border-0 bg-transparent focus:ring-0;
+  }
+
+  .personal-ddl-input-affix span {
+    @apply pr-3 text-sm font-medium text-slate-500;
+  }
+
+  .personal-ddl-preview {
+    @apply grid gap-1 rounded-[12px] border border-slate-200 bg-white px-3 py-2;
+  }
+
+  .personal-ddl-preview span,
+  .personal-ddl-item-date span {
+    @apply text-xs font-semibold text-slate-500;
+  }
+
+  .personal-ddl-preview strong,
+  .personal-ddl-item-date strong {
+    font-family: 'JetBrains Mono', 'SFMono-Regular', monospace;
+    @apply break-words text-sm font-semibold text-slate-900;
+  }
+
+  .personal-ddl-error {
+    @apply m-0 rounded-[12px] border border-rose-200 bg-rose-50 px-3 py-2 text-sm font-medium text-rose-700;
+  }
+
+  .personal-ddl-form-actions {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .personal-ddl-list {
+    @apply flex min-h-[24rem] flex-col gap-3;
+  }
+
+  .personal-ddl-empty {
+    @apply grid min-h-[12rem] place-items-center rounded-[14px] border border-dashed border-slate-300 bg-white px-4 py-8 text-center;
+  }
+
+  .personal-ddl-empty strong {
+    @apply text-base font-semibold text-slate-950;
+  }
+
+  .personal-ddl-empty span {
+    @apply mt-1 block text-sm text-slate-500;
+  }
+
+  .personal-ddl-items {
+    @apply flex flex-col gap-2;
+  }
+
+  .personal-ddl-item {
+    @apply grid gap-3 rounded-[14px] border border-slate-200 bg-white p-3 sm:grid-cols-[minmax(0,1fr)_minmax(11rem,auto)] sm:items-start;
+  }
+
+  .personal-ddl-item.past {
+    @apply opacity-75;
+  }
+
+  .personal-ddl-item-main {
+    @apply min-w-0;
+  }
+
+  .personal-ddl-item-topline {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .personal-ddl-item h3 {
+    @apply mt-2 break-words text-lg font-semibold leading-tight text-slate-950;
+  }
+
+  .personal-ddl-item-date {
+    @apply mt-2 grid gap-1;
+  }
+
+  .personal-ddl-item p {
+    @apply m-0 mt-2 text-sm leading-6 text-slate-600;
+  }
+
+  .personal-ddl-item-side {
+    @apply flex flex-col gap-2 sm:items-end;
+  }
+
+  .personal-ddl-item-actions {
+    @apply flex gap-2;
+  }
+
+  .personal-ddl-icon-button {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-slate-300 hover:bg-slate-50;
+  }
+
+  .personal-ddl-icon-button.danger {
+    @apply text-rose-600 hover:border-rose-200 hover:bg-rose-50;
   }
 
   .toolbar-card {
@@ -791,6 +1005,13 @@ a {
 :root[data-theme='dark'] .top-panel-switch-title,
 :root[data-theme='dark'] .time-zone-time,
 :root[data-theme='dark'] .calendar-title,
+:root[data-theme='dark'] .personal-ddl-form-head h2,
+:root[data-theme='dark'] .personal-ddl-list-head h2,
+:root[data-theme='dark'] .personal-ddl-preview strong,
+:root[data-theme='dark'] .personal-ddl-item-date strong,
+:root[data-theme='dark'] .personal-ddl-item h3,
+:root[data-theme='dark'] .personal-ddl-empty strong,
+:root[data-theme='dark'] .personal-ddl-venue-option-title strong,
 :root[data-theme='dark'] .calendar-month-head strong,
 :root[data-theme='dark'] .results-head h2,
 :root[data-theme='dark'] .venue-head h2,
@@ -811,6 +1032,14 @@ a {
 :root[data-theme='dark'] .time-zone-label,
 :root[data-theme='dark'] .time-zone-date,
 :root[data-theme='dark'] .calendar-note,
+:root[data-theme='dark'] .personal-ddl-field label,
+:root[data-theme='dark'] .personal-ddl-preview span,
+:root[data-theme='dark'] .personal-ddl-item-date span,
+:root[data-theme='dark'] .personal-ddl-empty span,
+:root[data-theme='dark'] .personal-ddl-item p,
+:root[data-theme='dark'] .personal-ddl-input-affix span,
+:root[data-theme='dark'] .personal-ddl-venue-option-full,
+:root[data-theme='dark'] .personal-ddl-venue-option-title em,
 :root[data-theme='dark'] .toolbar-note,
 :root[data-theme='dark'] .filter-title,
 :root[data-theme='dark'] .results-kicker,
@@ -834,6 +1063,13 @@ a {
 :root[data-theme='dark'] .live-help-popover,
 :root[data-theme='dark'] .filter-chip-help-popover,
 :root[data-theme='dark'] .time-zone-card,
+:root[data-theme='dark'] .personal-ddl-form,
+:root[data-theme='dark'] .personal-ddl-list,
+:root[data-theme='dark'] .personal-ddl-preview,
+:root[data-theme='dark'] .personal-ddl-empty,
+:root[data-theme='dark'] .personal-ddl-item,
+:root[data-theme='dark'] .personal-ddl-venue-suggestions,
+:root[data-theme='dark'] .personal-ddl-venue-option-title em,
 :root[data-theme='dark'] .calendar-month,
 :root[data-theme='dark'] .summary-deadline,
 :root[data-theme='dark'] .meta-block,
@@ -905,6 +1141,14 @@ a {
 }
 
 :root[data-theme='dark'] .search-shell,
+:root[data-theme='dark'] .personal-ddl-field input,
+:root[data-theme='dark'] .personal-ddl-field select,
+:root[data-theme='dark'] .personal-ddl-field textarea,
+:root[data-theme='dark'] .personal-ddl-kind-tab,
+:root[data-theme='dark'] .personal-ddl-segmented,
+:root[data-theme='dark'] .personal-ddl-input-affix,
+:root[data-theme='dark'] .personal-ddl-icon-button,
+:root[data-theme='dark'] .personal-ddl-form-toggle,
 :root[data-theme='dark'] .filter-chip,
 :root[data-theme='dark'] .expand-button,
 :root[data-theme='dark'] .favorite-button,
@@ -974,7 +1218,30 @@ a {
   color: var(--dark-label);
 }
 
+:root[data-theme='dark'] .personal-ddl-field input,
+:root[data-theme='dark'] .personal-ddl-field select,
+:root[data-theme='dark'] .personal-ddl-field textarea {
+  color: var(--dark-label);
+}
+
+:root[data-theme='dark'] .personal-ddl-field input::placeholder,
+:root[data-theme='dark'] .personal-ddl-field textarea::placeholder {
+  color: var(--dark-tertiary-label);
+}
+
+:root[data-theme='dark'] .personal-ddl-error {
+  border-color: rgba(251, 113, 133, 0.4);
+  background: rgba(127, 29, 29, 0.24);
+  color: #fecdd3;
+}
+
 :root[data-theme='dark'] .filter-chip:hover,
+:root[data-theme='dark'] .personal-ddl-kind-tab:hover,
+:root[data-theme='dark'] .personal-ddl-segmented button:hover,
+:root[data-theme='dark'] .personal-ddl-venue-option:hover,
+:root[data-theme='dark'] .personal-ddl-venue-option:focus,
+:root[data-theme='dark'] .personal-ddl-icon-button:hover,
+:root[data-theme='dark'] .personal-ddl-form-toggle:hover,
 :root[data-theme='dark'] .expand-button:hover,
 :root[data-theme='dark'] .favorite-button:hover,
 :root[data-theme='dark'] .action-button:hover,
@@ -995,6 +1262,8 @@ a {
 }
 
 :root[data-theme='dark'] .filter-chip.active,
+:root[data-theme='dark'] .personal-ddl-kind-tab.active,
+:root[data-theme='dark'] .personal-ddl-segmented button.active,
 :root[data-theme='dark'] .action-button.primary {
   border-color: var(--dark-selected-border);
   background: var(--dark-tertiary-grouped-background);
@@ -1177,7 +1446,7 @@ a {
 
   .top-panel-switches {
     gap: 0.75rem;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .top-panel-switch {
@@ -1271,6 +1540,116 @@ a {
   .time-zone-date {
     font-size: 0.75rem;
     margin-top: 0.25rem;
+  }
+
+  .personal-ddl-form,
+  .personal-ddl-list {
+    border-radius: 14px;
+    padding: 0.75rem;
+  }
+
+  .personal-ddl-list {
+    gap: 0.5rem;
+    padding: 0.625rem;
+  }
+
+  .personal-ddl-list-head h2 {
+    font-size: 0.9375rem;
+    line-height: 1.25;
+  }
+
+  .personal-ddl-form-toggle {
+    display: inline-flex;
+  }
+
+  .personal-ddl-form-body.collapsed {
+    display: none;
+  }
+
+  .personal-ddl-kind-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .personal-ddl-kind-tab {
+    min-width: 0;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    text-align: center;
+  }
+
+  .personal-ddl-days-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .personal-ddl-date-row {
+    grid-template-columns: minmax(0, 1fr) minmax(7.5rem, 0.7fr);
+  }
+
+  .personal-ddl-list {
+    min-height: 0;
+  }
+
+  .personal-ddl-items {
+    gap: 0.5rem;
+  }
+
+  .personal-ddl-item {
+    gap: 0.5rem;
+    border-radius: 12px;
+    padding: 0.625rem 0.75rem;
+  }
+
+  .personal-ddl-item-topline {
+    gap: 0.375rem;
+  }
+
+  .personal-ddl-item .pill {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.6875rem;
+  }
+
+  .personal-ddl-item h3 {
+    margin-top: 0.375rem;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .personal-ddl-item-date {
+    margin-top: 0.375rem;
+    gap: 0.125rem;
+  }
+
+  .personal-ddl-item-date span {
+    font-size: 0.6875rem;
+  }
+
+  .personal-ddl-item-date strong,
+  .personal-ddl-item .countdown-compact {
+    font-size: 0.75rem;
+    line-height: 1.25;
+  }
+
+  .personal-ddl-item p {
+    margin-top: 0.375rem;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+  }
+
+  .personal-ddl-item-side {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .personal-ddl-item-actions {
+    gap: 0.375rem;
+  }
+
+  .personal-ddl-icon-button {
+    height: 2rem;
+    width: 2rem;
   }
 
   .calendar-list {
