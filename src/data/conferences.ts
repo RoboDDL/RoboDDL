@@ -8,7 +8,7 @@ import {
 export type VenueType = 'conference' | 'journal';
 export type Category = 'RAS' | 'Robot Learning' | 'AI x Robotics' | 'Journal';
 export type SubmissionModel = 'deadline' | 'rolling';
-export type RatingFilter = 'All' | 'CCF' | 'CAAI';
+export type RatingFilter = 'All' | 'CCF' | 'CAA' | 'CAAI';
 
 interface VenueRecordBase {
   slug: string;
@@ -19,6 +19,7 @@ interface VenueRecordBase {
   category: Category;
   isNew?: boolean;
   organizationTags?: string[];
+  caaRank?: string;
   caaiRank?: string;
   ccfRank?: string;
   casPartition?: string;
@@ -77,6 +78,7 @@ export interface VenueView {
   category: Category;
   isNew?: boolean;
   organizationTags?: string[];
+  caaRank?: string;
   caaiRank?: string;
   ccfRank?: string;
   casPartition?: string;
@@ -121,7 +123,7 @@ export const categories: Array<'All' | Exclude<Category, 'Journal'>> = [
 ];
 
 export const venueTypes: Array<'All' | VenueType> = ['All', 'conference', 'journal'];
-export const ratingFilters: RatingFilter[] = ['All', 'CCF', 'CAAI'];
+export const ratingFilters: RatingFilter[] = ['All', 'CCF', 'CAA', 'CAAI'];
 
 function getDisplayTimezone(record: DeadlineVenueRecord): string {
   return record.category === 'RAS' ? 'PST' : 'AoE';
@@ -169,6 +171,7 @@ function resolveDeadlineVenue(record: DeadlineVenueRecord, now: Date): VenueView
       category: record.category,
       isNew: record.isNew,
       organizationTags: record.organizationTags,
+      caaRank: record.caaRank,
       caaiRank: record.caaiRank,
       ccfRank: record.ccfRank,
       casPartition: record.casPartition,
@@ -242,6 +245,7 @@ function resolveDeadlineVenue(record: DeadlineVenueRecord, now: Date): VenueView
     category: record.category,
     isNew: record.isNew,
     organizationTags: record.organizationTags,
+    caaRank: record.caaRank,
     caaiRank: record.caaiRank,
     ccfRank: record.ccfRank,
     casPartition: record.casPartition,
@@ -279,6 +283,7 @@ function resolveRollingVenue(record: RollingVenueRecord): VenueView {
     category: record.category,
     isNew: record.isNew,
     organizationTags: record.organizationTags,
+    caaRank: record.caaRank,
     caaiRank: record.caaiRank,
     ccfRank: record.ccfRank,
     casPartition: record.casPartition,

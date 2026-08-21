@@ -16,12 +16,21 @@ keywords:
   - "systems"
 submissionModel: "deadline"
 knownEditions:
+  - year: 2027
+    paperDeadline: "2027-03-01T23:59:59"
+    timezone: "PST"
+    conferenceDates: "September 26 - October 1, 2027"
+    location: "Florence, Italy"
+    link: "https://www.ieee-ras.org/event/2027-ieee-rsj-international-conference-on-intelligent-robots-and-systems-iros-70525/"
+    deadlineSourceLabel: "IEEE RAS IROS 2027 event page"
+    deadlineSourceUrl: "https://www.ieee-ras.org/event/2027-ieee-rsj-international-conference-on-intelligent-robots-and-systems-iros-70525/"
+    note: "IEEE RAS lists March 1, 2027 as the paper submission deadline without a cutoff time; countdown temporarily uses end-of-day Pacific Standard Time."
   - year: 2026
     paperDeadline: "2026-03-02T23:59:59"
     timezone: "PST"
     conferenceDates: "September 27 - October 1, 2026"
     location: "Pittsburgh, PA, USA"
     link: "https://2026.ieee-iros.org/"
-    deadlineSourceLabel: "IROS 2026 PaperCept submission page"
-    deadlineSourceUrl: "https://ras.papercept.net/conferences/conferences/IROS26/program/IROS26_ContentListWeb_1.html"
+    deadlineSourceLabel: "IROS 2026 official website"
+    deadlineSourceUrl: "https://2026.ieee-iros.org/"
     note: "Paper deadline aligned with the ccfddl baseline for IROS 2026."

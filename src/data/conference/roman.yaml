@@ -5,6 +5,7 @@ summary: "Major venue for human-robot interaction, social robotics, assistive ro
 venueType: "conference"
 category: "RAS"
 ccfRank: "N/A"
+homepage: "https://ro-man.org/"
 dblp: "conf/ro-man"
 keywords:
   - "ro-man"
@@ -21,3 +22,9 @@ knownEditions:
     link: "https://ro-man2026.org/"
     deadlineSourceLabel: "RO-MAN 2026 Paper Submission"
     deadlineSourceUrl: "https://ro-man2026.org/papersubmission/"
+futureHints:
+  - year: 2027
+    conferenceDates: "August 23-27, 2027"
+    location: "Waterloo, Ontario, Canada"
+    link: "https://www.ieee-ras.org/events/tag/autonomous-robots/day/2027-08-27/"
+    note: "The RO-MAN series site and IEEE RAS have announced the 2027 location and conference dates; the submission deadline remains estimated."

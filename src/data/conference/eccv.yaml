@@ -21,7 +21,7 @@ knownEditions:
     paperDeadline: "2026-03-05T23:00:00"
     abstractDeadline: "2026-02-26T23:00:00"
     timezone: "UTC+1"
-    conferenceDates: "September 8-13, 2026"
+    conferenceDates: "September 8-12, 2026"
     location: "Malmo, Sweden"
     link: "https://eccv.ecva.net/"
     deadlineSourceLabel: "ECCV 2026 Call for Papers"

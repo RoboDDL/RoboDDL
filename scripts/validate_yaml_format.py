@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Validate that YAML data files use the JSON-compatible double-quoted string format
-required by the project's custom TypeScript YAML parser (loadVenueRecords.ts).
+Validate that YAML data files use the JSON-compatible scalar format and include
+the required top-level fields expected by the project's TypeScript data loader.
 
 The parser uses JSON.parse() for scalar values, so all string values must be
 wrapped in double quotes. Numbers (year: 2025), booleans (true/false), and
@@ -25,6 +25,18 @@ DATA_DIRS = [
 _INT_OR_FLOAT = re.compile(r"^-?\d+(\.\d+)?$")
 _DOUBLE_QUOTED = re.compile(r'^"([^"\\]|\\.)*"$')
 _KEYWORDS = {"true", "false", "null", "~", ""}
+_COMMON_REQUIRED_FIELDS = {
+    "slug",
+    "title",
+    "fullTitle",
+    "summary",
+    "venueType",
+    "category",
+    "homepage",
+    "submissionModel",
+}
+_CONFERENCE_REQUIRED_FIELDS = {"knownEditions"}
+_JOURNAL_REQUIRED_FIELDS = {"rollingNote", "sourceLabel", "sourceUrl"}
 
 
 def is_valid_scalar(value: str) -> bool:
@@ -45,6 +57,8 @@ def check_file(path: Path) -> list[tuple[int, str, str]]:
     """
     errors: list[tuple[int, str, str]] = []
     lines = path.read_text(encoding="utf-8").splitlines()
+    top_level_fields: set[str] = set()
+    top_level_values: dict[str, str] = {}
 
     for lineno, raw in enumerate(lines, 1):
         line = raw.rstrip()
@@ -73,8 +87,22 @@ def check_file(path: Path) -> list[tuple[int, str, str]]:
 
         value = content[colon + 1 :].strip()
 
+        if len(line) == len(stripped) and not stripped.startswith("- "):
+            top_level_fields.add(key)
+            top_level_values[key] = value
+
         if value and not is_valid_scalar(value):
             errors.append((lineno, line, f"unquoted or single-quoted string: {value!r}"))
+
+    venue_type = top_level_values.get("venueType")
+    required_fields = set(_COMMON_REQUIRED_FIELDS)
+    if venue_type == '"conference"':
+        required_fields.update(_CONFERENCE_REQUIRED_FIELDS)
+    elif venue_type == '"journal"':
+        required_fields.update(_JOURNAL_REQUIRED_FIELDS)
+
+    for field in sorted(required_fields - top_level_fields):
+        errors.append((1, lines[0] if lines else "", f"missing required top-level field: {field}"))
 
     return errors
 
@@ -109,7 +137,7 @@ def main() -> int:
 
     if total_errors:
         print(
-            f"\n{total_errors} format error(s) found.\n"
+            f"\n{total_errors} data validation error(s) found.\n"
             "All string values in YAML files must use double quotes, e.g.:\n"
             '  slug: "icra"   ✓\n'
             "  slug: icra     ✗\n"
@@ -118,7 +146,7 @@ def main() -> int:
         )
         return 1
 
-    print(f"All {len(yaml_files)} YAML file(s) passed format validation.")
+    print(f"All {len(yaml_files)} YAML file(s) passed format and required-field validation.")
     return 0
 
 

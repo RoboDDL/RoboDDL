@@ -18,10 +18,16 @@ keywords:
 submissionModel: "deadline"
 knownEditions: 
   - year: 2026
-    paperDeadline: "2026-01-23T23:59:59"
-    timezone: "AoE"
+    paperDeadline: "2026-01-22T22:00:00"
+    abstractDeadline: "2026-01-15T22:00:00"
+    timezone: "UTC"
     conferenceDates: "19-23 July 2026"
     location: "Los Angeles, California"
     link: "https://s2026.siggraph.org/"
-    deadlineSourceLabel: "SIGGRAPH 2026 Submission Deadlines"
-    deadlineSourceUrl: "https://s2026.siggraph.org/submit-to-siggraph/"
+    deadlineSourceLabel: "SIGGRAPH 2026 Technical Papers deadlines"
+    deadlineSourceUrl: "https://s2026.siggraph.org/technical-papers-submissions-faq/"
+    note: "The paper deadline is Stage 2 on January 22 at 22:00 UTC; January 23 is only the final upload and conflict-information deadline."
+futureHints:
+  - year: 2027
+    conferenceDates: "August 8-12, 2027"
+    location: "Anaheim, California, USA"

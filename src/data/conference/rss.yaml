@@ -25,3 +25,9 @@ knownEditions:
     deadlineSourceLabel: "RSS 2026 official website"
     deadlineSourceUrl: "https://roboticsconference.org/"
     note: "Official page lists the submission date without a timezone; countdown uses end-of-day AoE."
+futureHints:
+  - year: 2027
+    conferenceDates: "July 6-11, 2027"
+    location: "Athens, Greece"
+    link: "https://roboticsconference.org/"
+    note: "RSS has announced the 2027 conference dates and location; the submission deadline remains estimated until the official CFP is published."

@@ -264,6 +264,42 @@ function loadYamlCollection(modules: Record<string, string>, expectedVenueType: 
           );
         }
 
+        const requiredStringFields = [
+          'slug',
+          'title',
+          'fullTitle',
+          'summary',
+          'category',
+          'homepage',
+          'submissionModel',
+        ];
+
+        for (const field of requiredStringFields) {
+          const value = document[field];
+          if (typeof value !== 'string' || value.trim().length === 0) {
+            throw new Error(`required field "${field}" must be a non-empty string.`);
+          }
+        }
+
+        if (expectedVenueType === 'conference') {
+          if (document.submissionModel !== 'deadline') {
+            throw new Error(`conference submissionModel must be "deadline".`);
+          }
+          if (!Array.isArray(document.knownEditions) || document.knownEditions.length === 0) {
+            throw new Error(`conference field "knownEditions" must be a non-empty list.`);
+          }
+        } else {
+          if (document.submissionModel !== 'rolling') {
+            throw new Error(`journal submissionModel must be "rolling".`);
+          }
+          for (const field of ['rollingNote', 'sourceLabel', 'sourceUrl']) {
+            const value = document[field];
+            if (typeof value !== 'string' || value.trim().length === 0) {
+              throw new Error(`required field "${field}" must be a non-empty string.`);
+            }
+          }
+        }
+
         return [document];
       } catch (error) {
         const message = error instanceof Error ? error.message : String(error);

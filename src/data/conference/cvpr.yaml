@@ -17,11 +17,17 @@ keywords:
 submissionModel: "deadline"
 knownEditions:
   - year: 2026
-    paperDeadline: "2025-11-13T23:59:59"
-    abstractDeadline: "2025-11-07T23:59:59"
+    paperDeadline: "2025-11-13T23:59:00"
+    abstractDeadline: "2025-11-07T23:59:00"
     timezone: "AoE"
     conferenceDates: "June 3-7, 2026"
     location: "Denver, Colorado, United States"
     link: "https://cvpr.thecvf.com/Conferences/2026"
     deadlineSourceLabel: "CVPR 2026 Call for Papers"
     deadlineSourceUrl: "https://cvpr.thecvf.com/Conferences/2026/CallForPapers"
+futureHints:
+  - year: 2027
+    conferenceDates: "June 20-24, 2027"
+    location: "Seattle, Washington, United States"
+    link: "https://www.thecvf.com/?p=137"
+    note: "CVF has announced the conference dates and location; the submission deadline remains estimated until the official CFP is published."

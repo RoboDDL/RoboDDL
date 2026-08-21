@@ -163,6 +163,7 @@ summary: "One-sentence summary of the venue scope and why it belongs in RoboDDL.
 venueType: "conference"
 category: "RAS"
 ccfRank: "B"
+caaRank: "A"
 caaiRank: "A"
 homepage: "https://series-homepage.example.com/"
 dblp: "conf/example"
@@ -193,7 +194,7 @@ futureHints:
 Conference notes:
 
 - Required top-level fields: `slug`, `title`, `fullTitle`, `summary`, `venueType`, `category`, `homepage`, `submissionModel`, `knownEditions`.
-- `cycleYears`, `ccfRank`, `caaiRank`, `dblp`, `keywords`, `abstractDeadline`, `note`, and `futureHints` are optional.
+- `cycleYears`, `ccfRank`, `caaRank`, `caaiRank`, `dblp`, `keywords`, `abstractDeadline`, `note`, and `futureHints` are optional.
 - `knownEditions` should contain official editions, not guesses.
 - Prefer official CFP or official event pages for `deadlineSourceUrl`.
 - Use the real local deadline with the correct `timezone`; the app converts it for display.
@@ -204,7 +205,7 @@ Conference notes:
 ### Journals
 
 - Use `submissionModel: "rolling"`.
-- Fill `ccfRank`, `caaiRank`, `casPartition`, and `jcrQuartile` when known.
+- Fill `ccfRank`, `caaRank`, `caaiRank`, `casPartition`, and `jcrQuartile` when known.
 - Use `"N/A"` when a metric is unavailable or the venue is not listed.
 - `sourceUrl` should support the rolling-submission claim with an official journal or publisher page.
 - `specialIssueLabel` and `specialIssueUrl` are optional, but should be added together when relevant.
@@ -219,6 +220,7 @@ fullTitle: "Full Journal Title"
 summary: "One-sentence summary of the journal's robotics relevance and positioning."
 venueType: "journal"
 category: "Journal"
+caaRank: "A"
 caaiRank: "A"
 ccfRank: "B"
 casPartition: "CAS 2"
@@ -240,5 +242,5 @@ Journal notes:
 
 - Required top-level fields: `slug`, `title`, `fullTitle`, `summary`, `venueType`, `category`, `homepage`, `submissionModel`, `rollingNote`, `sourceLabel`, `sourceUrl`.
 - `dblp`, `keywords`, `specialIssueLabel`, and `specialIssueUrl` are optional.
-- Prefer keeping `caaiRank`, `ccfRank`, `casPartition`, and `jcrQuartile` present, using `"N/A"` when needed.
+- Prefer keeping `caaRank`, `caaiRank`, `ccfRank`, `casPartition`, and `jcrQuartile` present, using `"N/A"` when needed.
 </details>

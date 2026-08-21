@@ -36,6 +36,7 @@ function ConferenceCard({ venue, language, isFavorite, onToggleFavorite }: Confe
     venue.submissionModel === 'deadline' ? getCountdownLabel(venue.countdownLabel, language) : text.venue.status;
   const categoryLabel = getCategoryLabel(venue.category, language);
   const hasCcfRank = Boolean(venue.ccfRank && venue.ccfRank !== 'N/A');
+  const hasCaaRank = Boolean(venue.caaRank && venue.caaRank !== 'N/A');
   const hasCaaiRank = Boolean(venue.caaiRank && venue.caaiRank !== 'N/A');
   const hasCasPartition = Boolean(venue.casPartition && venue.casPartition !== 'N/A');
   const hasJcrQuartile = Boolean(venue.jcrQuartile && venue.jcrQuartile !== 'N/A');
@@ -48,6 +49,7 @@ function ConferenceCard({ venue, language, isFavorite, onToggleFavorite }: Confe
   const jcrDisplayValue = hasJcrQuartile ? venue.jcrQuartile!.replace(/^JCR\s*/i, '').trim() : '';
   const journalMetricItems = [
     hasCcfRank ? `CCF-${venue.ccfRank}` : null,
+    hasCaaRank ? `CAA-${venue.caaRank}` : null,
     hasCaaiRank ? `CAAI-${venue.caaiRank}` : null,
     hasCasPartition ? `CAS-${casDisplayValue}` : null,
     hasJcrQuartile ? `JCR-${jcrDisplayValue}` : null,
@@ -80,6 +82,7 @@ function ConferenceCard({ venue, language, isFavorite, onToggleFavorite }: Confe
               ))}
               {venue.venueType === 'conference' ? <span className="pill">{categoryLabel}</span> : null}
               {hasCcfRank ? <span className="pill">CCF-{venue.ccfRank}</span> : null}
+              {hasCaaRank ? <span className="pill">CAA-{venue.caaRank}</span> : null}
               {hasCaaiRank ? <span className="pill">CAAI-{venue.caaiRank}</span> : null}
               {hasCasPartition ? <span className="pill">CAS-{casDisplayValue}</span> : null}
               {hasJcrQuartile ? <span className="pill">JCR-{jcrDisplayValue}</span> : null}

@@ -28,3 +28,9 @@ knownEditions:
     deadlineSourceLabel: "ICCV 2025 dates page"
     deadlineSourceUrl: "https://iccv.thecvf.com/Conferences/2025/Dates"
     note: "The official dates page lists deadlines in Honolulu time (HST, UTC-10)."
+futureHints:
+  - year: 2027
+    conferenceDates: "October 2-8, 2027"
+    location: "Hong Kong"
+    link: "https://www.thecvf.com/?p=137"
+    note: "CVF has announced the conference dates and location; the submission deadline remains estimated until the official CFP is published."

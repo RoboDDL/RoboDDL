@@ -26,11 +26,17 @@ knownEditions:
     deadlineSourceLabel: "NeurIPS 2025 Call for Papers"
     deadlineSourceUrl: "https://nips.cc/Conferences/2025/CallForPapers"
   - year: 2026
-    paperDeadline: "2026-05-06T23:59:59"
-    abstractDeadline: "2026-05-04T23:59:59"
+    paperDeadline: "2026-05-06T23:59:00"
+    abstractDeadline: "2026-05-04T23:59:00"
     timezone: "AoE"
-    conferenceDates: "December 6-12, 2026"
-    location: "Atlanta, USA; Paris, France; Sydney, Australia"
+    conferenceDates: "December 6-12, 2026 (Sydney); December 9-13, 2026 (Atlanta and Paris)"
+    location: "Sydney, Australia; Atlanta, USA; Paris, France"
     link: "https://neurips.cc/Conferences/2026"
     deadlineSourceLabel: "NeurIPS 2026 Call for Papers"
     deadlineSourceUrl: "https://nips.cc/Conferences/2026/CallForPapers"
+futureHints:
+  - year: 2027
+    conferenceDates: "TBA"
+    location: "Europe"
+    link: "https://neurips.cc/Conferences/FutureMeetings"
+    note: "NeurIPS has announced Europe as the 2027 region; exact dates and city have not yet been published."

@@ -230,6 +230,7 @@ function App() {
       const matchesRating =
         selectedRatingFilter === 'All' ||
         (selectedRatingFilter === 'CCF' && Boolean(venue.ccfRank && venue.ccfRank !== 'N/A')) ||
+        (selectedRatingFilter === 'CAA' && Boolean(venue.caaRank && venue.caaRank !== 'N/A')) ||
         (selectedRatingFilter === 'CAAI' && Boolean(venue.caaiRank && venue.caaiRank !== 'N/A'));
       const matchesFavorite = !showFavoritesOnly || favoriteVenueIds.includes(venue.id);
 
@@ -297,6 +298,7 @@ function App() {
       const matchesRating =
         selectedRatingFilter === 'All' ||
         (selectedRatingFilter === 'CCF' && Boolean(venue.ccfRank && venue.ccfRank !== 'N/A')) ||
+        (selectedRatingFilter === 'CAA' && Boolean(venue.caaRank && venue.caaRank !== 'N/A')) ||
         (selectedRatingFilter === 'CAAI' && Boolean(venue.caaiRank && venue.caaiRank !== 'N/A'));
 
       return matchesCategory && matchesRating;

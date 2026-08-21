@@ -15,6 +15,15 @@ keywords:
   - "manipulation"
 submissionModel: "deadline"
 knownEditions:
+  - year: 2027
+    paperDeadline: "2026-09-15T23:59:59"
+    timezone: "PDT"
+    conferenceDates: "May 24-28, 2027"
+    location: "COEX, Seoul, South Korea"
+    link: "https://2027.ieee-icra.org/"
+    deadlineSourceLabel: "ICRA 2027 Call for Technical Papers"
+    deadlineSourceUrl: "https://2027.ieee-icra.org/contribute/call-for-icra-2027-papers-now-accepting-submissions/"
+    note: "The official call lists September 15, 2026 at 11:59 PM Pacific time; the source instant falls in Pacific Daylight Time."
   - year: 2026
     paperDeadline: "2025-09-15T23:59:00"
     timezone: "PST"
@@ -23,8 +32,3 @@ knownEditions:
     link: "https://2026.ieee-icra.org/"
     deadlineSourceLabel: "ICRA 2026 papers page"
     deadlineSourceUrl: "https://2026.ieee-icra.org/contribute/call-for-icra-2026-papers-now-accepting-submissions/"
-futureHints:
-  - year: 2027
-    conferenceDates: "May 24-28, 2027"
-    location: "COEX, Seoul, South Korea"
-    link: "https://2027.ieee-icra.org/"

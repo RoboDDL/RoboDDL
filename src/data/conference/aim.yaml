@@ -5,7 +5,7 @@ summary: "Flagship mechatronics conference spanning robotics, intelligent system
 venueType: "conference"
 category: "RAS"
 ccfRank: "N/A"
-homepage: "https://www.ieee-asme-mechatronics.info/aim-conferences/"
+homepage: "https://aim2027.com/"
 dblp: "conf/aim"
 keywords:
   - "aim"
@@ -15,6 +15,15 @@ keywords:
   - "intelligent systems"
 submissionModel: "deadline"
 knownEditions:
+  - year: 2027
+    paperDeadline: "2027-03-02T23:59:59"
+    timezone: "PST"
+    conferenceDates: "June 29 - July 2, 2027"
+    location: "Calgary, Canada"
+    link: "https://aim2027.com/"
+    deadlineSourceLabel: "IEEE RAS AIM 2027 event page"
+    deadlineSourceUrl: "https://www.ieee-ras.org/event/2027-ieee-asme-international-conference-on-advanced-intelligent-mechatronics-aim-69278/"
+    note: "IEEE RAS lists March 2, 2027 as the paper deadline without a cutoff time; countdown temporarily uses end-of-day Pacific Standard Time."
   - year: 2026
     paperDeadline: "2026-03-24T23:59:59"
     timezone: "AoE"

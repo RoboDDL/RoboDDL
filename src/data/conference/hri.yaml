@@ -14,6 +14,15 @@ keywords:
   - "assistive robotics"
 submissionModel: "deadline"
 knownEditions:
+  - year: 2027
+    paperDeadline: "2026-09-18T23:59:59"
+    abstractDeadline: "2026-09-11T23:59:59"
+    timezone: "AoE"
+    conferenceDates: "March 8-12, 2027"
+    location: "Santa Clara, California, USA"
+    link: "https://humanrobotinteraction.org/2027/"
+    deadlineSourceLabel: "HRI 2027 full papers page"
+    deadlineSourceUrl: "https://humanrobotinteraction.org/2027/full-papers/"
   - year: 2026
     paperDeadline: "2025-09-30T23:59:59"
     abstractDeadline: "2025-09-22T23:59:59"

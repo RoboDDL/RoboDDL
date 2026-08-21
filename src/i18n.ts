@@ -325,6 +325,7 @@ const venueTypeLabels: Record<'All' | VenueType, Record<Language, string>> = {
 const ratingFilterLabels: Record<RatingFilter, Record<Language, string>> = {
   All: { en: 'All', 'zh-CN': '全部' },
   CCF: { en: 'CCF', 'zh-CN': 'CCF' },
+  CAA: { en: 'CAA', 'zh-CN': 'CAA' },
   CAAI: { en: 'CAAI', 'zh-CN': 'CAAI' },
 };
 
@@ -506,6 +507,18 @@ const noteTranslations: Record<string, string> = {
     '根据官方 CFP，论文注册会更早关闭，时间为 2026 年 2 月 26 日 23:00 CET。',
   'Public CFP reposts reported the final paper deadline extension to May 15, 2025 AoE.':
     '公开转载的 CFP 信息显示，最终论文截止时间延长到了 AoE 2025 年 5 月 15 日。',
+  'IEEE RAS lists March 2, 2027 as the paper deadline without a cutoff time; countdown temporarily uses end-of-day Pacific Standard Time.':
+    'IEEE RAS 将 2027 年 3 月 2 日列为论文截止日期，但未注明具体截止时刻；倒计时暂按太平洋标准时间当天结束计算。',
+  'IEEE RAS lists March 1, 2027 as the paper deadline without a cutoff time; countdown uses end-of-day Pacific Standard Time.':
+    'IEEE RAS 将 2027 年 3 月 1 日列为论文截止日期，但未注明具体截止时刻；倒计时按太平洋标准时间当天结束计算。',
+  'IEEE RAS lists March 1, 2027 as the paper submission deadline without a cutoff time; countdown temporarily uses end-of-day Pacific Standard Time.':
+    'IEEE RAS 将 2027 年 3 月 1 日列为论文投稿截止日期，但未注明具体截止时刻；倒计时暂按太平洋标准时间当天结束计算。',
+  'The official call lists September 15, 2026 at 11:59 PM Pacific time; the source instant falls in Pacific Daylight Time.':
+    '官方征稿通知列出的时间为太平洋时间 2026 年 9 月 15 日 23:59；该日期实际处于太平洋夏令时。',
+  'The official website extended the paper deadline from August 1 to August 15, 2026 and does not state a cutoff time; countdown uses end-of-day AoE.':
+    '官网将论文截止日期从 2026 年 8 月 1 日延长至 8 月 15 日，但未注明具体截止时刻；倒计时按 AoE 当天结束计算。',
+  'The paper deadline is Stage 2 on January 22 at 22:00 UTC; January 23 is only the final upload and conflict-information deadline.':
+    '论文截止时间是第二阶段的 UTC 1 月 22 日 22:00；1 月 23 日仅为最终文件上传和利益冲突信息截止时间。',
 };
 
 export function getInitialLanguage(): Language {

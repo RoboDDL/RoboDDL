@@ -5,6 +5,7 @@ summary: "Flagship humanoid robotics venue spanning whole-body control, locomoti
 venueType: "conference"
 category: "RAS"
 ccfRank: "N/A"
+homepage: "https://2026.ieee-humanoids.org/"
 dblp: "conf/humanoids"
 keywords:
   - "humanoids"
@@ -15,11 +16,11 @@ keywords:
 submissionModel: "deadline"
 knownEditions:
   - year: 2026
-    paperDeadline: "2026-07-31T23:59:59"
-    timezone: "PST"
+    paperDeadline: "2026-07-24T23:59:59"
+    timezone: "AoE"
     conferenceDates: "December 6-9, 2026"
     location: "Santa Clara, California, USA"
     link: "https://2026.ieee-humanoids.org/"
-    deadlineSourceLabel: "Humanoids 2026 official website"
-    deadlineSourceUrl: "https://2026.ieee-humanoids.org/"
-    note: "The official website lists July 31, 2026 as the paper deadline and calls the companion video deadline August 4, 2026 EOD Pacific Time."
+    deadlineSourceLabel: "Humanoids 2026 updated Call for Papers"
+    deadlineSourceUrl: "https://lists.robocup.org/archives/list/robocup-humanoid%40lists.robocup.org/message/FO2B3XCMN6D7MBVWUINQXVHXA3YXEKQX/"
+    note: "New submissions closed July 24, 2026 AoE; already-submitted manuscripts and optional supplementary videos could be updated through July 27, 2026 AoE."
