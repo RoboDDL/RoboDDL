@@ -23,7 +23,7 @@ knownEditions:
     link: "https://2027.ieeecase.org/"
     deadlineSourceLabel: "IEEE RAS CASE 2027 event page"
     deadlineSourceUrl: "https://www.ieee-ras.org/event/2027-ieee-23rd-international-conference-on-automation-science-and-engineering-case-71151/"
-    note: "IEEE RAS lists March 1, 2027 as the paper deadline without a cutoff time; countdown uses end-of-day Pacific Standard Time."
+    note: "IEEE RAS and PaperCept list March 1, 2027 as the paper deadline without a cutoff time; countdown assumes end-of-day PST. IEEE RAS lists August 23-27 for the conference, while PaperCept lists August 22-27; retain the RAS dates pending a detailed conference program."
   - year: 2026
     paperDeadline: "2026-03-15T23:59:00"
     timezone: "PST"

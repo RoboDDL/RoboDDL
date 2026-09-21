@@ -15,6 +15,12 @@ keywords:
   - "robot learning"
   - "embodied ai"
 submissionModel: "deadline"
+futureHints:
+  - year: 2027
+    conferenceDates: "TBA"
+    location: "South America"
+    link: "https://icml.cc/Conferences/FutureMeetings"
+    note: "The official future-meetings page only confirms South America for 2027. Dates, city and submission deadlines remain unannounced."
 knownEditions:
   - year: 2026
     paperDeadline: "2026-01-28T23:59:59"

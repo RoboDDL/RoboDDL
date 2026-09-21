@@ -16,14 +16,14 @@ keywords:
 submissionModel: "deadline"
 knownEditions:
   - year: 2027
-    paperDeadline: "2026-09-15T23:59:59"
-    timezone: "PDT"
+    paperDeadline: "2026-09-16T23:59:00"
+    timezone: "PST"
     conferenceDates: "May 24-28, 2027"
     location: "COEX, Seoul, South Korea"
     link: "https://2027.ieee-icra.org/"
     deadlineSourceLabel: "ICRA 2027 Call for Technical Papers"
     deadlineSourceUrl: "https://2027.ieee-icra.org/contribute/call-for-icra-2027-papers-now-accepting-submissions/"
-    note: "The official call lists September 15, 2026 at 11:59 PM Pacific time; the source instant falls in Pacific Daylight Time."
+    note: "The official CFP and PaperCept report an extension to September 16, 2026. The CFP explicitly specifies 23:59 PST; this record follows that stated fixed offset rather than inferring PDT. Accompanying videos have a separate September 22 deadline."
   - year: 2026
     paperDeadline: "2025-09-15T23:59:00"
     timezone: "PST"

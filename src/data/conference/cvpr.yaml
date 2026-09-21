@@ -16,6 +16,16 @@ keywords:
   - "robotics"
 submissionModel: "deadline"
 knownEditions:
+  - year: 2027
+    paperDeadline: "2026-11-16T23:59:59"
+    abstractDeadline: "2026-11-10T23:59:59"
+    timezone: "AoE"
+    conferenceDates: "June 20-25, 2027"
+    location: "Seattle, Washington, United States"
+    link: "https://cvpr.thecvf.com/Conferences/2027"
+    deadlineSourceLabel: "CVPR 2027 Call for Papers"
+    deadlineSourceUrl: "https://cvpr.thecvf.com/Conferences/2027/CallForPapers"
+    note: "Paper registration is required by November 10; full papers are due November 16, 2026 AoE. The current conference dates page lists June 20-25, superseding the earlier CVF announcement."
   - year: 2026
     paperDeadline: "2025-11-13T23:59:00"
     abstractDeadline: "2025-11-07T23:59:00"
@@ -25,9 +35,3 @@ knownEditions:
     link: "https://cvpr.thecvf.com/Conferences/2026"
     deadlineSourceLabel: "CVPR 2026 Call for Papers"
     deadlineSourceUrl: "https://cvpr.thecvf.com/Conferences/2026/CallForPapers"
-futureHints:
-  - year: 2027
-    conferenceDates: "June 20-24, 2027"
-    location: "Seattle, Washington, United States"
-    link: "https://www.thecvf.com/?p=137"
-    note: "CVF has announced the conference dates and location; the submission deadline remains estimated until the official CFP is published."

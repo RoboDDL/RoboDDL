@@ -25,3 +25,9 @@ knownEditions:
     link: "https://2026.ijcai.org/"
     deadlineSourceLabel: "IJCAI-ECAI 2026 Main Track Call for Papers"
     deadlineSourceUrl: "https://2026.ijcai.org/ijcai-ecai-2026-call-for-papers-main-track/"
+futureHints:
+  - year: 2027
+    conferenceDates: "August 7-13, 2027 (Kyoto); August 15-17, 2027 (Hengqin)"
+    location: "Kyoto, Japan; Hengqin, China"
+    link: "https://www.ijcai.org/node/8"
+    note: "IJCAI has announced both 2027 meeting dates and locations; the paper deadline remains estimated pending an official CFP."
