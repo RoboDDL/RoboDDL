@@ -493,6 +493,12 @@ const zhVenueTranslations: Record<string, VenueTranslation> = {
 };
 
 const noteTranslations: Record<string, string> = {
+  'RSS 2027 uses a two-stage submission process. The countdown tracks the mandatory Stage 1 six-page extended abstract deadline on December 4, 2026 at 23:59 AoE. Only invited submissions proceed to the Stage 2 final paper deadline on April 16, 2027 at 23:59 AoE.':
+    'RSS 2027 采用两阶段投稿。倒计时对应第一阶段必交的 6 页扩展摘要，截止时间为 AoE 2026 年 12 月 4 日 23:59。只有获邀稿件才能进入第二阶段，全文截止时间为 AoE 2027 年 4 月 16 日 23:59。',
+  'The official website and PaperCept list March 7, 2027 for regular and special-session papers. The website states that the deadline will not be extended. No cutoff time or timezone is published; countdown temporarily assumes end-of-day PST.':
+    '官网与 PaperCept 将普通论文及特别专题论文截止日期列为 2027 年 3 月 7 日，且明确不延期。尚未公布具体截止时刻与时区；倒计时暂按 PST 当天结束计算。',
+  'IEEE RAS lists September 15, 2027 as the paper submission deadline without a cutoff time or timezone; countdown temporarily assumes end-of-day PST.':
+    'IEEE RAS 将 2027 年 9 月 15 日列为论文投稿截止日期，但未注明具体截止时刻与时区；倒计时暂按 PST 当天结束计算。',
   'Official page lists the submission date without a timezone; countdown uses end-of-day AoE.':
     '官网仅给出投稿日期而未注明时区；倒计时按 AoE 当天结束计算。',
   'Official page exposes the date without a timezone; countdown uses end-of-day AoE.':

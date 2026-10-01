@@ -15,6 +15,15 @@ keywords:
   - "manipulation"
 submissionModel: "deadline"
 knownEditions:
+  - year: 2028
+    paperDeadline: "2027-09-15T23:59:59"
+    timezone: "PST"
+    conferenceDates: "May 15-19, 2028"
+    location: "Riocentro, Rio de Janeiro, Brazil"
+    link: "https://www.ieee-ras.org/event/2028-ieee-international-conference-on-robotics-and-automation-icra-74101/"
+    deadlineSourceLabel: "IEEE RAS ICRA 2028 event page"
+    deadlineSourceUrl: "https://www.ieee-ras.org/event/2028-ieee-international-conference-on-robotics-and-automation-icra-74101/"
+    note: "IEEE RAS lists September 15, 2027 as the paper submission deadline without a cutoff time or timezone; countdown temporarily assumes end-of-day PST."
   - year: 2027
     paperDeadline: "2026-09-16T23:59:00"
     timezone: "PST"

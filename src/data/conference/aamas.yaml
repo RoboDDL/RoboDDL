@@ -16,14 +16,14 @@ keywords:
 submissionModel: "deadline"
 knownEditions:
   - year: 2027
-    paperDeadline: "2026-10-08T23:59:00"
-    abstractDeadline: "2026-10-01T23:59:00"
+    paperDeadline: "2026-10-08T23:59:59"
+    abstractDeadline: "2026-10-01T23:59:59"
     timezone: "AoE"
     conferenceDates: "May 3-7, 2027"
     location: "Hanoi, Vietnam"
     link: "https://warwick.ac.uk/fac/sci/dcs/aamas2027/"
     deadlineSourceLabel: "AAMAS 2027 Call for Papers"
-    deadlineSourceUrl: "https://warwick.ac.uk/fac/sci/dcs/aamas2027/calls/"
+    deadlineSourceUrl: "https://warwick.ac.uk/fac/sci/dcs/aamas2027/calls/call-for-main-track/"
   - year: 2026
     paperDeadline: "2025-10-08T23:59:59"
     abstractDeadline: "2025-10-01T23:59:59"

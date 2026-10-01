@@ -31,6 +31,6 @@ knownEditions:
 futureHints:
   - year: 2027
     conferenceDates: "October 2-8, 2027"
-    location: "Hong Kong"
-    link: "https://www.thecvf.com/?p=137"
-    note: "CVF has announced the conference dates and location; the submission deadline remains estimated until the official CFP is published."
+    location: "Hong Kong Convention and Exhibition Centre, Hong Kong"
+    link: "https://iccv.thecvf.com/Conferences/2027"
+    note: "The official conference homepage and CVF announcement confirm October 2-8, 2027 at HKCEC. The dates subpage still shows conflicting October 19-23 dates without a venue; retain the homepage dates. The submission deadline remains estimated until the official CFP is published."

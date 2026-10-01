@@ -16,6 +16,15 @@ keywords:
   - "robotics"
 submissionModel: "deadline"
 knownEditions:
+  - year: 2027
+    paperDeadline: "2027-01-11T23:59:00"
+    abstractDeadline: "2027-01-04T23:59:00"
+    timezone: "AoE"
+    conferenceDates: "August 7-13, 2027 (Kyoto); August 15-17, 2027 (Hengqin)"
+    location: "Kyoto, Japan; Hengqin, China"
+    link: "https://2027.ijcai.org/"
+    deadlineSourceLabel: "IJCAI 2027 official important dates"
+    deadlineSourceUrl: "https://2027.ijcai.org/"
   - year: 2026
     paperDeadline: "2026-01-19T23:59:59"
     abstractDeadline: "2026-01-12T23:59:59"
@@ -25,9 +34,3 @@ knownEditions:
     link: "https://2026.ijcai.org/"
     deadlineSourceLabel: "IJCAI-ECAI 2026 Main Track Call for Papers"
     deadlineSourceUrl: "https://2026.ijcai.org/ijcai-ecai-2026-call-for-papers-main-track/"
-futureHints:
-  - year: 2027
-    conferenceDates: "August 7-13, 2027 (Kyoto); August 15-17, 2027 (Hengqin)"
-    location: "Kyoto, Japan; Hengqin, China"
-    link: "https://www.ijcai.org/node/8"
-    note: "IJCAI has announced both 2027 meeting dates and locations; the paper deadline remains estimated pending an official CFP."

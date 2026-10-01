@@ -15,6 +15,15 @@ keywords:
   - "robotics systems"
 submissionModel: "deadline"
 knownEditions:
+  - year: 2027
+    paperDeadline: "2026-12-04T23:59:00"
+    timezone: "AoE"
+    conferenceDates: "July 6-11, 2027"
+    location: "Athens, Greece"
+    link: "https://roboticsconference.org/"
+    deadlineSourceLabel: "RSS 2027 Call for Papers"
+    deadlineSourceUrl: "https://roboticsconference.org/information/cfp/"
+    note: "RSS 2027 uses a two-stage submission process. The countdown tracks the mandatory Stage 1 six-page extended abstract deadline on December 4, 2026 at 23:59 AoE. Only invited submissions proceed to the Stage 2 final paper deadline on April 16, 2027 at 23:59 AoE."
   - year: 2026
     paperDeadline: "2026-01-30T23:59:00"
     abstractDeadline: "2026-01-23T23:59:00"
@@ -25,9 +34,3 @@ knownEditions:
     deadlineSourceLabel: "RSS 2026 official website"
     deadlineSourceUrl: "https://roboticsconference.org/"
     note: "Official page lists the submission date without a timezone; countdown uses end-of-day AoE."
-futureHints:
-  - year: 2027
-    conferenceDates: "July 6-11, 2027"
-    location: "Athens, Greece"
-    link: "https://roboticsconference.org/"
-    note: "RSS has announced the 2027 conference dates and location; the submission deadline remains estimated until the official CFP is published."

@@ -14,6 +14,15 @@ keywords:
   - "social robotics"
 submissionModel: "deadline"
 knownEditions:
+  - year: 2027
+    paperDeadline: "2027-03-07T23:59:59"
+    timezone: "PST"
+    conferenceDates: "August 23-27, 2027"
+    location: "Waterloo, Ontario, Canada"
+    link: "https://ro-man2027.ca/"
+    deadlineSourceLabel: "RO-MAN 2027 official dates and PaperCept"
+    deadlineSourceUrl: "https://ro-man2027.ca/"
+    note: "The official website and PaperCept list March 7, 2027 for regular and special-session papers. The website states that the deadline will not be extended. No cutoff time or timezone is published; countdown temporarily assumes end-of-day PST."
   - year: 2026
     paperDeadline: "2026-03-29T23:59:59"
     timezone: "PST"
@@ -22,9 +31,3 @@ knownEditions:
     link: "https://ro-man2026.org/"
     deadlineSourceLabel: "RO-MAN 2026 Paper Submission"
     deadlineSourceUrl: "https://ro-man2026.org/papersubmission/"
-futureHints:
-  - year: 2027
-    conferenceDates: "August 23-27, 2027"
-    location: "Waterloo, Ontario, Canada"
-    link: "https://www.ieee-ras.org/events/tag/autonomous-robots/day/2027-08-27/"
-    note: "The RO-MAN series site and IEEE RAS have announced the 2027 location and conference dates; the submission deadline remains estimated."
