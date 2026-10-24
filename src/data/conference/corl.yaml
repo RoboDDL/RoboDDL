@@ -23,4 +23,4 @@ knownEditions:
     link: "https://www.corl.org/"
     deadlineSourceLabel: "CoRL 2026 author instructions"
     deadlineSourceUrl: "https://www.corl.org/contributions/instruction-for-authors"
-    note: "Official page exposes the date without a timezone; countdown uses end-of-day AoE."
+    note: "Main-track deadline. Official page exposes the date without a timezone; countdown uses end-of-day AoE. The CoRL Organization Board announced a separate Late Breaking Results deadline of October 26, 2026 AoE for two-page extended abstracts, excluding work under review at or accepted to the main track. This does not extend the main-track deadline. Call: https://www.corl.org/contributions/call-for-late-breaking-results."

@@ -21,8 +21,8 @@ knownEditions:
     conferenceDates: "June 29 - July 2, 2027"
     location: "Calgary, Canada"
     link: "https://aim2027.com/"
-    deadlineSourceLabel: "AIM 2027 Call for Papers v1.3 (September 2026)"
-    deadlineSourceUrl: "https://aim2027.com/wp-content/uploads/2026/09/AIM2027_CFP_V1_3.pdf"
+    deadlineSourceLabel: "AIM 2027 Call for Papers V2 (tentative dates)"
+    deadlineSourceUrl: "https://aim2027.com/wp-content/uploads/2026/09/AIM2027_CFP_V2.pdf"
     note: "The conference website and September 2026 CFP list January 26, 2027 as the tentative contributed/invited paper deadline, conflicting with March 2 on the IEEE RAS calendar. The conference CFP takes precedence. No cutoff time or timezone is published; countdown temporarily assumes end-of-day PST."
   - year: 2026
     paperDeadline: "2026-03-24T23:59:59"

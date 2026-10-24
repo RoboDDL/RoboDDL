@@ -17,8 +17,8 @@ keywords:
 submissionModel: "deadline"
 knownEditions:
   - year: 2027
-    paperDeadline: "2026-11-16T23:59:59"
-    abstractDeadline: "2026-11-10T23:59:59"
+    paperDeadline: "2026-11-16T23:59:00"
+    abstractDeadline: "2026-11-10T23:59:00"
     timezone: "AoE"
     conferenceDates: "June 20-25, 2027"
     location: "Seattle, Washington, United States"

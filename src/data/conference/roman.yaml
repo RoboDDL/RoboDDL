@@ -20,9 +20,9 @@ knownEditions:
     conferenceDates: "August 23-27, 2027"
     location: "Waterloo, Ontario, Canada"
     link: "https://ro-man2027.ca/"
-    deadlineSourceLabel: "RO-MAN 2027 official dates and PaperCept"
-    deadlineSourceUrl: "https://ro-man2027.ca/"
-    note: "The official website and PaperCept list March 7, 2027 for regular and special-session papers. The website states that the deadline will not be extended. No cutoff time or timezone is published; countdown temporarily assumes end-of-day PST."
+    deadlineSourceLabel: "RO-MAN 2027 PaperCept conference listing"
+    deadlineSourceUrl: "https://ras.papercept.net/conferences/scripts/start.pl"
+    note: "PaperCept lists March 7, 2027 for full manuscripts and August 23-27 in Waterloo for the conference. The conference website could not be rechecked on October 24, 2026. PaperCept provides no cutoff time or timezone; countdown retains the existing end-of-day PST assumption."
   - year: 2026
     paperDeadline: "2026-03-29T23:59:59"
     timezone: "PST"
