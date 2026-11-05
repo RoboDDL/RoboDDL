@@ -17,10 +17,10 @@ keywords:
 submissionModel: "deadline"
 futureHints:
   - year: 2027
-    conferenceDates: "TBA"
-    location: "South America"
-    link: "https://icml.cc/Conferences/FutureMeetings"
-    note: "The official future-meetings page only confirms South America for 2027. Dates, city and submission deadlines remain unannounced."
+    conferenceDates: "July 31 - August 6, 2027"
+    location: "Riocentro, Rio de Janeiro, Brazil"
+    link: "https://icml.cc/Conferences/2027"
+    note: "The official website confirms July 31 as Expo Day, August 1 for tutorials, August 2-4 for the main conference, and August 5-6 for workshops. The CFP and submission deadlines remain unannounced; the countdown is still estimated from the previous edition."
 knownEditions:
   - year: 2026
     paperDeadline: "2026-01-28T23:59:59"
