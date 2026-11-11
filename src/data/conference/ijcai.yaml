@@ -23,8 +23,9 @@ knownEditions:
     conferenceDates: "August 7-13, 2027 (Kyoto); August 15-17, 2027 (Hengqin)"
     location: "Kyoto, Japan; Hengqin, China"
     link: "https://2027.ijcai.org/"
-    deadlineSourceLabel: "IJCAI 2027 official important dates"
-    deadlineSourceUrl: "https://2027.ijcai.org/"
+    deadlineSourceLabel: "IJCAI 2027 Main Track Call for Papers"
+    deadlineSourceUrl: "https://2027.ijcai.org/ijcai-2027-call-for-papers-main-track/"
+    note: "Main-track abstracts are due January 4, 2027; author information and full papers including appendices are due January 11, all at 23:59 AoE. The appendix has no later submission deadline. Other tracks have separate calls; this countdown follows the main track."
   - year: 2026
     paperDeadline: "2026-01-19T23:59:59"
     abstractDeadline: "2026-01-12T23:59:59"
