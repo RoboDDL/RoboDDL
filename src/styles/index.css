@@ -751,14 +751,6 @@ a {
     @apply font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 transition hover:text-slate-700;
   }
 
-  .page-footer .footer-registration {
-    @apply mt-2 text-xs leading-5;
-  }
-
-  .page-footer a.footer-registration-link {
-    @apply font-normal text-slate-500 no-underline hover:underline;
-  }
-
 }
 
 :root[data-theme='dark'] {
@@ -835,10 +827,6 @@ a {
 :root[data-theme='dark'] .live-help-popover,
 :root[data-theme='dark'] .filter-chip-help-popover,
 :root[data-theme='dark'] .summary-deadline span {
-  color: var(--dark-secondary-label);
-}
-
-:root[data-theme='dark'] .page-footer a.footer-registration-link {
   color: var(--dark-secondary-label);
 }
 

@@ -736,16 +736,6 @@ function App() {
           </a>
           {text.footer.contributionsWelcome}
         </p>
-        <p className="footer-registration">
-          <a
-            className="footer-registration-link"
-            href="https://beian.miit.gov.cn/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            粤ICP备2026180008号
-          </a>
-        </p>
       </footer>
 
       {showBackToTop ? (
