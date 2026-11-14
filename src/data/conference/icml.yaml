@@ -15,13 +15,17 @@ keywords:
   - "robot learning"
   - "embodied ai"
 submissionModel: "deadline"
-futureHints:
+knownEditions:
   - year: 2027
+    paperDeadline: "2027-01-22T23:59:00"
+    abstractDeadline: "2027-01-14T23:59:00"
+    timezone: "AoE"
     conferenceDates: "July 31 - August 6, 2027"
     location: "Riocentro, Rio de Janeiro, Brazil"
     link: "https://icml.cc/Conferences/2027"
-    note: "The official website confirms July 31 as Expo Day, August 1 for tutorials, August 2-4 for the main conference, and August 5-6 for workshops. The CFP and submission deadlines remain unannounced; the countdown is still estimated from the previous edition."
-knownEditions:
+    deadlineSourceLabel: "ICML 2027 Main Conference Call for Papers"
+    deadlineSourceUrl: "https://icml.cc/Conferences/2027/CallForPapers"
+    note: "Main-track abstracts are due January 14 and full papers January 22, 2027, both at 23:59 AoE. Supplementary material has no separate later deadline. January 8 is the submission opening and recommended OpenReview account creation date, not the paper deadline. Position papers use a separate call. The published CFP and dates page supersede stale homepage text saying deadlines are unannounced. Expo: July 31; tutorials: August 1; main conference: August 2-4; workshops: August 5-6."
   - year: 2026
     paperDeadline: "2026-01-28T23:59:59"
     abstractDeadline: "2026-01-23T23:59:59"
